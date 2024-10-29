@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-13-Linux进程管理 - Hk987.fun - www.Hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Linux基础]-13-Linux进程管理</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章介绍Linux系统中几个非常常用的进程管理命令。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#Linux-process-1">0×1.Linux进程简介</a></li>
+						 <li><a href="#Linux-process-2">0×2.如何使用ps命令查看Linux系统中的进程</a></li>
+						 <li><a href="#Linux-process-3">0×3.Linux中父进程与子进程简介</a></li>
+						 <li><a href="#Linux-process-4">0×4.Linux如何使用kill和pkill结束进程</a></li>
+						 <li><a href="#Linux-process-5">0×5.Linux中进程的前后台执行切换</a></li>
+						 <li><a href="#Linux-process-6">0×6.Linux中进程实时监控程序Top</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="Linux-process-1">0×1.Linux进程简介</h2>
+
+					<p>理论上，一个进程被称为一个正在执行的程序，每当一个程序启动时系统就会为这个程序创建一个或多个进程，系统从硬件中（内存、CPU时间等等）分配资源为这个进程服务，每个进程都有一个唯一的PID（Process ID），通过这个PID我们可以快速的查找和终止进程。</p>
+					<p>进程又分为父进程和子进程，如果一个进程A执行了一条命令，这条命令可以在A进程空间中执行，也能通过A进程创建一个新的进程B来执行，这个被创建出来的进程B就叫做进程A的子进程，而进程A就叫做进程B的父进程。</p>
+					<p>除此之外，进程可以在前台运行，也能够在后台运行。</p>
+
+
+					<h2 id="Linux-process-2">0×2.如何使用ps命令查看Linux系统中的进程</h2>
+
+					<p>★ 查看与当前终端相关的进程</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#直接使用ps命令，就能查看到与当前终端相关的进程列表
+					987@hk987.fun:~$ ps
+					PID TTY          TIME CMD
+					1621 pts/0    00:00:00 bash
+					1649 pts/0    00:00:00 ps
+
+					#加一个-l参数，意思是长格式输出，能够看到当前终端相关的进程的详细信息
+					987@hk987.fun:~$ ps -l
+					F S   UID   PID    PPID  C PRI  NI ADDR   SZ      WCHAN  TTY    TIME    CMD
+					0 S  1000  1621  1620  0  80   0    -       56024  do_wai pts/0    00:00:00 bash
+					0 R  1000  1653  1621  0  80   0    -       56370  -          pts/0    00:00:00  ps
+					</code>
+					</pre>
+
+					<p>在上面的ps -l中，每一列详细的介绍如下：</p>
+					<p>● F：进程旗标（process flags），通常代表进程的类型，以下是一些常见类型及其含义：</p>
+					<p class="indent-p">4：通常是守护进程（daemon） ，作为系统服务在后台运行，例如systemd</p>
+					<p class="indent-p">1：则表示此子进程为内核进程（kernel thread）</p>
+					<p class="indent-p">0：普通进程，用户空间中的常规进程</p>
+					<p class="indent-p">5：会话首领（session leader）进程， 会话首领的存在允许多个进程组成一个会话</p>
+					<p>● S：进程的状态，以下是一些常见的进程状态及其含义：</p>
+					<p class="indent-p">R：运行（running）进程当前正在运行或在运行队列中等待执行</p>
+					<p class="indent-p">S：休眠（sleeping）进程当前没有正在运行，但可以快速地被唤醒以继续执行</p>
+					<p class="indent-p">D：不可中断的休眠（uninterruptible sleep） 进程正在等待I/O操作完成</p>
+					<p class="indent-p">I：中断睡眠状态（Interruptible sleep），是一种特殊的休眠状态，进程在此状态下等待某些事件完成，例如等待文件I/O操作完成</p>
+					<p class="indent-p">T：停止（stopped） 进程已被暂停，不再执行任何操作</p>
+					<p class="indent-p">Z：僵尸（zombie）进程已经终止，一般是其父进程尚未等待其终止就退出了</p>
+					<p>● UID：表示进程的用户标识符（User ID）这个标识符用于指示哪个用户启动了该进程，可以通过“id”命令查看当前用户的UID,GID等</p>
+					<p>● PID：代表进程ID（Process ID）每个正在运行的进程都有一个唯一的PID，用于在系统内部标识和管理进程，是一个非负整数</p>
+					<p>● PPID：代表父进程ID（Parent Process ID） 每个进程都有一个父进程，除了初始进程（通常是 init或 systemd）外 PPID是指启动当前进程的父进程的PID</p>
+					<p>● C：通常表示进程的CPU利用率，这个字段显示了进程在其生命周期内使用的CPU时间的百分比</p>
+					<p>● PRI：代表进程的调度优先级（Priority），这个字段表示了操作系统在调度进程时考虑的优先级，通常是一个整数值，调度优先级是操作系统用<p>● NI：代表进程的Nice值（Nice Value），Nice值是用于调整进程调度优先级的一个参数，Nice值是一个整数，通常在范围 -20到 19之间，较低的Nice值意味着进程具有更高的调度优先级， NI值为0的进程具有默认的调度优先级，而NI值为-20的进程具有最高优先级，可能会优先于其他进程获得CPU时间</p>
+					<p>● ADDR：只知道如果这一列显示"-"表示进程是运行状态，并且这一列和内存有关，没有太多的资料介绍这一列的具体作用</p>
+					<p>● SZ：代表进程的内存大小（Size），这个字段显示了进程当前使用的物理内存大小，单位通常是千字节（KB）</p>
+					<p>● WCHAN：字段表示进程在等待的内核等待队列或等待通道，这个字段的值通常是一个标识符，代表了进程在等待的具体资源或事件</p>
+					<p>● TTY：TTY是“Teletype”的缩写，它代表任何终端或终端仿真器，例如终端窗口、虚拟控制台等，TTY列的值可以是以下几种类型：</p>
+					<p class="indent-p">?：进程没有与任何终端关联</p>
+					<p class="indent-p">ttyX：进程与具体的终端设备关联，其中 X是终端设备的标识符。 例如， tty1代表第一个虚拟控制 </p>
+					<p class="indent-p">pts/X：进程与伪终端（pseudo-terminal，简称pts）关联，其中 X是伪终端的标识符。 伪终端通常用于远程登录会话或终端仿真器，例如， TTY列的值为 pts/0表示该进程是在一个伪终端（例如SSH会话或终端仿真器）上运行的</p>
+					<p>● TIME：表示进程已经消耗的 CPU 时间， 这个值表示进程自启动以来在 CPU 上运行的总时长，通常以"小时:分钟:秒"的格式显示，例如，如果  TIME 列的值为 02:30:15，这意味着该进程已经占用了CPU运行时间2小时30分钟15秒，那么为什么我们看到的大多数进程的CPU运行时间都是00:00:00，这是因为这个值是以 CPU 时间来衡量的，这意味着只有当进程实际上在 CPU 上运行时，这个值才会增加，对于短暂运行或者很少使用 CPU 资源的进程，它们的 TIME 值可能会非常小，以至于它在显示上被四舍五入显示成0</p>
+					<p>● CMD：表示启动进程的命令行。这个字段显示了用于启动进程的完整命令，包括命令名称和任何附加参数，例如，如果你启动了一个名为  example_process 的程序，并带有一个参数  -f，那么 CMD 列可能会显示为 example_process -f</p>
+
+					<p>★ 查看系统中所有进程（方法一）</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#ps命令的-A参数会将所有的进程都显示出来
+					987@hk987.fun:~$ ps -A
+					#详细格式输出
+					987@hk987.fun:~$ ps -Al
+					</code>
+					</pre>
+
+					<p>★ 查看系统中所有进程（方法二）</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#-aux参数含义：
+					#a：显示所有用户的进程，而不仅仅是当前用户
+					#u：使用用户可读格式显示进程信息，包括用户、CPU 使用、内存使用等
+					#x：同时显示没有控制终端的进程，通常用于显示守护进程或在后台运行的进
+					#“显示没有控制终端的进程”这句话是指：
+					#进程通常与一个控制终端关联，这是进程可以与用户交互的地方，如终端窗口
+					#但是，有些进程可能不与任何控制终端关联，这些进程通常在后台或作为系统服务运行
+					987@hk987.fun:~$ ps -aux
+					</code>
+					</pre>
+					<p>在上面的ps -aux命令的输出中，每一列的含义如下：</p>
+					<p>● USER ：启动进程的用户</p>
+					<p>● PID ：进程ID，是进程的唯一标识符</p>
+					<p>● %CPU ：进程使用的 CPU 时间占总 CPU 时间的百分比</p>
+					<p>● %MEM ：进程使用的物理内存占总物理内存的百分比</p>
+					<p>● VSZ/WM ：进程占用的虚拟内存</p>
+					<p>● RSS ：进程的实际内存使用量（Resident Set Size），以KB为单位</p>
+					<p>● TTY ：与进程关联的终端设备</p>
+					<p>● STAT ：进程状态，如运行（R）、休眠（S）、僵尸（Z）等，有如下常见的状态：</p>
+					<p class="indent-p">< 表示高优先级的进程(not nice to other users)</p>
+					<p class="indent-p">N 低优先级(nice to other users)</p>
+					<p class="indent-p">I 多线程的进程（大写的i）</p>
+					<p class="indent-p">l 线程加锁（小写的L）</p>
+					<p class="indent-p">s 会话的领头进程（session leader）进程</p>
+					<p class="indent-p">+ 与终端关联的前台进程组</p>
+					<p class="indent-p">D 不间断睡眠（通常是IO）</p>
+					<p class="indent-p">S 可中断睡眠（等待事件完成）</p>
+					<p class="indent-p">T 因作业控制信号或正在被跟踪而停止</p>
+					<p class="indent-p">Z 已失效（“僵尸”）进程，父进程已经终止但作为子进程未被其父进程及时回收</p>
+					<p class="indent-p">R 正在运行或可运行（在运行队列上）</p>
+					<p class="indent-p">这些状态可以相互组合使用，例如“S&lt;sl”表示“一个可中断睡眠并且具有高优先级的加锁领头进程”</p>
+					<p>● START ：进程启动的时间和日期</p>
+					<p>● TIME ：进程在 CPU 上运行的总时间</p>
+					<p>● COMMAND ：启动进程的完整命令行</p>
+					<p>总结：ps -Al和ps -aux都能显示系统中所有的进程，他们的区别在于输出的格式以及每一列字段的差异，除此之外，在不同的发行版Linux中，对这两个命令的兼容性也不相同，大家可以根据实际环境取用。</p>
+
+					<p>★ 使用grep对结果进行筛选</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#使用grep筛选出所有进程列表中包含ssh的进程
+					#通过上面的介绍我们知道这4行中的最后一行，是运行在pts伪终端0中的一条grep命令，也就是当前我们执行的这条命令本身
+					#其实下面4条输出中的后3行都是第一行的子进程，下一节介绍
+					987@hk987.fun:~$ ps -aux | grep ssh
+					root    1011  0.0  0.1  15792  9180 ?    Ss   16:56   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+					root    2180  0.1  0.1  19032 11716 ?    Ss   16:57   0:00 sshd: hk987 [priv]
+					hk987  2212  0.0  0.0  19076  6500 ?    S    16:57   0:00 sshd: hk987@pts/0
+					hk987  2246  0.0  0.0 221812  2360 pts/0  R+   16:57   0:00 grep --color=auto ss
+					</code>
+					</pre>
+
+					<h2 id="Linux-process-3">0×3.Linux中父进程与子进程简介</h2>
+
+					<p>在Linux系统中，每个进程都有一个父进程和可能有多个子进程，这种父子关系形成了进程的层次结构。</p>
+					<p class="indent-p">● 父进程：使用Linux中的特殊函数在其进程空间内创建出的子进程，父进程通常会等待其子进程的完成，并可能根据子进程的状态进行不同的操作。</p>
+					<p class="indent-p">● 子进程：由父进程创建并在父进程空间中运行的新进程，子进程会继承父进程的环境和资源。</p>
+					<p>这种父子关系的概念在Linux系统中非常重要，因为它允许进程组织成树状结构，使得进程间的管理和通信更加方便。</p>
+
+					<p>★ 使用ps -auxf命令查看父子进程树</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#可以使用ps的-f参数，查看这种父子进程关系树
+					#第一行就是下面三行的父进程
+					#子进程第二行中的sshd: hk987 [priv]中的[priv]标识的含义：
+					#当用户登录动作发起时在进程后面添加[priv]标识，这个[priv]标识代表进程具有特权交互权限，仅用作进程标识用
+					#有些sshd进程会显示sshd: hk987 [net]，这个[net]标识也是在网络IO操作之前就被添加到进程后面，仅用作进程标识用，代表这个进程用作网络IO操作
+					#对于这些进程标识，建议查看源码，能帮助很好的理解
+					#登录成功后，又从PID为2180号的父进程创建出一个子进程pts伪终端，终端编号是0
+					#然后在这个伪终端的进程空间中执行了下面这一条命令grep，这个grep也会从父进程2212空间中单独创建一个新的子进程
+					987@hk987.fun:~$ ps -auxf | grep ssh
+					root        1011  0.0  0.1  15792  9180 ?        Ss   16:56   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+					root        2180  0.0  0.1  19032 11716 ?        Ss   16:57   0:00  \_ sshd: hk987 [priv]
+					hk987      2212  0.0  0.0  19076  6500 ?        S    16:57   0:00      \_ sshd: hk987@pts/0
+					hk987      2288  0.0  0.0 221680  2348 pts/0    S+   17:11   0:00              \_ grep --color=auto ssh
+					</code>
+					</pre>
+
+					<p>★ 使用pstree命令查看父子进程树</p>
+					<p>pstree 命令是一个用于显示进程树的工具，它可以以层次结构的形式显示进程及其子进程， pstree 命令没有太多的命令行选项，以下是一些常用的参数： </p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#-p：显示进程ID，使用这个选项会在进程名称后面显示其进程ID
+					#-u：显示用户名称，使用这个选项会在进程名称后面显示其启动者的用户名
+					#-h：高亮显示当前进程及其父系进程
+					#-n：不排序，使用这个选项会按照进程启动的顺序而不是进程名称排序
+					#-a：详细输出，会显示每个进程的完整命令行，包括命令名称和参数
+					#在命令最后加上PID就会显示指定PID进程的完整树状结构，如果不加PID显示的就是系统中所有的进程
+					987@hk987.fun:~$ pstree -anhpu 1022
+					sshd,1022
+					  └─sshd,2079
+					      └─sshd,2112,hk987
+					          └─bash,2124
+					              └─pstree,2168 -anhpu 1022
+					</code>
+					</pre>
+
+					<p>★ 使用echo命令查看当前终端PID以及其父进程PID</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#使用$$可以打印出当前终端的PID
+					987@hk987.fun:~$ echo $$
+					2124
+					#使用$PPID可以打印出当前终端父进程的PID
+					987@hk987.fun:~$ echo $PPID
+					2112
+					#再使用pstree来分别显示一下当前终端的进程树以及其父进程的进程树
+					987@hk987.fun:~$ pstree -anhpu 2124
+					bash,2124,hk987
+					  └─pstree,2188 -anhpu 2124
+					#就可以很清晰的看到，是2112这个sshd进程，这个进程是hk987用户创建的
+					#在这个进程空间中有一个子进程bash，在这个bash进程中再创建了一个子进程执行了pstree命令
+					987@hk987.fun:~$ pstree -anhpu 2112
+					sshd,2112,hk987
+					  └─bash,2124
+					      └─pstree,2189 -anhpu 2112
+					</code>
+					</pre>
+
+					<h2 id="Linux-process-4">0×4.Linux如何使用kill和pkill结束进程</h2>
+
+					<p>kill 和 pkill 都是 Linux 和 Unix-like 系统中用于终止进程的命令，但它们在使用和功能上有所不同</p>
+					<p>★ kill 命令常用用法，终止指定进程：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#使用进程ID（PID）来终止特定进程
+					#语法：kill PID
+					#首先让hk987.sh在后台执行（&符号是让命令在后台执行的意思，下一小节会介绍）
+					987@hk987.fun:~$ bash hk987.sh &
+					[1] 2265
+					#查看一下hk987相关的进程，进程id是2265
+					987@hk987.fun:~$ ps -aux | grep hk987
+					hk987      2265  0.0  0.0 222520  3436 pts/0    S    11:10   0:00 bash hk987.sh
+					hk987      2269  0.0  0.0 221680  2364 pts/0    S+   11:10   0:00 grep --color=auto hk987
+					#使用kill命令来结束进程
+					987@hk987.fun:~$ kill 2265
+					#再次查看，显示hk987.sh已经终止
+					987@hk987.fun:~$ ps -aux | grep hk987
+					hk987      2271  0.0  0.0 221680  2360 pts/0    S+   11:10   0:00 grep --color=auto hk987
+					[1]+  已终止  bash hk987.sh
+					</code>
+					</pre>
+					<p>★ kill 发送 SIGKILL强制终止指定进程：</p>
+					<p>SIGKILL 是一个强制终止进程的信号，用于在无法正常终止进程时强制结束它，尽管它非常有用，但应谨慎使用。</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#使用  -s 或 -SIGNAL 选项发送特定类型的信号，例如，发送 SIGKILL（强制终止）信号
+					#语法：kill -s KILL PID 或 kill -9 PID
+					#首先让hk987.sh在后台执行（&符号是让命令在后台执行的意思，下一小节会介绍）
+					987@hk987.fun:~$ bash hk987.sh &
+					[1] 2275
+					#发送SIGKILL信号强行终止2275号进程
+					987@hk987.fun:~$ kill -s KILL 2275
+					#或
+					987@hk987.fun:~$ kill -9 2275
+
+					987@hk987.fun:~$ ps -aux | grep hk987
+					hk987      2280  0.0  0.0 221680  2344 pts/0    S+   11:16   0:00 grep --color=auto hk987
+					[1]+  已KILL  bash hk987.sh
+					</code>
+					</pre>
+
+					<p>★ kill 同时结束多个PID：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#语法：kill PID PID PID ...
+					#强行终止：kill -9 PID PID PID ...
+					#执行三个后台程序
+					987@hk987.fun:~$ bash hk987.sh &
+					[1] 2293
+					987@hk987.fun:~$ bash hk987.sh &
+					[2] 2295
+					987@hk987.fun:~$ bash hk987.sh &
+					[3] 2297
+					#一次性结束三个后台程序进程
+					987@hk987.fun:~$ kill 2293 2295 2297 
+
+					987@hk987.fun:~$ ps -aux | grep hk987
+					hk987      2300  0.0  0.0 221680  2360 pts/0    S+   11:22   0:00 grep --color=auto hk987
+					[1]   已终止  bash hk987.sh
+					[2]-  已终止  bash hk987.sh
+					[3]+  已终止  bash hk987.sh
+					</code>
+					</pre>
+					<p>★ kill 结束指定的pts终端：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#首先查看一下系统中连接着哪些pts终端
+					987@hk987.fun:~$ w
+					USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT
+					hk987   pts/0     14:36    1.00s  0.02s  0.00s w
+					root     pts/1     14:48    3.00s  0.00s  0.00s -bash
+					hk987   seat0     14:40    0.00s  0.00s  0.00s /usr/libexec/gdm-wayland-session --register-session gnome-session
+					hk987   tty2      14:40   23:48   0.01s  0.01s /usr/libexec/gnome-session-binary
+
+					#ps -t命令是无法查看到其它用户的pts终端PID号的
+					987@hk987.fun:~$ ps -t
+					PID TTY      STAT   TIME COMMAND
+					2546 pts/0    Ss     0:00 -bash
+					4626 pts/0    R+     0:00 ps -t
+
+					#可以通过指定pts终端号来查看root用户连接的pts进程的PID号
+					#因为所有pts连接都会在/dev/pts下创建一个串行端口设备文件
+					#这里root的pts进程创建的文件名称是1，通过上面w命令已经获得
+					987@hk987.fun:~$ ps -t /dev/pts/1
+					PID TTY          TIME CMD
+					4599 pts/1    00:00:00 bash
+
+					#然后就能使用sudo权限强行结束root用户的pts连接了
+					#必须使用-9，也就是发送 SIGKILL强制终止信号，否则无法中断连接
+					987@hk987.fun:~$ sudo kill -9 4599
+					</code>
+					</pre>
+
+					<p>★ pkill 根据进程名称或其他条件终止进程：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#首先使用pstree查看一下hk987创建了哪些进程
+					root@hk987.fun:~# pstree -anhpu hk987
+					sshd,2420
+					  └─bash,2431
+					systemd,2395 --user
+					  └─(sd-pam),2398
+
+					#再使用root权限用户通过pkill的-u参数，结束hk987用户的所有进程
+					root@hk987.fun:~# pkill -u hk987
+
+					root@hk987.fun:~# pstree -anhpu hk987
+					未发现进程。
+
+					#直接使用程序名称结束进程，例如结束firefox浏览器进程
+					987@hk987.fun:~$ pkill firefox
+					</code>
+					</pre>
+
+					<p>注意：使用  kill 命令需要知道目标进程的 PID，而 pkill 允许你使用进程名称或其他条件来识别和终止进程。pkill 可能会终止多个进程，因此在使用时需要小心，确保不会误杀其他重要进程。总的来说，kill 和 pkill 都是强大的进程管理工具，你可以根据自己的需求选择合适的命令来终止进程。</p>
+
+					<p>★ 使用pgrep筛选配合kill结束进程：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#首先假设我们当前终端目录下有一个这样的bash文件，命名为hk987.sh，这个sh文件会每3秒ping一次b站主页
+					#!/bin/bash
+					ping  -i 3 bilibili.com >> bilibili.txt
+
+					#然后我给这个文件加上一个可执行权限
+					987@hk987.fun:~$ sudo chmod +x hk987.sh
+
+					#现在让这个脚本在后台执行，并且启动三个hk987.sh脚本同时在后台运行
+					987@hk987.fun:~$ ./hk987.sh &
+					[2] 2663
+					987@hk987.fun:~$ ./hk987.sh &
+					[3] 2665
+					987@hk987.fun:~$ ./hk987.sh &
+					[4] 2667
+
+					#可以通过前面学过的ps查看这三个脚本的进程
+					987@hk987.fun:~$ ps -aux | grep hk987.sh
+					hk987      2663  0.0  0.0 222520  3428 pts/0    S    14:22   0:00 /bin/bash ./hk987.sh
+					hk987      2665  0.0  0.0 222520  3480 pts/0    S    14:22   0:00 /bin/bash ./hk987.sh
+					hk987      2667  0.0  0.0 222520  3456 pts/0    S    14:22   0:00 /bin/bash ./hk987.sh
+					hk987      2670  0.0  0.0 221816  2328 pts/0    S+   14:24   0:00 grep --color=auto hk987.sh
+
+					#除了ps外，linux还提供了另外一个命令pgrep，pgrep 是一个用于查找进程  (PID) 的命令
+					#它根据进程的名称和其他条件来查找并显示匹配的进程 PID
+					#例如：
+					#1.仅显示匹配到的进程的PID
+					987@hk987.fun:~$ pgrep hk987.sh
+					2663
+					2665
+					2667
+
+					#2.显示出匹配到的进程的PID和进程名称
+					987@hk987.fun:~$ pgrep -l hk987.sh
+					2663 hk987.sh
+					2665 hk987.sh
+					2667 hk987.sh
+
+					#3.默认情况下pgrep是模糊匹配，也就意味着，不需要输入完整的进程名称，例如
+					987@hk987.fun:~$ pgrep -l hk987
+					2663 hk987.sh
+					2665 hk987.sh
+					2667 hk987.sh
+					#但是在一些特殊情况下，假设以hk987开头的进程很多，我们就需要使用-x参数来精确匹配
+					987@hk987.fun:~$ pgrep -x hk987  #这就意味着如果我们不输入完整的进程名称，就无法匹配到
+
+					987@hk987.fun:~$ pgrep -x hk987.sh #必须输入完整的名称
+					2663
+					2665
+					2667
+
+					#4.有时候，我们执行的进程是一串带参数的命令，例如使用bash执行hk987.sh这个脚本
+					987@hk987.fun:~$ bash hk987.sh &
+					[5] 2709
+					#这个时候我们再使用普通的匹配方式就不能匹配到带参数的命令
+					987@hk987.fun:~$ pgrep -l hk987
+					2663 hk987.sh
+					2665 hk987.sh
+					2667 hk987.sh
+					#可以使用-f参数，匹配命令模式，注意，不携带-x参数的时候，仍然是模糊匹配
+					987@hk987.fun:~$ pgrep -f "bash hk987"
+					2709
+					#携带了x参数，就要将命令输完整才能匹配到
+					987@hk987.fun:~$ pgrep -fx "bash hk987"
+					987@hk987.fun:~$ pgrep -fx "bash hk987.sh"
+					2709
+
+					#有了这些基础知识，我们再来配合kill命令结束进程
+					#首先，我们查看一下普通的hk987.sh进程有哪些
+					987@hk987.fun:~$ pgrep -x hk987.sh
+					2663
+					2665
+					2667
+
+					#然后将这个命令的执行结果，传递给kill，这就等价于kill -9 2663 2665 2667
+					987@hk987.fun:~$ kill -9 `pgrep -x hk987.sh`
+
+					#再次查看，就会显示已经kill掉了这三个进程
+					987@hk987.fun:~$ pgrep -x hk987.sh
+					[2]   已杀死               ./hk987.sh
+					[3]   已杀死               ./hk987.sh
+					[4]   已杀死               ./hk987.sh
+
+					#同样的方法，可以结束携带参数的命令进程
+					987@hk987.fun:~$ kill -9 `pgrep -fx "bash hk987.sh"`
+					[5]-  已杀死               bash hk987.sh
+					</code>
+					</pre>
+
+
+					<h2 id="Linux-process-5">0×5.Linux中进程的前后台执行切换</h2>
+					<p>在 Linux 中，进程可以在前台或后台运行，这与它们与终端的交互方式有关，下面我将为你演示如何在 Linux 中运行前台和后台进程：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#直接在终端中输入sleep命令，这个命令会让进程休眠传入的秒，本例是3600秒
+					#输入这个命令之后，终端会一直卡着等待倒计时结束
+					#这样如果我们还需要进行其他操作，就会非常不方便
+					987@hk987.fun:~$ sleep 3600
+					#可以使用键盘上的ctrl+z组合键，让这个进程暂时挂起
+					^Z
+					[1]+  已停止      sleep 3600
+					#然后再使用bg命令，将刚才挂起的进程放入后台执行
+					987@hk987.fun:~$ bg
+					[1]+ sleep 3600 &
+
+					#那如果我同时使用ctrl+z组合键挂起多个进程
+					987@hk987.fun:~$ sleep 6000
+					^Z
+					[2]+  已停止      sleep 6000
+					987@hk987.fun:~$ sleep 8000
+					^Z
+					[3]+  已停止      sleep 8000
+
+					#就需要使用bg接上"%数字"的形式，来让指定挂起的进程继续在后台执行
+					987@hk987.fun:~$ bg %3
+					[3]+ sleep 8000 &
+					987@hk987.fun:~$ bg %2
+					[2]+ sleep 6000 &
+
+					#可以通过jobs -l命令看到后台正在执行的，或者被挂起的进程
+					987@hk987.fun:~$ jobs -l
+					[1]   4866 运行中      sleep 3600 &
+					[2]-  4868 运行中      sleep 6000 &
+					[3]+  4869 运行中      sleep 8000 &
+
+					#例如我挂起一个进程
+					987@hk987.fun:~$ sleep 9000
+					^Z
+					[4]+  已停止      sleep 9000
+
+					#再用jobs -l就能清晰的看到后台所有被挂起（暂停）和正在运行的进程
+					987@hk987.fun:~$ jobs -l
+					[1]   4866 运行中      sleep 3600 &
+					[2]   4868 运行中      sleep 6000 &
+					[3]-  4869 运行中      sleep 8000 &
+					[4]+  4870 停止      sleep 9000
+
+					#如果这个时候我想将某个进程放到前台来查看一下输出
+					#可以使用“fg %进程编号” 将对应编号的进程切换到前台
+					987@hk987.fun:~$ fg %2
+					sleep 6000
+					#再次放到后台，然后查看一下后台的进程列表
+					^Z
+					[2]+  已停止      sleep 6000
+					987@hk987.fun:~$ jobs -l
+					[1]   4866 运行中      sleep 3600 &
+					[2]+  4868 停止      sleep 6000
+					[3]   4869 运行中      sleep 8000 &
+					[4]-  4870 停止      sleep 9000
+
+					#如果我想结束某个后台进程，直接使用kill是不行的
+					987@hk987.fun:~$ kill 4868
+					#被结束的进程ID仍然存在
+					987@hk987.fun:~$ jobs -l
+					[1]   4866 运行中      sleep 3600 &
+					[2]+  4868 停止      sleep 6000
+					[3]   4869 运行中      sleep 8000 &
+					[4]-  4870 停止      sleep 9000
+
+					#必须使用强制结束信号才能成功
+					987@hk987.fun:~$ kill -9 4868
+					[2]+  已KILL      sleep 6000
+					987@hk987.fun:~$ jobs -l
+					[1]   4866 运行中      sleep 3600 &
+					[3]-  4869 运行中      sleep 8000 &
+					[4]+  4870 停止      sleep 9000
+					</code>
+					</pre>
+
+					<h2 id="Linux-process-6">0×6.Linux中进程实时监控程序Top</h2>
+					<p>top 是一个常用的系统监视工具，用于实时显示系统的运行状态，包括 CPU 使用率、内存使用情况、进程信息等。以下是 top 命令的一些基本用法和常见选项：</p>
+					<p>● 交互模式top查看当前进程</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#在终端中可以直接输入top命令，打开进程实时监控
+					#默认模式下top是可交互的，并且每3秒刷新一次
+					987@hk987.fun:~$ top
+
+					#下面是top交互模式常用的操作键
+					#k：输入k之后，会让你输入一个进程的PID，回车两次就能杀死这个PID对应的进程，如果不想结束任何进程，可以输入任意字母回车
+					#d：输入d后，可以输入一个时间（单位秒），指定默认的刷新频率
+					#V（大写）：显示进程树
+					#H（大写）：显示线程，默认只显示进程
+					#P（大写）：按照CPU占用率从大到小排列
+					#M（大写）：按照内存占用率从大到小排列
+					#shift+>：向后查看一页进程
+					#shift+<：向前查看一页进程
+					#c：显示进程的完整命令
+					#z：颜色切换
+					#m：切换内存显示样式
+					#t：切换cpu显示样式
+					#1：查看cpu多核情况
+					#W（大写）：将当前配置写入~/.config/procps/toprc文件中，这样下次打开就会按照现在的设置
+					#q：退出top
+					</code>
+					</pre>
+
+					<p>● 非交互模式top查看当前进程</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#有些情况下我们不需要使用交互功能，只需要top能够输出当前所有进程
+					#-n 1：指定 top 执行一次刷新
+					#-b：以批处理模式运行 top，这会使 top 不会进行任何交互，而是直接输出结果
+					987@hk987.fun:~$ top -b -n 1
+
+					#或者将结果输出到文件
+					987@hk987.fun:~$ top -b -n 1 > top.txt
+					</code>
+					</pre>
+
+					<p>● top仅监控指定用户或指定进程</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#-u：监控指定用户
+					#-p：监控指定进程
+
+					#仅显示hk987用户的进程
+					987@hk987.fun:~$ top -u hk987
+
+					#仅显示PID是2180的进程
+					987@hk987.fun:~$ top -p 2180
+					</code>
+					</pre>
+
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Linux基础]-13-Linux进程管理" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-13.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-13.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

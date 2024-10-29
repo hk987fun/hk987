@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-3-文件查找命令 - Hk987.fun - www.Hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Linux基础]-3-文件查找命令</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章记录常用的4个和文件查找相关的Linux命令，也是Linux中最使用频率最高的几个文件查找命令。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#File-search-1">0×1.which命令</a></li>
+						 <li><a href="#File-search-2">0×2.whereis命令</a></li>
+						 <li><a href="#File-search-3">0×3.locate命令</a></li>
+						 <li><a href="#File-search-4">0×4.find命令</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="File-search-1">0×1.which命令</h2>
+
+					<p>which会在系统的$PATH中搜索某个系统命令的位置，并仅返回第一个搜索到的结果。</p>
+					<p>which命令示例：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					echo $PATH #查看系统中的环境变量目录，which会在$PATH中包含的目录中逐个查找，直到找到第一个包含命令的目录返回
+					which man #查找man命令所在位置
+					which ls #查找ls命令所在位置，因为ls是终端内置命令，所以不会有路径
+					</code>
+					</pre>
+
+					<h2 id="File-search-2">0×2.whereis命令</h2>
+
+					<p>whereis命令只搜索二进制文件（参数-b），man说明文件（参数-m）和源代码文件（参数-s），如果省略参数，则返回所有信息。</p>
+
+					<p>whereis命令示例：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					whereis find #搜索find程序的二进制文件，说明文件以及源代码文件
+					whereis -b find #仅搜索find程序的二进制文件
+					whereis -m find #仅搜索find程序的说明文件
+					whereis -s find #仅搜索find程序的源代码文件
+					</code>
+					</pre>
+
+					<h2 id="File-search-3">0×3.locate命令</h2>
+
+					<p>locate同whereis一样，依赖于程序自建的数据库查询，在Archlinux中，默认没有locate这个命令，需要手动安装（sudo pacman -S locate），并且在安装之后，需要手动建立一次本地数据库（sudo updatedb），因为是基于本地数据库查询，查询到的数据不一定是最新的，想要查询最新的数据，可以使用sudo updatedb命令手动更新本地数据库后再查询，locate常用参数如下：</p>
+					<p class="indent-p">     
+    				-l num 查询结果显示num行<br>
+					-r 使用正则运算式做为寻找条件<br>
+					-i 忽略大小写
+					</p>
+
+					<p>locate命令示例：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					sudo updatedb #查询之前，先更新系统路径数据库
+					locate -l 5 find #查找包含find名称的文件，仅显示查询结果的前5行
+					locate -r 'hack...rs' #使用正则表达式，查找hack和rs中间仅有三个字符的文件
+					locate -i /etc/ssh #查找/etc/下ssh开头的文件，忽略大小写
+					</code>
+					</pre>
+
+					<h2 id="File-search-4">0×4.find命令</h2>
+
+					<p>find命令可以用来遍历磁盘查找文件，也是功能最全面的一个文件查找命令，下面是find命令常用参数：</p>
+					<p class="indent-p">     
+    				-exec 将find命令的查询结果一条条传输给-exec后面的命令执行。格式为"-exec 命令 {} \;"，{}是一个占位符号，代表find查找出来的每一条结果逐个代入这个位置执行，注意{}和\;之间的空格。<br>
+					-ok 和-exec的作用相同，但ok执行需要用户确认。<br>
+					-depth 在查找文件时，会优先查找当前目录中的文件，然后再去其子目录中查找。<br>
+					-name 按照文件名查找文件。<br>
+					-perm 按照文件权限来查找文件。<br>
+					-prune 使用这一选项可以使find命令不在当前指定的目录中查找，如果同时使用了-depth选项，那么-prune选项将被find命令忽略。<br>
+					-user 按照文件属主来查找文件。<br>
+					-group 按照文件所属的组来查找文件。<br>
+					-mtime -n +n 按照文件的修改时间来查找文件，-n表示文件更改时间距现在n天以内，+n表示文件更改时间距现在n天以前。find命令还有-atime（访问时间）和-ctime（创建时间）选项，它们都和-mtime选项相似。 <br>
+					-nogroup 查找无有效所属组的文件，即该文件所属的组在/etc/groups中不存在。<br>
+					-nouser 查找无有效属主的文件，即该文件的属主在/etc/passwd中不存在。<br>
+					-type 查找某一类型的文件，诸如：<br>
+					b - 块设备文件。<br>
+					d - 目录。<br>
+					c - 字符设备文件。<br>
+					p - 管道文件。<br>
+					l - 符号链接文件。<br>
+					f - 普通文件。<br>
+					s - socket文件<br>
+					-size n[cwbkMG] : 文件大小 为 n 个由后缀决定的数据块。其中后缀为：<br>
+					b: 代表 512 位元组的区块（如果用户没有指定后缀，则默认为 b）<br>
+					c: 表示字节数<br>
+					k: 表示 kilo bytes （1024字节）<br>
+					w: 字 （2字节）<br>
+					M:兆字节（1048576字节）<br>
+					G: 千兆字节 （1073741824字节）<br>
+					-depth 在查找文件时，首先查找当前目录中的文件，然后再在其子目录中查找。<br>
+					-delete (删除)<br>
+					-maxdepth 查找最大目录层数 如 1，即只查找一层目录<br>
+					-iname 按名称搜索无论大小写<br>
+					-mount 在查找文件时不跨越文件系统mount点。<br>
+					-o 是或者的意思<br>
+					-a 是而且的意思<br>
+					-not 是相反的意思
+					</p>
+
+					<p>find命令示例：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					find . -name '*.rs' #按名字来查找，查找当前目录中所有.rs结尾的文件
+					find /etc/ssh -name 'sshd_config' #查找/etc/ssh目录中名字叫做sshd_config的文件
+					find . -name '[0-9]*.rs' #查找当前目录中以数字0到9开头的并且后缀是.rs的文件
+					find . -perm 777 #查找当前目录下权限是777的文件
+					find . -perm 777 -name '*.rs' #查找当前目录下权限是777并且后缀是.rs的文件
+					find . -not \( -name '*.sample' -o -name '*.rs' \)  #查找当前目录下不以.sample或.rs结尾的文件，两个括号用\转义
+					find . -name 'hk*' -type f #查找当前目录下以hk开头的普通文件
+					find . -not -type d #查找当前目录中非目录文件
+					find . ! -type d #同上!符号等同于-not
+					find . -nouser #查找当前目录下无用户名的文件，系统允许存在有uid但无用户名的文件，就属于这一类的查询结果
+					find . -user 19999 -group 9999 #查找当前目录下用户名是19999，组是9999的文件
+					find . -size +100M #查找当前目录下大于100M的文件
+					find . -size +100M -exec du -sh {} \; #查找当前目录下大于100M的文件，并用du -sh命令来分别显示他们的大小
+					find . -depth -mtime -3 -ok rm -r {} \; #查找当前目录下修改时间3天内的文件，并且用rm命令删除他们，删除时候提示，如果用户输入y回车就会被删除
+					find . -depth -mtime +3 -ok rm -r {} \; #+3代表三天之前，-3代表三天之内，其他同上
+					find . -name 'hackmm' -delete #查找当前目录下叫做hackmm的文件，找到之后直接删除
+					find . -iname 'HK2' # 不区分大小写，查找当前目录下叫做HK2的文件，意味着hk2，Hk2，HK2，hK2都会被匹配到
+					find . -maxdepth 3 -name '*.rs'  #查找当前目录下，名字以.rs结尾的文件，但只递归查找3层子目录
+					</code>
+					</pre>
+
+
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Linux基础]-3-文件查找命令" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-3.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-3.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

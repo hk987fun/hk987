@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-5-软件的安装与管理 - hk987.fun - www.hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Linux基础]-5-软件的安装与管理</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章介绍Linux五个运用最普遍的软件包管理器。使用Rocky（RHEL系）、Ubuntu（Debian系）、EndeavourOS（Arch系）这三个不同的Linux发行版，分别介绍rpm、yum、dnf、dpkg、apt-get和pacman的使用方法。</p>
+					<!-- 目录 -->
+					<ul class="contents">
+						 <li><a href="#Linux-packages-1">0×1.RPM、DPKG、Pacman软件管理机制浅析</a></li>
+						 <li class="subli"><a href="#Linux-packages-1.1">0×1.1.Linux如何更换软件源</a></li>
+						 <li><a href="#Linux-rpm-2">0×2.使用rpm命令安装卸载软件</a></li>
+						 <li><a href="#Linux-yum-3">0×3.使用yum安装卸载软件</a></li>
+						 <li><a href="#Linux-dnf-4">0×4.使用dnf安装卸载软件</a></li>
+						 <li><a href="#Linux-dpkg-5">0×5.使用dpkg命令安装卸载软件</a></li>
+						 <li><a href="#Linux-apt-get-6">0×6.使用apt-get安装卸载软件</a></li>
+						 <li><a href="#Linux-pacman-7">0×7.使用pacman安装卸载软件</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+
+					<h2 id="Linux-packages-1">0×1.RPM、DPKG、Pacman软件管理机制浅析</h2>
+
+					<p>RPM(Red hat Package Manage)：是Red Hat公司开发的打包标准，通常以.rpm作为后缀，Linux软件包的命名有一定的规律,一般的结构是"软件名称-版本-适合的系统平台.扩展名"，例如，一个rpm安装包名称是"ansible-test-2.14.9-1.el9.x86_64.rpm"，那么这个软件的名称就是"ansible-test"，软件版本是"2.14.9-1.el9"，适用的平台"x86_64"（x86_64构架）；RPM包可以安装在所有的RHEL系Linux中，例如，Rocky，Fedora等。</p>
+
+					<p>DPKG(Debian Package)：dpkg是Debian系发行版负责管理软件包的初级工具，只有简单的安装、卸载、检查依赖等本地的功能；dpkg封装的包后缀是.deb，例如“sogoupinyin_4.2.1.145_amd64.deb”，“sogoupinyin”是软件的名称，“4.2.1.145”是版本号，“amd64”是这个包的适用平台；deb包可以安装在所有Debian系列系统上，例如，Ubuntu，Kali，Deepin等。</p>
+
+					<p>Pacman：是Arch系列操作系统上的默认包管理器，功能强大能，不仅能够通过软件仓库在线安装，还能够安装本地打包好的软件，在ArchLinux中，本地打包软件的后缀通常是.pkg.tar.zst，例如：“vmware-workstation-17.5.0-2-x86_64.pkg.tar.zst”；</p>
+
+					<p>然而，不论哪种软件管理机制封装的安装包，都存在相关软件的依存问题，比如使用rpm或者dpkg安装软件A，A则需要系统中已经安装好软件B和C，否则A将不能正常安装，这就带来一个非常麻烦的问题，如果A依赖的程序不止两个，而是几百个，这几百个被依赖的程序在安装的过程中，又存在其他的依赖关系，那么手动安装这些依存程序显然就会非常的麻烦。</p>
+
+					<p>所以，为了解决安装软件的依赖关系问题，Yum、Dnf、Apt-get、Pacman这几种自动解决依赖关系的包管理器就被开发了出来。Yum和Dnf是RPM软件管理机制的在线安装方式，适用于RHEL系列Linux；Apt-get是DPKG软件管理机制的在线安装方式，适用于Debian系列Linux；Pacman是Arch系列Linux的原生包管理器；它们都可以自动解决软件的依存问题，当某个需要安装的软件存在依赖软件时，安装程序会自动搜索指定的网络服务器中是否存在这些依存的软件，如果存在，会将这些软件一次性全部安装好。</p>
+
+					<h2 id="Linux-packages-1.1">0×1.1.Linux如何更换软件源</h2>
+					<p>首先来看一下，为什么要更换软件源，因为大多数的Linux的软件仓库都在国外的服务器上，在网络不通达的时候，就可能访问不了，这就会导致我们更新系统或在线安装软件失败；如果遇到了这样的问题，解决它的最好办法就是将软件源更换到国内【<a href="https://developer.aliyun.com/mirror/" target="_blank" alt="阿里云开源镜像站">阿里云开源镜像站</a>】；</p>
+
+					<img src="images/mirror.png" alt="images/mirror.png">
+					<p>上图中， 假设PC连接官方软件源服务器网络不好，那么就可以通过阿里这样的镜像站，因为阿里的网络到官方软件源服务器的网络是通的，所以阿里会缓存所有官方软件源里面的资源到镜像服务器上，这样我们只需要通过阿里镜像服务器去获取软件和更新就行了。</p>
+
+					<p>更换软件源的方法，打开【<a href="https://developer.aliyun.com/mirror/" target="_blank" alt="阿里云开源镜像站">阿里云开源镜像站</a>】，找到自己的Linux操作系统对应的镜像，然后参考步骤就行修改。</p>
+
+					<p>===在没有学习权限之前，下面所有对软件源文件的修改，都暂时使用超级管理员root运行===</p>
+
+					<p>● Ubuntu修改软件源文件示例：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1-2"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#sed -i.hk987参数接受传入一个文件，sed首先会将这个文件复制一份并且添加.hk987后缀
+					#然后再将 --- {'s|这一部分的内容|替换成这一部分|g'}，在命令中使用|作为分隔符的时候斜杠/不需要用反斜杠\转义
+					sed -e 's|http://cn.archive.ubuntu.com|http://mirrors.aliyun.com|g' -i.hk987 /etc/apt/sources.list
+					</code>
+					</pre>
+
+					<p>● Rocky修改软件源文件示例：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3,4,6-11,12-13,15-20"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#查看系统版本命令（或lsb_release -a）
+					more /etc/os-release  
+
+					#针对Rocky8
+					sed -e 's|^mirrorlist=|#mirrorlist=|g' \
+					's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.aliyun.com/rockylinux|g' \
+					-i.hk987 \
+					/etc/yum.repos.d/Rocky-AppStream.repo \
+					/etc/yum.repos.d/Rocky-BaseOS.repo \
+					/etc/yum.repos.d/Rocky-Extras.repo \
+					/etc/yum.repos.d/Rocky-PowerTools.repo
+
+					#针对Rocky9
+					sed -e 's|^mirrorlist=|#mirrorlist=|g' \
+					's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.aliyun.com/rockylinux|g' \
+					-i.hk987 \
+					/etc/yum.repos.d/rocky-extras.repo \
+					/etc/yum.repos.d/rocky-addons.repo \
+					/etc/yum.repos.d/rocky-devel.repo \
+					/etc/yum.repos.d/rocky.repo
+					</code>
+					</pre>
+					<p>以上命令只替换了默认启用的仓库。替换之后请运行 dnf makecache 更新缓存。</p>
+
+					<p>● Archlinux修改软件源文件示例：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#针对Archlinux
+					sed -e 's|^|#|g' -e '1i Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch' -i.hk987 /etc/pacman.d/mirrorlist
+					</code>
+					</pre>
+
+					<h2 id="Linux-rpm-2">0×2.使用rpm命令安装卸载软件</h2>
+
+					<p>● 查询软件安装到系统的哪些目录中：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#对已安装的软件，通过软件名查询安装到了系统哪些目录中
+					rpm -ql openssh-server
+					#查询rpm软件包，包含哪些文件
+					rpm -qlp openssh-server-8.7p1-34.el9.x86_64.rpm
+					</code>
+					</pre>
+
+					<p>● 查询软件安装需要哪些依赖软件包：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#对已安装的软件
+					rpm -qR openssh-server
+					#对软件包
+					rpm -qRp openssh-server-8.7p1-34.el9.x86_64.rpm
+					</code>
+					</pre>
+
+					<p>● 查询某个文件属于哪个软件包：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#查询sshd_config这个配置文件属于哪个软件包
+					rpm -qf /etc/ssh/sshd_config
+					openssh-server-8.7p1-34.el9.x86_64
+					</code>
+					</pre>
+
+					<p>● 安装和卸载rpm软件包：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#安装ssh服务端
+					rpm -ivh openssh-server-8.7p1-34.el9.x86_64.rpm
+					#卸载ssh客户端，通过rpm卸载软件的时候，能不能卸载的前提条件是被卸载的软件不被其它软件包依赖
+					rpm -evh openssh-server
+					</code>
+					</pre>
+					
+					<h2 id="Linux-yum-3">0×3.使用yum安装卸载软件</h2>
+					<p>在我们使用rpm安装软件的包的时候，会出现大量的软件依存关系问题，手动解决十分麻烦，所以yum包管理器被开发出来，用来自动解决软件之间的依存关系，yum默认使用联网安装的方式，从指定的服务器中搜索我们需要安装的软件，如果有依存关系的软件，也会被一并自动安装。</p>
+
+					<p>● yum查找在线仓库中是否存在某软件包：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#使用search参数查找仓库中是否存在vim程序的安装包
+					yum search vim
+					===== 名称 和 概况 匹配：vim =====
+					vim-X11.x86_64 : The VIM version of the vi editor for the X Window System - GVim
+					vim-common.x86_64 : The common files needed by any version of the VIM editor
+					vim-enhanced.x86_64 : A version of the VIM editor which includes recent : enhancements
+					vim-filesystem.noarch : VIM filesystem layout
+					vim-minimal.x86_64 : A minimal version of the VIM editor
+					</code>
+					</pre>
+
+					<p>● yum查询某个软件包详细信息：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#使用list或者info参数查找系统中是否已经安装了vim
+					yum list vim
+					#如果vim已经安装，显示详细信息
+					yum info vim
+					</code>
+					</pre>
+
+					<p>● yum安装软件：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#安装vim
+					yum install vim
+					#添加-y参数，不用手动输入yes，自动安装
+					yum install vim -y
+					</code>
+					</pre>
+
+					<p>● yum更新软件：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3,4,6,7,9,10"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#单独更新vim软件到最新版本，并且保留旧版本安装包
+					yum update vim
+
+					#单独更新vim软件到最新版本，并且删除旧版本安装包
+					yum upgrade vim
+
+					#更新系统中所有已安装的软件包到最新版本，并且保留旧版本安装包
+					yum update
+
+					#更新系统中所有已安装的软件包到最新版本，并且删除旧版本安装包
+					yum upgrade
+					</code>
+					</pre>
+					
+					<p>注意：yum update和yum upgrade的功能都是一样的，都是将需要更新的package更新到源中的最新版。唯一不同的是，yum upgrade会删除旧版本的package，而yum update则会保留旧版本的package(obsoletes=0)。所以，生产环境中建议使用yum update，防止因为替换，导致旧的软件包依赖出现问题。</p>
+
+					<p>● yum从系统中删除软件：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#从系统中删除vim软件
+					yum remove vim
+					</code>
+					</pre>
+
+					<p>● yum从系统中清除下载的软件包缓存：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#从系统中删除所有缓存，在最新版本的Rocky系统中，yum已经被dnf取代，缓存目录通常位于 /var/cache/dnf/
+					yum clean all
+					</code>
+					</pre>
+					
+					<h2 id="Linux-dnf-4">0×4.使用dnf安装卸载软件</h2>
+
+					<p>dnf命令来自英文词组“Dandified YUM”的缩写，是新一代的软件包管理器，dnf开发的初衷是作为yum包管理器的替代版本，其功能是用于安装、更新、卸载Linux系统中的软件。 最初应用于Fedora 18系统中，目标非常明确的想要解决掉yum命令的诸多瓶颈问题，例如占用大量内存、臃肿的软件依赖关系、运行速度缓慢等等诟病。</p>
+
+					<p>dnf命令的参数和用法与yum完全一样，只需要将命令中的yum替换成dnf即可，请看下面的演示：</p>
+
+					<p>● dnf查找在线仓库中是否存在某软件包：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#使用search参数查找仓库中是否存在vim程序的安装包
+					dnf search vim
+					===== 名称 和 概况 匹配：vim =====
+					vim-X11.x86_64 : The VIM version of the vi editor for the X Window System - GVim
+					vim-common.x86_64 : The common files needed by any version of the VIM editor
+					vim-enhanced.x86_64 : A version of the VIM editor which includes recent : enhancements
+					vim-filesystem.noarch : VIM filesystem layout
+					vim-minimal.x86_64 : A minimal version of the VIM editor
+					</code>
+					</pre>
+
+					<p>● dnf查询某个软件包详细信息：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#使用list或者info参数查找系统中是否已经安装了vim
+					dnf list vim
+					#如果vim已经安装，显示详细信息
+					dnf info vim
+					</code>
+					</pre>
+
+					<p>● dnf安装软件：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#安装vim
+					dnf install vim
+					#添加-y参数，不用手动输入yes，自动安装
+					dnf install vim -y
+					</code>
+					</pre>
+
+					<p>● dnf更新软件：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3,4,6,7,9,10"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#单独更新vim软件到最新版本，并且保留旧版本安装包
+					dnf update vim
+
+					#单独更新vim软件到最新版本，并且删除旧版本安装包
+					dnf upgrade vim
+
+					#更新系统中所有已安装的软件包到最新版本，并且保留旧版本安装包
+					dnf update
+
+					#更新系统中所有已安装的软件包到最新版本，并且删除旧版本安装包
+					dnf upgrade
+					</code>
+					</pre>
+					
+					<p>注意：dnf update和dnf upgrade的功能都是一样的，都是将需要更新的package更新到源中的最新版。唯一不同的是，dnf upgrade会删除旧版本的package，而dnf update则会保留旧版本的package(obsoletes=0)。所以，生产环境中建议使用dnf update，防止因为替换，导致旧的软件包依赖出现问题。</p>
+
+					<p>● dnf从系统中删除软件：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#从系统中删除vim软件
+					dnf remove vim
+					</code>
+					</pre>
+
+					<p>● dnf从系统中清除下载的软件包缓存：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#从系统中删除所有缓存，dnf 的缓存目录通常位于 /var/cache/dnf/
+					dnf clean all
+					</code>
+					</pre>
+
+					<h2 id="Linux-dpkg-5">0×5.使用dpkg命令安装卸载软件</h2>
+
+					<p>dpkg是Debian系列linux的默认包管理器，在Debian系列linux中，所有封装好的安装包都是以.deb后缀结尾，例如搜狗拼音输入法：sogoupinyin_4.2.1.145_amd64.deb，下面是dpkg包管理器的命令实例。</p>
+
+					<p>● dpkg查询已安装好的软件的版本信息：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#通过dpkg的-l参数查询已经安装好的vim软件的版本信息
+					dpkg -l vim
+					</code>
+					</pre>
+
+					<p>● dpkg查询已安装好的软件在系统中的位置：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#通过dpkg的-L参数查询vim软件包释放到系统的哪些位置
+					dpkg -L vim
+					</code>
+					</pre>
+
+					<p>● dpkg查询已经安装的软件包详情：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#通过dpkg的-s参数查询vim软件包详情
+					dpkg -s vim
+					</code>
+					</pre>
+
+					<p>● dpkg列出deb安装包中的内容：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#通过dpkg的-c参数列出搜狗拼音输入法deb包的内容（包含的文件以及路径）
+					dpkg -c sogoupinyin_4.2.1.145_amd64.deb
+					</code>
+					</pre>
+
+					<p>● dpkg安装deb软件包：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#通过dpkg的-i参数安装搜狗拼音输入法软件包（安装不会成功，因为会遇到依赖软件没有安装的问题）
+					dpkg -i sogoupinyin_4.2.1.145_amd64.deb
+					</code>
+					</pre>
+					<p>在上面这个实例中，安装会失败，因为搜狗输入法安装包需要先安装fcitx等输入法框架，这也是dpkg安装方法的一个弊端，无法自己识别和安装有依存关系的软件包。</p>
+
+					<p>● dpkg移除已经安装的软件包：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3,4"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#通过dpkg的-r参数，可以移除指定的软件，但是会保留软件包的配置文件
+					dpkg -r vim
+
+					#通过dpkg的-P参数（大写P），可以移除指定的软件，并且同时删除软件的配置文件
+					dpkg -P vim
+					</code>
+					</pre>
+					<p>对于Debian系列Linux系统，推荐使用apt方式在线安装和卸载软件，请看下一小节的实例演示。</p>
+
+					<h2 id="Linux-apt-get-6">0×6.使用apt-get安装卸载软件</h2>
+
+					<p>APT（英语：Advanced Packaging Tools）是高级包装工具的意思，它是Debian及其衍生发行版（如：ubuntu）的自动化软件包管理器。可以自动下载，配置，安装二进制或者源代码格式的软件包，并且自动解决软件包之间的依赖问题。</p>
+					<p>● 使用apt更新系统中所有已安装的软件包到最新版：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1-3"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#不同于RHEL系列，apt update仅用来从服务器获取最新的软件列表以及对应软件的版本号
+					#apt upgrade才会根据最新的软件列表更新系统中已经安装的软件
+					#所以这两条命令通常都是组合使用
+					apt update &amp;&amp; apt upgrade
+					</code>
+					</pre>
+
+					<p>● 使用apt安装软件：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#使用apt的install参数安装vim
+					apt install vim
+					</code>
+					</pre>
+
+					<p>● 使用apt解决安装依赖问题：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#有时候使用dpkg安装软件，会出现一大堆没有安装的依赖包，这个时候就能使用apt的-f参数（--fix-broken）来自动安装依赖软件包
+					apt install -f
+					</code>
+					</pre>
+
+					<p>● 使用apt卸载已经安装的软件：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#使用apt的remove参数卸载已经安装的vim软件包
+					apt remove vim
+					</code>
+					</pre>
+
+					<p>● 使用apt查看安装包的依赖关系列表：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#使用apt的rdepends（Reverse Depends）参数，查看vim的软件依赖关系列表
+					apt rdepends vim
+					</code>
+					</pre>
+
+					<p>● 使用apt清理缓存释放/空间：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1-2,3-5,7-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#Ubuntu下载的软件包被缓存在“/var/cache/apt/archives/”
+					#自动删除不需要的软件包（不被使用和不被任何软件依赖）
+					apt autoremove
+
+					#删除过期的缓存文件，apt autoclean 命令会删除  /var/cache/apt/archives/ 目录中已经不再需要的包文件。具体来说，它会删除系统中已经没有可用版本的旧包文件，而保留当前最新版本的包文件。这种方式可以在释放空间的同时，保留当前版本的包文件，以便在需要时重新安装。
+					apt autoclean
+
+					#删除所有的软件包缓存，apt clean 命令会删除  /var/cache/apt/archives/ 目录中的所有  .deb 文件。
+					apt clean
+					</code>
+					</pre>
+					
+					<h2 id="Linux-pacman-7">0×7.使用pacman安装卸载软件</h2>
+
+					<p>Pacman是Arch系列Linux的包管理器，同样可以在线安装软件，请看下面的实例。</p>
+
+					<p>● 使用pacman更新整个系统：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#ArchLinux是一款滚动更新的操作系统，所以只需要下面这一条命令，就能将系统更新到最新版（这条命令不会更新内核）
+					pacman -Syyu
+					</code>
+					</pre>
+
+					<p>● 使用pacman安装软件：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3,4"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#使用pacman的-S参数，安装vim
+					pacman -S vim
+
+					#使用pacman的-U参数，能够安装本地软件包，在Arch中，软件包的扩展名为pkg.tar.zst
+					pacman -U hk987.1.8.0-1-any.pkg.tar.zst
+					</code>
+					</pre>
+
+					<p>● 使用pacman卸载软件：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#使用pacman的-R参数，卸载vim
+					pacman -R vim
+					</code>
+					</pre>
+
+					<p>● 使用pacman查询软件信息：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1,3,4,6,7"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#使用pacman的-Ss参数，搜索包含关键字openssh的包
+					pacman -Ss openssh 
+
+					#使用pacman的-Qi参数，搜索openssh包的详细信息
+					pacman -Qi openssh
+
+					#使用pacman的-Ql参数，查看openssh包安装后会释放到系统哪些目录
+					pacman -Ql openssh
+					</code>
+					</pre>
+
+					<p>● 使用pacman清除软件包缓存：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="root" 
+					     data-host="hk987.fun" 
+					     data-output="1-4,6-7"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#所有使用pacman安装过的软件包都会被缓存到/var/cache/pacman/pkg/目录下
+					#系统这样做的好处是当我们删除某个软件之后再安装，系统会先去缓存目录寻找这个软件的安装包
+					#如果有缓存，并且版本和服务器的最新版一样，那么就直接从缓存目录安装，这样也会导致这个目录越来越大
+					#可以通过下面的命令清空软件包缓存目录
+					pacman -Scc
+
+					#下面的命令只会将软件包下载到缓存目录/var/cache/pacman/pkg/，不会安装
+					pacman -Sw vim
+					</code>
+					</pre>
+
+					<!-- /正文 -->
+
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Linux基础]-5-软件的安装与管理" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-5.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-5.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

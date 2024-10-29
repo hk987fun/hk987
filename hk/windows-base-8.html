@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hk987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Win基础]-8-使用命令行工具reg操作windows注册表 - hk987.fun - www.hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Win基础]-8-使用命令行工具reg操作windows注册表</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>熟悉Windows操作系统的朋友可能都知道，Windows操作系统下的注册表相当于系统的数据库 ，部分软件将自己的配置信息都放在注册表里面，而注册表的破坏可以直接导致系统的崩溃。而熟悉注册表的朋友对"注册表编辑器（regedit.exe）"一点也不陌生，它提供了一个图形化管理注册表的操作界面，本文要介绍的是另一种管理注册表的方法"控制台注册表编辑器(reg.exe)"，它可以使用纯命令行的模式对注册表进行添加、删除、查看等操作；适用于在批处理中对注册表进行操作。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#windows-reg-1">0×1.Window注册表工具reg命令解析</a></li>
+						 <li><a href="#windows-reg-2">0×2.命令行工具reg操作windows注册表视频演示</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="windows-reg-1">0×1.Window注册表工具reg命令解析</h2>
+
+					<p>reg命令是Windows系统命令，如果我们的系统装在"C盘"，那么控制台注册表编辑器reg.exe就位于c:\windows\system32\目录下面，它是系统修改注册表的一个工具。（一些精简版的系统将这些程序都删除了，这样的情况你可以从其他系统中拷贝一个放置这个目录下）</p>
+
+					<p>要调用"控制台注册表编辑器"只需要打开一个CMD命令行，输入"reg /?"就能看到帮助文件了，如下图所示（注意，Win7以后的系统中必须用管理员身份运行CMD才能对注册表的一些项进行操作，否则会因为权限不足而报错）</p>
+
+					<p>在下面的示例命令中，"reg add" 是添加的意思，其他根据英文类推即可，HKCU是根键"HKEY_CURRENT_USER"的缩写，另外几个根键的缩写分别为"HKCR"、"HKLM"、"HKU"、"HKCC"，取根键的第一个单词的前两个字母和后面两个单词的前一个字母。</p>
+
+					<p>hkcu\hackmm就是在根键"HKEY_CURRENT_USER"下添加一个叫做hackmm的子键，如果这个子键存在，则不作任何操作。/v 后面跟需要创建的值的名称。/t 后面是值的类型，/d 后面是这个值的数据。</p>
+					<p>视频中用到的命令：</p>
+					<pre class='line-numbers' data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！' >
+					<code class="lang-powershell">
+					#1.添加注册表项（键）：
+					C:\Windows\System32&gt; reg add hkcu\hackmm
+
+					#2.添加注册表项和值以及类型和数据
+					C:\Windows\System32&gt; reg add hkcu\hackmm /v welcome /t REG_SZ /d "欢迎来黑客萌妹一起学习"
+
+					#3.添加注册表项默认值以及类型和数据
+					C:\Windows\System32&gt; reg add hkcu\hackmm /ve /t REG_DWORD /d 1
+
+					#4.查询数据表项下面的所有值
+					C:\Windows\System32&gt; reg query hkcu\hackmm
+
+					#5.查询数据表项下面的单个指定值
+					C:\Windows\System32&gt; reg query hkcu\hackmm /v welcome
+
+					#6.查询数据表项下面的默认值，（ve=value empty）
+					C:\Windows\System32&gt; reg query hkcu\hackmm /ve
+
+					#7.将数据表指定项导出成文件备份
+					C:\Windows\System32&gt; reg export hkcu\hackmm e:\hackmm.reg
+
+					#8.导出整个根项/根键成文件备份
+					C:\Windows\System32&gt; reg export hkcr e:\hkcr.reg
+
+					#9.删除某个指定的注册表项
+					C:\Windows\System32&gt; reg delete hkcu\hackmm /f
+
+					#10.用备份的注册表文件，恢复数据
+					C:\Windows\System32&gt; reg import e:\hackmm.reg
+
+					#11.删除指定项下指定的值
+					C:\Windows\System32&gt; reg delete hkcu\hackmm /v welcome /f
+
+					#12.删除指定项下的默认值
+					C:\Windows\System32&gt; reg delete hkcu\hackmm /ve /f
+					</code>
+					</pre>
+
+					<h2 id="windows-reg-2">0×2.命令行工具reg操作windows注册表视频演示</h2>
+
+					<p>点击下方视频标题，可以进入B站观看高清版本</p>
+					<p>【第12天】Windows基础-12-Windows下用命令行操作注册表数据，如何通过reg命令修改注册表~开始炫~大一女新生挑战一年精通网络安全-信息安全-计算机安全-计算机技术，我无所畏惧</p>
+					<iframe src="//player.bilibili.com/player.html?aid=451515934&bvid=BV1Nj411j7ot&cid=1350250615&p=1&autoplay=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" > </iframe>
+
+					<p>视频中用到的「nc」来自UC网盘分享：</p> 
+					<p>*「nc工具-windows版64位」:<a title="nc工具-windows版64位" style="color: rgb(4,181,150);" href="https://drive.uc.cn/s/dc10ff617ae54" target="_blank">点击打开</a> 密码：wSZU</p>
+
+					<p>第一篇文章中演示的虚拟机的下载可以通过我这个uc网盘去下载，里面包含了很多现成的系统镜像，还有虚拟机的激活码，也可以去官方下载，千万别去其他地方下精简版，很多问题都出在这里。网盘包含了最新的Windows+激活软件，流行的Linux镜像，会持续更新。</p>
+					<p>*「虚拟机全套软件+ISO镜像文件」(会一直持续更新):<a title="虚拟机全套软件+ISO镜像文件" style="color: rgb(4,181,150);" href="https://drive.uc.cn/s/eb63654987fb4" target="_blank">点击打开</a> 密码：8s6H</p>
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Win基础]-8-使用命令行工具reg操作windows注册表" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/windows-base-8.html" target="_blank">https://www.hk987.fun/hk/windows-base-8.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hk987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-8-用户和组管理 - hk987.fun - www.hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Linux基础]-8-用户和组管理</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章主要介绍Linux中用户和用户组的基础知识；包括如何使用命令创建和删除用户、创建和删除用户组、如何有效的管理用户和用户组。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#Linux-users-and-groups-1">0×1.Linux用户信息文件和密码文件</a></li>
+						 <li><a href="#Linux-users-and-groups-2">0×2.Linux用户组信息文件和组密码文件</a></li>
+						 <li><a href="#Linux-users-and-groups-3">0×3.Linux用户组管理</a></li>
+						 <li class="subli"><a href="#Linux-users-and-groups-4">a.如何创建组</a></li>
+						 <li class="subli"><a href="#Linux-users-and-groups-5">b.如何重命名组</a></li>
+						 <li class="subli"><a href="#Linux-users-and-groups-6">c.如何删除组</a></li>
+						 <li><a href="#Linux-users-and-groups-7">0×4.Linux用户管理</a></li>
+						 <li class="subli"><a href="#Linux-users-and-groups-8">a.如何添加用户</a></li>
+						 <li class="subli"><a href="#Linux-users-and-groups-9">b.如何重命名用户</a></li>
+						 <li class="subli"><a href="#Linux-users-and-groups-10">c.如何锁定和解锁用户</a></li>
+						 <li class="subli"><a href="#Linux-users-and-groups-11">d.如何删除用户</a></li>
+						 <li class="subli"><a href="#Linux-users-and-groups-12">e.修改用户属组</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="Linux-users-and-groups-1">0×1.Linux用户信息文件和密码文件</h2>
+
+					<p>当创建一个用户时，用户的账户信息被保存在用户信息文件中，只有root权限才能修改这个文件的内容，非root用户只能读取其中的内容：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-14"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#用户账户信息文件在Linux系统"/etc/passwd"文件中，使用cat查看其内容
+					cat /etc/passwd 
+
+					#这一条是root账户的信息
+					root:x:0:0:root:/root:/bin/bash
+					#...省略部分输出
+					daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+					bin:x:2:2:bin:/bin:/bin/sh
+					sys:x:3:3:sys:/dev:/bin/sh
+					#...省略部分输出
+					#这一条是当前使用的账户信息
+					987:x:500:500::/home/987:/bin/bash
+					</code>
+					</pre>
+					<p>
+					账户信息使用":"分隔，各字段内容解释如下:<br>
+					username:password:uid:gid:userinfo:home:shell<br>
+					拿"987:x:500:500:hk987:/home/987:/bin/bash"举例：<br>
+					<p class="indent-p">
+					* 用户名987；<br>* 密码并非保存在这个文件中所以用"x"代替；uid是用户ID值，root用户的UID=0，系统用户的UID范围是1-499，其他用户的UID为499-4.29E9+（42亿多个）；<br>* gid是用户的组ID，ID值的分配同UID，987的UID和GID都是500；<br>* userinfo是用户信息，一般等于用户名或者用户全称，987的用户全称为hk987；<br>* home是用户的家目录，987的家目录是"/home/987"；<br>* shell是用户加载后执行的shell，默认为/bin/bash；
+					</p>
+					</p>
+					<p>如果有root权限，使用vim修改这个文件，将某个用户的UID和GID全部改成0，比如"987:x:0:0:hk987:/home/987:/bin/bash"，这样"987"就拥有了root权限，由此可见系统是通过uid和gid来判断用户权限的。</p>
+					<p>在Linux中，用户的账户信息和密码信息是分开保存的，在查看用户账户信息文件的时候，发现密码部分使用"x"隐藏了，实际上，用户的密码是被加密后保存在"/etc/shadow"这个文件中的，这个文件的权限更加严格，只有root权限才能查看和修改它，非root用户是看不到内容的（或者在普通用户权限下使用sudo命令前缀）：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-19"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">		
+					#查看密码文件的内容
+					sudo vim /etc/shadow
+					root:6e5sGDXdfashsdf32:15453:0:99999:7:::
+					#...省略部分输出
+					987:md03zQ9RmYDhV:15700:0:99999:7:::
+
+					#上面省略了部分输出，仅保留了root与，当前账户987的输出，对应的各字段解释如下:
+					#username:password:lastChg:min:max:warm:inactive:expire:flag
+					#拿"root:6e5sGDXdfashsdf32:15453:0:99999:7:::"举例：
+					#username是root
+					#password是"6e5sGDXdfashsdf32"，这是加密后的密码
+					#lastChg：从1970年1月1日起到上次修改密码所经历的天数
+					#min：两次修改密码最小间隔，0为无间隔
+					#max：密码有效天数，99999为永不过期
+					#warm：口令失效前多少天，系统向用户发出警告（默认7天）
+					#inactive：禁止登陆前，用户名还有效的天数
+					#expire：用户禁止登陆的时间
+					#flag：保留域
+					#最后这三个参数在root中并没有使用
+					</code>
+					</pre>
+					<p>在使用Linux桌面发行版的过程中，假如你忘记了开机密码，可以使用一张Linux启动盘（U盘）启动，挂载上你忘记密码的那个系统的分区（假设挂载到U盘系统的/mnt目录下），然后通过vi删除"/mnt/etc/shadow"文件中对应账户的密码字段(或者删除"/mnt/etc/passwd"中对应账户名后面密码字段的那个"x")，都可以达到清空开机密码的目的。</p>
+
+					<h2 id="Linux-users-and-groups-2">0×2.Linux用户组信息文件和组密码文件</h2>
+
+					<p>用户的组信息保存在文件"/etc/group"中,只有root权限才能对此文件作出修改，其他用户只能查看；组密码文件保存在"/etc/gshadow"中，只有root权限才能查看和修改，其他用户无权查看：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-19"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#查看组信息文件中的内容
+					cat /etc/group
+
+					#root组
+					root:x:0:
+					bin:x:1:bin,daemon
+					daemon:x:2:bin,daemon
+					sys:x:3:bin,adm
+					#...省略部分输出
+					#这是当前用户所在组，当用户被创建时，如果没有指定所属组，将自动创建一个与用户名称相同的组，并将用户划分到这个组下
+					987:x:500:
+
+					#用户组信息格式如下:
+					#username:password:GID:g_members
+					#在“987:x:500:”中
+					#username是987
+					#password使用x隐藏，组密码单独保存在/etc/gshadow文件中
+					#GID是500，root的gid是0，系统gid从1-499（部分系统是1~1000），用户可以使用的gid从500开始，和UID范围是相同的
+					#g_members:代表在这个组里面的成员列表，用逗号分隔
+					</code>
+					</pre>
+
+					<h2 id="Linux-users-and-groups-3">0×3.Linux用户组管理</h2>
+					<p>下面的操作需要root权限或使用sudo命令前缀才能执行。</p>
+					
+					<h3 id="Linux-users-and-groups-4">a.如何创建组</h3>
+					<p>创建一个随机GID的用户组：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3,4,6"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#创建一个随机GID的用户组（GID一般是递增的），组名是hk987-1
+					sudo groupadd hk987-1
+
+					#查看刚才创建的用户组
+					sudo cat /etc/group | grep hk987-1
+					hk987-1:x:501: #这是刚才创建的用户组，GID是501
+					</code>
+					</pre>
+
+					<p>创建一个指定GID的用户组：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3,5"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#指定GID是1555，组名是hk987-2
+					sudo groupadd -g 1555 hk987-2
+					#查看
+					sudo cat /etc/group | grep hk987-2
+					hk987-2:x:1555:
+					</code>
+					</pre>
+
+					<p>创建一个系统组：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3,5-7,9"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#创建系统组,可以使用-g指定GID不指定则系统自动分配
+					sudo groupadd -r Systemhk987-1
+
+					sudo cat /etc/group | grep Systemhk987-1
+					Systemhk987-1:x:495:  #GID范围在1-499的都是系统组（Ubuntu用户是1-1000）
+
+					#指定GID，但是不要和现有GID冲突
+					sudo groupadd -g 496 -r Systemhk987-2
+					groupadd: GID '496' already exists  #如果出现这个提示就代表这个系统组ID已经被使用了
+					</code>
+					</pre>
+
+					<h3 id="Linux-users-and-groups-5">b.如何重命名组</h3>
+
+					<p>可以通过groupmod来更改当前已存在的组名，同时也能更改GID，请看下面的实例：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-4"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#将"hk987-1"改名成"hk987-111"
+					sudo groupmod -n hk987-111 hk987-1
+
+					#将"hk987-2"改名成"hk987-222"并将GID更改成666
+					sudo groupmod -g 666 -n hk987-222 hk987-2
+					</code>
+					</pre>
+
+					<h3 id="Linux-users-and-groups-6">c.如何删除组</h3>
+
+					<p>可以使用下面的命令来删除当前已存在的组：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#删除上面创建的"Systemhk987-1"
+					sudo groupdel Systemhk987-1
+					</code>
+					</pre>
+
+					<p>通过上面的操作，现在系统中有两个新创建的用户组，分别是"hk987-111"和"hk987-222"，继续下面的实验。</p>
+
+					<h2 id="Linux-users-and-groups-7">0×4.Linux用户管理</h2>
+					<h3 id="Linux-users-and-groups-8">a.如何添加用户</h3>
+					<p>使用useradd命令来创建用户：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-4,6-7,9-10"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#不带任何参数，添加一个名称为"hk987-1"的用户，系统会自动创建一个用户组，组名和用户名相同，然后将将这个用户划分到这个用户组下
+					sudo useradd hk987-1
+
+					#设置用户密码
+					sudo passwd hk987-1
+
+					#创建一个新用户"hk987-222"，指定他的UID为2222，并且将他分配到"hk987-222"这个组中
+					sudo useradd -u 2222 -g hk987-222 hk987-222
+
+					#创建一个新用户"hk987-111"，指定他的UID为1111，将他分配到"hk987-111"这个组中,并指定他的家目录为"/home/user111"
+					sudo useradd -u 1111 -g hk987-111 -d /home/user111 hk987-111
+					</code>
+					</pre>
+
+					<h3 id="Linux-users-and-groups-9">b.如何重命名用户</h3>
+					<p>使用usermod命令重命名用户：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-4"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#将"hk987-222"重命名为"987123"
+					sudo usermod -l 987123 hk987-222
+
+					#将上面创建的"hk987-1",重命名为"hello",并且将家目录也重命名为hello
+					sudo usermod -m -d /home/hello -l hello hk987-1
+					</code>
+					</pre>
+					<p>这个命令还能添加参数-g更改户组、-u更改UID等，大家可以自己去尝试一下。</p>
+
+					<h3 id="Linux-users-and-groups-10">c.如何锁定和解锁用户</h3>
+
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-4"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#锁定hello用户，可以使用"Ctrl+Alt+F2"切换到tty2下面，然后尝试用被锁定的这个账户登录，会发现提示"Login incorrect"，登录不上
+					sudo usermod -L hello
+
+					#使用下面的命令解锁之后，就能正常登录了
+					sudo usermod -U hello
+					</code>
+					</pre>
+
+					<h3 id="Linux-users-and-groups-11">d.如何删除用户</h3>
+					<p>可以使用"userdel"命令来彻底删除用户：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#参数-r，可以删除用户并且删除用户的家目录以及邮件文件，用户邮件保存在目录"/var/spool/mail/"中
+					sudo userdel -r hello
+					</code>
+					</pre>
+
+					<p>Ps：在Ubuntu系统中，普通用户的UID和GID都是从1000开始的，1000以内都是系统UID和GID，而CentOS系统的普通用户UID和GID是从500开始的，请根据不同系统判断，判断的方法就是创建一个普通用户就知道了，如果是1000+的UID那么系统用户UID就是0-1000。</p>
+
+					<h3 id="Linux-users-and-groups-12">e.修改用户属组</h3>
+					<p>在CentOS使用useradd创建用户后，默认会创建一个与用户同名的用户组，这个组就是用户的默认属组，除此之外，用户也同时能够属于多个组；</p>
+					<p>实例1：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,4-5,7-10,12-15,18,20-23,25-26,28-29,30-32,34-35,37-40,42-45,48-49,51-52"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#创建两个用户u1，u2
+					sudo useradd u1
+					sudo useradd u2
+
+					#查看新建用户
+					tail -n 2 /etc/passwd
+					u1:x:1001:1001::/home/u1:/bin/bash
+					u2:x:1002:1002::/home/u2:/bin/bash
+
+					#新建用户默认属组，从下面输出可以看到，系统自动创建了两个与用户同名的组
+					tail -n 2 /etc/group
+					u1:x:1001:
+					u2:x:1002:
+
+					#现在再来创建两个组
+					sudo groupadd g1
+					sudo groupadd g2
+
+					tail -n 2 /etc/group
+					g1:x:1003:
+					g2:x:1004:
+
+					#使用"usermod -g 组名 用户名"更改u1的默认属组为g1
+					sudo usermod -g g1 u1
+
+					#查看u1的组ID为1003也就是g1的组ID
+					tail -n 2 /etc/passwd
+					u1:x:1001:1003::/home/u1:/bin/bash
+					u2:x:1002:1002::/home/u2:/bin/bash
+
+					#将u2添加到g1与g2组，语法
+					#usermod -G 组名,组名 用户名
+					sudo usermod -G g1,g2 u2
+
+					#查看u2的组ID仍然为1002，说明它的默认组仍然是u2
+					tail -n 2 /etc/passwd
+					u1:x:1001:1003::/home/u1:/bin/bash
+					u2:x:1002:1002::/home/u2:/bin/bash
+
+					#如果一个用户，默认属于哪个组，那么他不会出现在组列表的冒号后面，例如u1用户默认组是g1，就不会显示在冒号后面，下面的输出中，u2显示在冒号后面，因为它的默认组是u2，不是g1和g2，但它属于g1和g2组中的一员
+					tail -n 2 /etc/group
+					g1:x:1003:u2
+					g2:x:1004:u2
+
+					#将用户u1的默认组改回u1组，然后将u1放到g1组中
+					sudo usermod -g u1 u1
+					sudo usermod -G g1 u1
+
+					#这次可以看到g1后面出现了u1这个用户
+					tail -n 2 /etc/group
+					g1:x:1003:u2,u1
+					g2:x:1004:u2
+					</code>
+					</pre>
+
+					<p>实例2：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#创建1个用户和2个组
+					#useradd命令添加-m参数可以在创建用户的同时在/home目录下创建与用户名同名的用户家目录
+					sudo useradd -m u1
+					sudo groupadd g1
+					sudo groupadd g2
+
+					#将u1用户放入g1组中，但不改变u1用户的默认组
+					#usermod的-G参数使用附属组的方式将用户放入后面指定的组中
+					sudo usermod -G g1 u1
+
+					#查看u1信息
+					id u1
+					用户id=1001(u1) 组id=1001(u1) 组=1001(u1),1003(g1)
+
+					#将u1用户放入g2中，但不改变u1用户的默认组
+					sudo usermod -G g2 u1
+
+					#查看u1信息
+					id u1
+					用户id=1001(u1) 组id=1001(u1) 组=1001(u1),1004(g2)
+
+					#我们发现直接使用-G参数，会覆盖之前的附属组，如果现在我要将u1同时放到g1和g2这两个附属组中，但不改变u1的默认组
+					sudo usermod -aG g1,g2 u1
+
+					#查看u1信息
+					id u1
+					用户id=1001(u1) 组id=1001(u1) 组=1001(u1),1003(g1),1004(g2)
+
+					#将u1从附属组移除（移出某组）
+					sudo gpasswd -d u1 g1
+					正在将用户“u1”从“g1”组中删除
+
+					id u1
+					用户id=1001(u1) 组id=1001(u1) 组=1001(u1),1004(g2)
+
+					sudo gpasswd -d u1 g2
+					正在将用户“u1”从“g2”组中删除
+					
+					id u1
+					用户id=1001(u1) 组id=1001(u1) 组=1001(u1)
+					</code>
+					</pre>
+
+					<p>实例3：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#首先创建一个组g1，一个用户u1
+					root@hk987.fun:~# groupadd g1
+					root@hk987.fun:~# useradd u1
+					root@hk987.fun:~# passwd u1 
+					输入新的 UNIX 密码： 
+					重新输入新的 UNIX 密码： 
+					passwd：已成功更新密码
+
+					#查看u1的ID，它默认属于u1组
+					root@hk987.fun:~# id u1
+					uid=1014(u1) gid=1016(u1) 组=1016(u1)
+
+					#将u1放到g1组里面
+					root@hk987.fun:~# usermod -G g1 u1
+					root@hk987.fun:~# id u1
+					uid=1014(u1) gid=1016(u1) 组=1016(u1),1015(g1)
+
+					#使用root权限创建一个测试文件
+					root@hk987.fun:~# touch rootfile
+
+					#将这个测试文件的属组改成g1
+					root@hk987.fun:~# chgrp g1 rootfile 
+					root@hk987.fun:~# ls -al rootfile 
+					-rw-r--r-- 1 root g1 0 12月  6 11:40 rootfile
+
+					#对rootfile写入数据
+					root@hk987.fun:~# echo www.hk987.fun &gt; rootfile 
+
+					#将rootfile复制到/home目录
+					root@hk987.fun:~# cp rootfile /home
+					#切换到u1用户，尝试读取文件内容
+					root@hk987.fun:~# su u1
+					u1@hk987.fun:/root$ cd /home
+					u1@hk987.fun:/home$ cat rootfile 
+					www.hk987.fun
+
+					#虽然文件所有者是root但是因为u1属于g1组，并且文件属组对文件有可读权限，所以上面能够使用u1来读取文件内容
+					u1@hk987.fun:/home$ ls -al rootfile 
+					-rw-r--r-- 1 root share 18 12月  6 11:41 rootfile
+
+					#但是不可写
+					u1@hk987.fun:/home$ echo www.hk987.fun &gt;&gt; rootfile 
+					bash: rootfile: 权限不够
+					</code>
+					</pre>
+					<p>从上面这个实例可以看到，对文件而言，如果文件所有者不是u1，只要文件的属组是g1，u1又属于g1组，不管用户的默认组是不是g1，用户对这个文件的权限就等于g1组对这个文件的权限。</p>
+
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Linux基础]-8-用户和组管理" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-8.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-8.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

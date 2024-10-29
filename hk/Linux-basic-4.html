@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-4-Linux文本处理三剑客 - Hk987.fun - www.Hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Linux基础]-4-Linux文本处理三剑客</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章介绍Linux中三个十分好用的文本内容处理命令——grep、sed（Stream Editor）、awk。</p>
+					<!-- 目录 -->
+					<ul class="contents">
+						 <li><a href="#Linux-grep-1">0×1.grep命令实例</a></li>
+						 <li><a href="#Linux-sed-2">0×2.sed命令实例</a></li>
+						 <li><a href="#Linux-awk-3">0×3.awk命令实例</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="Linux-grep-1">0×1.grep命令实例</h2>
+
+					<p>★ 简介：grep是一个文本筛选命令，可以从命令输出结果或文本中筛选出我们想要的结果。</p>
+
+					<p>★ 命令演示</p>
+					<p>假设在我当前命令行目录下，有如下内容的一个文件，名称为hk987.txt</p>
+					<pre>
+    hk987 hk987.fun
+    Hk987 HK987.FUN
+    HKHK987 hk987.fun
+    987 987 987 987
+    hk987.FUN hk987.FuN
+					</pre>
+					<p>现在用这个文件来演示grep的操作命令：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#1.从文件中筛选包含指定字符的行显示出来
+					987@hk987.fun:~$ grep "hk987" hk987.txt
+					hk987 hk987.fun  <--筛选结果
+					HKHK987 hk987.fun  <--筛选结果
+					hk987.FUN hk987.FuN <--筛选结果
+
+					#2.使用-i参数，忽略大小写筛选，默认是严格按照大小写匹配
+					987@hk987.fun:~$ grep -i "hk987" hk987.txt
+					hk987 hk987.fun
+					Hk987 HK987.FUN
+					HKHK987 hk987.fun
+					hk987.FUN hk987.FuN
+
+					#3.使用-n参数，显示筛选到的行在文件中的行号
+					987@hk987.fun:~$ grep -n "987 987" hk987.txt
+					4:    987 987 987 987  <--筛选结果显示这是第4行
+
+					#4.使用-r参数递归搜索，在/home/987/目录中查找文件，筛选出文件中指定的内容，显示出文件路径
+					#可以组合-n参数，显示筛选的内容在文件中的行号
+					987@hk987.fun:~$ grep -rn "987 987" /home/987
+					/home/987/hk987.txt:4:    987 987 987 987
+
+					#5.查找以Hk开头的行，并显示行号
+					987@hk987.fun:~$ grep -n "^hk" hk987.txt
+					1:hk987 hk987.fun
+					5:hk987.FUN hk987.FuN
+
+					#6.查找以“.FuN”结尾的行，并显示行号
+					987@hk987.fun:~$ grep -n ".FuN$" hk987.txt
+					5:hk987.FUN hk987.FuN
+
+					#7.使用-c参数，查找以“.fun”结尾的行，统计匹配到的行数
+					987@hk987.fun:~$ grep -c ".fun$" hk987.txt 
+					2
+
+					#8.使用 | 管道命令，在ls -al命令结果中筛选出包含hk987.txt的行显示出来
+					987@hk987.fun:~$ ls -al | grep hk987.txt
+					-rw-r--r--.  1 987 987  109  6月 27 15:12 hk987.txt
+					</code>
+				    </pre>
+
+					<h2 id="Linux-sed-2">0×2.sed命令实例</h2>
+
+					<p>sed是“Stream Editor”的简称，翻译成中文叫做“流编辑器”。sed一次只处理一行内容，处理时，sed会把当前处理的行存储在临时缓冲区中，这个缓冲区被称为"Pattern Space"，中文翻译成“模式空间”，大家可以简单的理解成sed把正在处理的一行数据暂时储存在内存中，处理完成后，再将结果打印到屏幕上显示，接着处理下一行，这样不断重复，直到文件末尾。如果不携带写入参数，文件的内容不会改变，只是处理和显示。</p>
+
+					<p>★ sed命令格式：</p>
+					<p class="indent-p">sed [option] 'command' input_file</p>
+
+					<p>★ 常用选项option：</p>
+					<p class="indent-p">● -n 使用安静silent模式。在一般sed的用法中，所有来自stdin的内容一般都会被列出到屏幕上。但如果加上-n参数后，则只有经过sed特殊处理的那一行(或者动作)才会被列出来</p>
+					<p class="indent-p">● -e 直接在指令列模式上进行 sed 的动作编辑</p>
+					<p class="indent-p">● -f 直接将 sed 的动作写在一个文件内，-f filename则可以执行filename内的sed命令</p>
+					<p class="indent-p">● -r 让sed命令支持扩展的正则表达式(默认是基础正则表达式)</p>
+					<p class="indent-p">● -i 直接修改读取的文件内容，而不是由屏幕输出，如果加上-i.bk则将源文件先备份成.bk结尾的文件，再将修改写入原文件</p>
+
+					<p>★ 常用命令command：</p>
+					<p class="indent-p">● Na\：在N行后追加行，N可以是大于0的整数，例如1a\的后面跟上字符串hk987，则会在第1行后面增加一行并写入hk987，追加多行可以用\n来换行，例如'1a\hk987\nhk987.fun'，则会在第一行后面追加hk987并且换行后再写入hk987.fun</p>
+					<p class="indent-p">● Nc\：替换N行，N可以是大于0的整数，例如'2c\hk987'，则会将第2行替换成hk987，同样支持\n换行例如'2c\hk987\nhk987.fun'，那么就会将第3行顶到第4行去</p>
+					<p class="indent-p">● Ni\：在N行插入行，N可以是大于0的整数，不会覆盖被插入的行，被插入的行自动往下一行，例如'1i\hk987'，则在第一行插入hk987，同样支持\n换行</p>
+					<p class="indent-p">● Nd：删除第N行，N可以是大于0的整数，例如'1d'，删除第1行</p>
+					<p class="indent-p">● Np：打印第N行，N可以是大于0的整数，例如'1p'，打印第1行到屏幕上</p>
+					<p class="indent-p">● y：替换每一行中指定的字符，例如'y|m|c|'，会替换每一行中出现的字符m，替换成c，其中|是分隔符，可以用任何单符号替代</p>
+					<p class="indent-p">● s：替换每一行中的字符串，但仅替换第一个找到的字符串，例如's|hk987|hk987.fun|'，将每行第一个找到的hk987替换成hk987.fun，其中|是分隔符，可以用任何单符号替代，如果想要替换整行出现的每一个hk987需要加上“标志选项”，例如's|hk987|hk987.fun|g'</p>
+
+					<p>★ s命令能够携带的标志选项Flags：</p>
+					<p class="indent-p">● g：替换行中找到的所有，而不仅仅只是第一个</p>
+					<p class="indent-p">● digit：替换行中第digit个找到的匹配项，例如's|hk987|hk987.fun|2'，那么将每行第二个hk987替换成hk987.fun</p>
+					<p class="indent-p">● p：若发生了替换操作，那么将替换的行多输出一行打印出来，配合-n参数使用能够显示替换的行，例如：sed -n 's|hk987|hk987.fun|p'则会将每个匹配到的行替换之后打印出来</p>
+					<p class="indent-p">● w file-name：若发生了替换操作，将输出写入指定的文件中，例如's|hk987|hk987.fun|gw hk987.txt'将命令输出写入hk987.txt文件中，如果hk987.txt文件不存在，则会创建</p>
+					<p class="indent-p">● i：表示进行匹配时，不区分大小写</p>
+
+					<p>★ 命令支持的常用正则表达式：</p>
+					<p class="indent-p">● * 	将*前面的正则表达式匹配的结果重复任意次(含0次)。</p>
+					<p class="indent-p">● \+ 与星号(*)相同，只是至少重复1次，GNU的扩展功能。</p>
+					<p class="indent-p">● \? 与星号(*)相同，只是最多重复1次，GNU的扩展功能。</p>
+					<p class="indent-p">● . 匹配任意单个字符。</p>
+					<p class="indent-p">● ^ 匹配模版空间开始处的NULL字符串。</p>
+					<p class="indent-p">● $ 	匹配的是模版空间结束处的NULL字符串。</p>
+					<p class="indent-p">● [list] 匹配方括号中的字符列表中的任意一个。</p>
+					<p class="indent-p">● [^list] 	否定匹配方括号中的字符列表中的任意一个。</p>
+					<p class="indent-p">● \n 匹配换行符。</p>
+					<p class="indent-p">● \{i\} 与星号(*)相同，只是重复指定的i次。</p>
+					<p class="indent-p">● \{i,j\} 与星号(*)相同，只是重复i至j次。</p>
+					<p class="indent-p">● \{i, \} 与星号(*)相同，只是至少重复i次。</p>
+
+					<p>★ 命令常用正则表达式组合：</p>
+					<p class="indent-p">● 's|^#\?Port.*|Port 2333|g' 匹配开头为#Port或Port的行（#\?表示匹配#符号0次或1次），并且Port后面的用贪婪匹配（.*），匹配到后，修改成Port 2333</p>
+					<p class="indent-p">● 's|^a.*z|abc|g' 匹配a开头z结尾的所有行，替换成abc</p>
+					<p class="indent-p">● 's|.*_key$|123|g' 匹配“_key”结尾的所有行，替换成123。.*写在_key之前，表示不管_key前面有多少字符，都会被匹配到</p>
+					<p class="indent-p">● 's|.*/ssh_host.*|123|g' 匹配包含/ssh_host的所有行，替换成123</p>
+
+					<p>★ 常用正则表达式语法解释：</p>
+					<p class="indent-p">● .* --- 表示匹配除换行符 \n 之外的任何单字符，*表示零次或多次。所以.*在一起就表示任意字符出现零次或多次。没有?表示贪婪模式。比如a.*b，它将会匹配最长的以a开始，以b结束的字符串。如果用它来搜索aabab的话，它会匹配整个字符串aabab。这被称为贪婪匹配。</p>
+					<p class="indent-p">● .*? --- ?跟在*或者+后边用时，表示懒惰模式。也称非贪婪模式。就是匹配尽可能少的字符。就意味着匹配任意数量的重复，但是在能使整个匹配成功的前提下使用最少的重复。a.*?b匹配最短的，以a开始，以b结束的字符串。如果把它应用于aabab的话，它会匹配aab（第一到第三个字符）和ab（第四到第五个字符）。</p>
+					<p class="indent-p">● .+? --- ?跟在*或者+后边用时，表示懒惰模式。也称非贪婪模式。就意味着匹配任意数量的重复，但是在能使整个匹配成功的前提下使用最少的重复。a.+?b匹配最短的，以a开始，以b结束的字符串，但a和b中间至少要有一个字符。如果把它应用于ababccaab的话，它会匹配abab（第一到第四个字符）和aab（第七到第九个字符）。注意此时匹配结果不是ab,ab和aab。因为a和b中间至少要有一个字符。</p>
+
+					<p>★ sed实例演示</p>
+
+					<p>假设我们用来测试的文件名称叫做hk987.txt，并且内容如下：</p>
+					<pre>
+  #Port 22
+  ##Port 22
+  hk987 hk987 hk987 hk987
+  hk987 hk987 hk987
+  hk987 hk987.fun
+  hk987.fun
+					</pre>
+
+					<p>下面这20个实例，包含了sed命令应用的最常用操作，供参考</p>
+
+					<p>实例1：替换每行第一个遇到的字符串</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1-3,5-10"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#替换每一行第一个找到的hk987为hk987.fun
+					#如果要将替换后的结果写入文件，添加-i参数，例如：sed -e 's|hk987|hk987.fun|' -i hk987.txt 
+					#如果要在写入文件前备份原文件，添加-i.bk参数，例如：sed -e 's|hk987|hk987.fun|' -i.bk hk987.txt 则会先将hk987.txt备份成hk987.txt.bk，这个-i.bk的.bk后缀可以自定义，后面为了演示不会将数据写入原文件
+					sed -e 's|hk987|hk987.fun|' hk987.txt 
+					#Port 22
+					##Port 22
+					hk987.fun hk987 hk987 hk987
+					hk987.fun hk987 hk987
+					hk987.fun hk987.fun
+					hk987.fun.fun
+					</code>
+					</pre>
+
+					<p>实例2：替换每行第N个遇到的字符串</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#替换每行第2个找到的hk987为hk987.fun
+					sed -e 's|hk987|hk987.fun|2' hk987.txt
+					#Port 22
+					##Port 22
+					hk987 hk987.fun hk987 hk987
+					hk987 hk987.fun hk987
+					hk987 hk987.fun.fun
+					hk987.fun
+					</code>
+					</pre>
+
+					<p>实例3：替换每行所有指定的字符串</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#替换每行找到的所有hk987为hk987.fun
+					sed -e 's|hk987|hk987.fun|g' hk987.txt
+					#Port 22
+					##Port 22
+					hk987.fun hk987.fun hk987.fun hk987.fun
+					hk987.fun hk987.fun hk987.fun
+					hk987.fun hk987.fun.fun
+					hk987.fun.fun
+					</code>
+					</pre>
+
+					<p>实例4：替换每行从N个找到的字符串开始的所有</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#替换每行，从第2个开始直到行尾，hk987替换为hk987.fun
+					sed -e 's|hk987|hk987.fun|2g' hk987.txt
+					#Port 22
+					##Port 22
+					hk987 hk987.fun hk987.fun hk987.fun
+					hk987 hk987.fun hk987.fun
+					hk987 hk987.fun.fun
+					hk987.fun
+					</code>
+					</pre>
+
+					<p>实例5：替换指定的第N行中所有的字符串</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#替换第3行所有hk987为hk987.fun
+					sed -e '3 s|hk987|hk987.fun|g' hk987.txt
+					#Port 22
+					##Port 22
+					hk987.fun hk987.fun hk987.fun hk987.fun
+					hk987 hk987 hk987
+					hk987 hk987.fun
+					hk987.fun
+					</code>
+					</pre>
+
+					<p>实例6：替换指定的第N行中从第N个开始所有的字符串</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#替换第3行，从第2个开始直到行尾，hk987替换为hk987.fun
+					sed -e '3 s|hk987|hk987.fun|2g' hk987.txt
+					#Port 22
+					##Port 22
+					hk987 hk987.fun hk987.fun hk987.fun
+					hk987 hk987 hk987
+					hk987 hk987.fun
+					hk987.fun
+					</code>
+					</pre>
+
+					<p>实例7：替换指定的第N-M行中所有的字符串</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#替换第3至5行所有hk987为hk987.fun（同样可以指定从第几个找到的开始替换，例如2g）
+					sed -e '3,5 s|hk987|hk987.fun|g' hk987.txt
+					#Port 22
+					##Port 22
+					hk987.fun hk987.fun hk987.fun hk987.fun
+					hk987.fun hk987.fun hk987.fun
+					hk987.fun hk987.fun.fun
+					hk987.fun
+					</code>
+					</pre>
+
+					<p>实例8：使用I标记，不区分大小写来替换</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#注意到port是小写，原文中Port的P是大写，但是添加I标记后，同样会被替换，因为不区分大小写进行查找匹配
+					sed -e 's|port|Local|Ig' hk987.txt
+					#Local 22
+					##Local 22
+					hk987 hk987 hk987 hk987
+					hk987 hk987 hk987
+					hk987 hk987.fun
+					hk987.fun
+					</code>
+					</pre>
+
+					<p>实例9：使用正则表达式的范围匹配，匹配数字</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#查找全文，只要找到数字，就替换成N
+					sed -e 's|[0-9]|N|g' hk987.txt
+					#Port NN
+					##Port NN
+					hkNNN hkNNN hkNNN hkNNN
+					hkNNN hkNNN hkNNN
+					hkNNN hkNNN.fun
+					hkNNN.fun
+					</code>
+					</pre>
+
+					<p>实例10：仅打印被替换或改动的行</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-4"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#使用p标记和-n参数，将被匹配到并且改动的行打印到屏幕上
+					sed -e 's|22|23|gp' -n hk987.txt
+					#Port 23
+					##Port 23
+					</code>
+					</pre>
+
+					<p>实例11：搜索每行结尾处</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3,4"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#搜索每行结尾，如果是.fun，替换成.hk，仅显示修改的行
+					sed -e 's|.fun$|.hk|gp' -n hk987.txt 
+					hk987 hk987.hk
+					hk987.hk
+					</code>
+					</pre>
+
+					<p>实例12：在每行开头，添加#号</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#每行开头，添加#号
+					sed -e 's|^|#|g' hk987.txt 
+					##Port 22
+					###Port 22
+					#hk987 hk987 hk987 hk987
+					#hk987 hk987 hk987
+					#hk987 hk987.fun
+					#hk987.fun
+					</code>
+
+					</pre>
+					<p>实例13：搜索开头包含1个#号或者0个#号的行</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					# 正则表达式^#\? 能够匹配每行开头有一个#或者没有#的行
+					sed -e 's|^#\?Port.*|Port 233|g' hk987.txt 
+					Port 233
+					##Port 22
+					hk987 hk987 hk987 hk987
+					hk987 hk987 hk987
+					hk987 hk987.fun
+					hk987.fun
+					</code>
+					</pre>
+
+					<p>实例14：执行多个command指令，替换sshd_config文件中的配置</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1-5"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#在sed中能够添加多个-e参数，每个-e参数后面都可以执行一条command
+					#下面的实例中，我们通过-e参数的实例，首先开启了ssh允许root访问的配置
+					#并且仅允许通过Pubkey登录，禁止通过密码登录
+					#最后将ssh端口改成2333
+					#在写入文件之前先将sshd_config原文件备份成sshd_config.bk
+					sed -e 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g'  \
+					-e 's/^#\?PubkeyAuthentication.*/PubkeyAuthentication yes/g'  \
+					-e 's/^#\?PasswordAuthentication.*/PasswordAuthentication no/g'  \
+					-e 's/^#\?ChallengeResponseAuthentication.*/ChallengeResponseAuthentication no/g'  \
+					-e 's/^#\?UsePAM.*/UsePAM no/g'  \
+					-e 's/^#\?Port.22/Port 2333/g'  \
+					-i.bk /etc/ssh/sshd_config 
+					</code>
+					</pre>
+
+					<p>实例15：Na\：在N行后追加行，N可以是大于0的整数</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-9"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#在第1行后面追加一行，并写入www.hk987.fun
+					sed -e '1a\www.hk987.fun' hk987.txt 
+					#Port 22
+					www.hk987.fun
+					##Port 22
+					hk987 hk987 hk987 hk987
+					hk987 hk987 hk987
+					hk987 hk987.fun
+					hk987.fun
+					</code>
+					</pre>
+
+					<p>实例16：Nc\：替换第N行，N可以是大于0的整数</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#将第2行替换成www.hk987.fun
+					sed -e '2c\www.hk987.fun' hk987.txt 
+					#Port 22
+					www.hk987.fun
+					hk987 hk987 hk987 hk987
+					hk987 hk987 hk987
+					hk987 hk987.fun
+					hk987.fun
+					</code>
+					</pre>
+
+					<p>实例17：Ni\：在N行插入行，N可以是大于0的整数</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-9"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#在第3行插入www.hk987.fun
+					sed -e '3i\www.hk987.fun' hk987.txt 
+					#Port 22
+					##Port 22
+					www.hk987.fun
+					hk987 hk987 hk987 hk987
+					hk987 hk987 hk987
+					hk987 hk987.fun
+					hk987.fun
+					</code>
+					</pre>
+
+					<p>实例18：Nd：删除第N行，N可以是大于0的整数</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-7"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#删除第3行
+					sed -e '3d' hk987.txt 
+					#Port 22
+					##Port 22
+					hk987 hk987 hk987
+					hk987 hk987.fun
+					hk987.fun
+					</code>
+					</pre>
+
+					<p>实例19：Np：打印第N行，N可以是大于0的整数</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#打印出第2行
+					sed -e '2p' -n hk987.txt 
+					##Port 22
+					</code>
+					</pre>
+
+					<p>实例20：y：替换每一行中指定的字符</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="1,3-8"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					#将每一行的2替换成3（仅能替换单个字符，不能替换多个字符组成的单词）
+					sed -e 'y|2|3|' hk987.txt 
+					#Port 33
+					##Port 33
+					hk987 hk987 hk987 hk987
+					hk987 hk987 hk987
+					hk987 hk987.fun
+					hk987.fun
+					</code>
+					</pre>
+
+					<h2 id="Linux-awk-3">0×3.awk命令实例</h2>
+
+					<p>awk 是一个强大的文本处理工具，用于对结构化文本进行模式匹配和处理，不同于grep和sed是以行作为处理对象，awk可以以列作为处理对象来处理文本。以下是一些 awk 使用的基本和高级示例</p>
+					<p>★ awk实例演示</p>
+				    <pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#1.显示命令输出结果的第1、3、9列
+					#awk后面的匹配模式必须包含在一对单引号中
+					#对print这种指令必须放在一对大括号中
+					#用逗号隔开列占位符，可以让输出结果的每一列之间加一个空格
+					987@hk987.fun:~$ ls -al | awk '{print $1,$3,$9}'
+					总用量  
+					drwx------. hk987 .
+					drwxr-xr-x. root ..
+					drwxr-xr-x. 987 公共
+					drwxr-xr-x. 987 模板
+					drwxr-xr-x. 987 视频
+					drwxr-xr-x. 987 图片
+					drwxr-xr-x. 987 文档
+					drwxr-xr-x. 987 下载
+					drwxr-xr-x. 987 音乐
+					drwxr-xr-x. 987 桌面
+					-rw-------. 987 .bash_history
+					-rw-r--r--. 987 .bash_logout
+					-rw-r--r--. 987 .bash_profile
+					-rw-r--r--. 987 .bashrc
+					drwx------. 987 .cache
+					drwxr-xr-x. 987 .config
+					-rw-r--r--. 987 hk987.txt
+					drwx------. 987 .local
+					drwxr-xr-x. 987 .mozilla
+					drwxr-xr-x. 987 sda1
+					-rw-------. 987 .viminfo
+
+					#2.打印第9列中包含hk987.txt的行
+					987@hk987.fun:~$ ls -al | awk '$9=="hk987.txt" {print}'
+					-rw-r--r--.  1 987 987  109  6月 28 15:57 hk987.txt
+
+					#3.筛选出包含hk987.txt的行，这个功能同grep一样
+					987@hk987.fun:~$ ls -al | awk '/hk987.txt/'
+					-rw-r--r--.  1 987 987  109  6月 28 15:57 hk987.txt
+
+					#4.使用运算符
+					#显示第5列中数字等于109的行
+					987@hk987.fun:~$ ls -al | awk '$5 == 109 {print}'
+					-rw-r--r--.  1 987 987  109  6月 28 15:57 hk987.txt
+
+					#显示第5列中数字小于200的行
+					987@hk987.fun:~$ ls -al | awk '$5 < 109 {print}'
+
+					#将第5列中的每个数字乘以2输出
+					987@hk987.fun:~$ ls -al | awk '{print $5 * 2}'
+
+					#5.使用不同的分隔符来分列，默认是空格
+					#假设有一个这样的文件，里面的内容如下
+					987@hk987.fun:~$ more hk987.txt 
+					hk987$hk987
+					hk987$hk987
+					hk987$hk987$hk987
+					hk987.fun$hk987.fun$hk987.fun$hk987.fun
+					hk987.fun$hk987.fun$hk987.fun$hk987.fun
+					hk987.fun$hk987.fun$hk987.fun$hk987.fun
+
+					#使用-F参数指定$符号作为分割符，然后显示分割后的第2列
+					987@hk987.fun:~$ awk -F'$' '{print $2}' hk987.txt 
+					hk987
+					hk987
+					hk987
+					hk987.fun
+					hk987.fun
+					hk987.fun
+					</code>
+				    </pre>
+
+
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Linux基础]-4-Linux文本处理三剑客" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-4.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-4.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hk987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Win基础]-10-理解Windows注册表启动项  - hk987.fun - www.hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Win基础]-10-理解Windows注册表启动项</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章主要讲解Windows在注册表中常见的启动项，这些启动项在渗透测试和病毒防范中分别有不同的应用。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#windows-Run-1">0×1.Windows注册表常用启动项解析</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="windows-Run-1">0×1.Windows注册表常用启动项解析</h2>
+					<p>由于windows提供了专门的开机启动注册表项，每次开机操作系统都会遍历这个注册表项下的键值对，获取并创建进程，所以我们只需要添加这个注册表项就能实现自启动。</p>
+
+					<p>视频中用到的命令：</p>
+					<pre class='line-numbers' data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！' >
+					<code class="lang-powershell">
+					#Windows常用注册表启动项位置
+
+					//这两个Run键下都能创建自启动值
+					[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run]
+					[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run] 
+					//使用系统自带reg工具添加启动值实例
+					C:\Windows\System32&gt; reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v hk987 /t REG_SZ /d "c:\windows\system32\cmd.exe"
+					//删除启动值实例
+					C:\Windows\System32&gt; reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v hk987 /f
+
+					//这两个RunOnce键下面创建的值会在下次启动执行一次，然后就会自动删除
+					[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce]（仅运行一次） 
+					[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce]（仅运行一次）
+					//添加启动值实例
+					C:\Windows\System32&gt; reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce" /v hk987 /t REG_SZ /d cmd.exe
+
+					//两个Explorer下的Run键，也能添加启动值
+					[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer\Run]
+					[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
+					//添加启动值实例
+					C:\Windows\System32&gt; reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run" /v hk987 /t REG_SZ /d cmd.exe
+					C:\Windows\System32&gt; reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run" /v hk987 /t REG_SZ /d cmd.exe
+
+					//load项
+					[HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\load]
+					//添加启动值实例
+					C:\Windows\System32&gt; reg add "HKCU\Software\Microsoft\Windows NT\CurrentVersion\Windows\load" /v hk987 /t REG_SZ /d cmd.exe
+
+					//HKLM下面的Winlogon项下面的Userinit值，这个值中系统本身有一串字符串数据，包含Userinit.exe的绝对路径
+					//Userinit.exe是Windows操作系统一个关键进程，用于管理不同的启动顺序
+					//可以在这个原有数据后用英文逗号分隔，添加我需要启动的程序的完整路径
+					[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+					//添加启动值实例
+					C:\Windows\System32&gt; reg add "HKCU\Software\Microsoft\Windows NT\CurrentVersion\Windows\load" /v Userinit /t REG_SZ /d "C:\Windows\system32\userinit.exe,cmd.exe" /f
+
+					//HKLM下面的Winlogon下有一个Shell值，这个值中包含了explorer.exe（资源管理器程序）程序的绝对路径
+					//同样的，在explorer.exe后面添加一个英文逗号，再添加我们需要自启动的程序的完整路径即可
+					[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+					//添加启动值实例
+					C:\Windows\System32&gt; reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v Shell /t REG_SZ /d "explorer.exe,cmd.exe"
+
+					//Windows提供的开始启动文件夹位置 --&gt; 「开始」菜单\程序\启动
+					//Windows11的启动文件夹位置如下，将Administrator替换成你的用户名
+					C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+					</code>
+					</pre>
+
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Win基础]-10-理解Windows注册表启动项 " style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/windows-base-10.html" target="_blank">https://www.hk987.fun/hk/windows-base-10.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

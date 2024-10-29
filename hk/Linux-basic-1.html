@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-1-目录基础命令 - Hk987.fun - www.Hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Linux基础]-1-目录基础命令</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章记录7个和目录相关的常用Linux命令，也是Linux中最使用频率最高的几个命令，并借这些命令，理解Linux中理解Inode、目录文件、Dentry的概念。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#Directory-related-commands-0">0×0.理解Inode、目录文件、Dentry</a></li>
+						 <li><a href="#Directory-related-commands-1">0×1.ls列出详细信息</a></li>
+						 <li><a href="#Directory-related-commands-2">0×2.cd切换目录</a></li>
+						 <li><a href="#Directory-related-commands-3">0×3.pwd查看当前目录</a></li>
+						 <li><a href="#Directory-related-commands-4">0×4.rm删除文件或目录</a></li>
+						 <li><a href="#Directory-related-commands-5">0×5.rmdir删除目录</a></li>
+						 <li><a href="#Directory-related-commands-6">0×6.mv移动目录或文件</a></li>
+						 <li><a href="#Directory-related-commands-7">0×7.cp复制目录或文件</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="Directory-related-commands-0">0×0.理解Inode、目录文件、Dentry</h2>
+
+					<p>首先来看一下Linux中关于硬盘的一些描述：</p>
+
+					<p>我们的文件数据储存在硬盘上，不论是机械还是固态硬盘，在Linux的XFS或者Ext文件系统中，为了提升存取效率，文件系统默认用4KB也就是4096字节大小作为一个储存基数，来从硬盘中存取数据，例如一些文件只会占用一个4K大小的硬盘空间，而有些则会占用多个4K大小的硬盘空间。</p>
+
+					<p>但除了文件数据之外，还必须找到一个地方储存文件的各种属性信息，也就是常说的元信息，例如文件的大小创建时间等等，Linux的文件系统为此专门在硬盘中划分了一个叫做inode的区域，英文全称叫做index node，中文译名为"索引节点"，文件的元信息就被存储在这一个个inode节点中，每个inode节点的大小，一般是128字节或256字节，这就是我们看到磁盘格式化之后，能够储存数据的空间大小会小于实际大小的原因之一，因为Inode也会消耗硬盘空间。</p>
+
+					<p>那么这个储存在Inode节点中的文件的元信息包含了哪些内容呢？可以用stat命令看到其中的一些内容，包括文件的Inode编号、文件的创建者、文件的创建访问和修改的日期、文件的权限信息、文件的大小，文件数据在磁盘的位置信息等等，这个位置信息是一个指针，指向了磁盘中的一个数据块，Linux文件系统根据Inode中存放的这个位置信息，就定位到文件在硬盘中储存数据的位置，然后就能进行读写。</p>
+
+					<p>现在我们知道，Inode节点中包含了文件的一些属性信息，系统可以通过Inode节点中的信息找到我们储存的文件数据进行读写，但Inode在设计之初，并没有考虑将文件名存放在Inode节点里面，也就是说Inode节点中是找不到文件名的，那么文件名存在哪呢？</p>
+
+					<p>想要知道这个问题的答案，必须理解Linux 中最经典的一句话：叫做「一切皆文件」，那么就意味着，我们看到的文件夹，实际上也是一个个储存在硬盘数据块中的数据文件，而恰巧，设计者将所有文件的文件名都储存在这个“文件夹文件”中，在这个“文件夹文件”中不仅仅储存了文件名，还储存了文件名到Inode节点编号的映射关系，这种映射关系，官方命名叫做Dentry数据结构，有些中文翻译把它翻译成“目录项”，就是下面图片左边的文件夹中的内容。</p>
+
+					<p>在文件夹文件的Dentry结构中，包含了当前文件夹的名称以及对应的Inode节点编号，不仅如此，还包含了父目录、所有子目录、子文件的名称和Inode节点编号。</p>
+
+					<p>这就意味着，当Linux启动的时候，文件系统只需要通过读取Inode节点信息，先找到根目录的Inode节点信息，就能够读取根目录文件中的Dentry结构，而根目录的Dentry结构中就包含了下面所有子目录和文件的名称以及对应的Inode节点编号，这样系统将根目录作为起点，就能够在内存中构建一个完整的系统文件目录树，但是Linux内核不会去将所有的目录文件的Dentry结构都缓存到内存中，这样内存会爆炸掉，初它只会缓存使用过的目录，没有打开过的目录不会缓存。</p>
+
+					<p>看到这里，大家是不是明白为什么Linux的命令行对目录和文件的操作会那么快了吧？实际上这些操作只是在改动内存中的那个Dentry目录树结构，系统会在适当的时机将改动写到硬盘的目录文件中，而不会频繁的读写硬盘影响性能。</p>
+
+					<p>这就意味着，当我们"双击进入"或者通过ls命令来查看一个文件夹中的内容的时候，实际上是在读取这个文件夹文件的Dentry数据结构中的数据然后展示出来。</p>
+
+					<img src="images/inode-block.png" alt="images/inode-block.png">
+					<p>现在是不是觉得，我们眼前的这个操作系统有点黑客帝国似曾相识的味道，我们看到的操作系统图形界面，实际上只是系统为了迎合人类习惯而构造的假象而已？怎么样，勇敢的少年，准备好跟着我一起进入字符的世界了吗？</p>
+
+					<h2 id="Directory-related-commands-1">0×1.ls列出详细信息</h2>
+
+					<p>ls命令是list的缩写，用来列出终端所在目录中的文件，ls常用参数列表如下：</p>
+					<p class="indent-p">
+						ls -a 列出目录所有文件，包含以.开头的隐藏文件<br>
+						ls -A 列出除.及..的其它文件<br>
+						ls -r 反序排列，配合S和t使用（ls排序默认从大到小，反序之后从小到大）<br>
+						ls -t 以文件修改时间排序<br>
+						ls -S 以文件大小排序<br>
+						ls -h 以易读大小显示（默认文件大小显示为字节，加上h之后显示为k，mb等形式）<br>
+						ls -l 详细信息显示，除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来<br>
+						ls -i 显示每个文件的inode值，inode (index node）
+					</p>
+					<p>ls命令演示：</p>
+
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					ls        #直接列出根目录下的文件和文件夹（在不同终端中，目录和文件夹是以不同的颜色显示的）
+					ls -a   #列出所有文件，.代表当前文件夹，..代表当前文件夹的上一层目录
+					ls -l    #列表形式，列出文件的详细信息
+					ls -alSh #以文件大小排序，用列表形式列出所有文件和文件夹的详细详细，并且以易读的方式显示
+					ls -alShr #和上一条命令一样，r参数会将结果反序排列
+					ls -alth #以文件修改时间排序，显示目录中文件和文件夹的详细信息
+					ls | sed "s:^:`pwd`/:" #列出当前文件夹中所有文件和文件夹的绝对路径
+					ls hack987* #列出所有hack987开头的文件，*是通配符，代替任意多个字符
+					ls -i #列出所有文件和文件夹的inode信息
+					ls -il #详细显示文件和文件夹详细，并且包含inode
+					</code>
+					</pre>
+
+					<h2 id="Directory-related-commands-2">0×2.cd切换目录</h2>
+
+					<p>cd是Change Directory的缩写，意思为改变目录，用于切换终端所在目录：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					cd / #切换到根目录
+					cd ~ #切换到当前用户的家目录
+					cd /home/987 #切换到home目录下的987家目录
+					cd - #切换到上一个目录
+					cd !$ #将上一个命令的参数当做cd的参数使用
+					</code>
+					</pre>
+
+
+					<h2 id="Directory-related-commands-3">0×3.pwd查看当前目录</h2>
+
+					<p>pwd是Print Working Directory的首字母缩写，用于查看终端当前处在哪个目录内：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					pwd #查看当前目录绝对路径
+					</code>
+					</pre>
+
+					<h2 id="Directory-related-commands-4">0×4.rm删除文件或目录</h2>
+
+					<p>rm是Remove的缩写，用于删除目录或者文件：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					rm test.txt #直接删除当前目录下的文件test.txt
+					rm /home/hk/test.txt #使用绝对路径，删除987家目录下的test.txt
+					rm -i *.txt #删除当前目录下所有.txt结尾的文件，并且逐个询问如果输入y就删除
+					rm -r test_dir #删除目录，需要加-r参数
+					rm -r test_dir test.txt 12345.mp4 一次性删除一个文件夹和两个文件
+					rm -rf *.log #不询问，强制删除当前目录下的.log结尾的文件
+					find . -inum {inode号} -exec rm -rf {} \;   #用inode号来删除当前文件夹下的名称不规则的文件或者文件夹，请将{inode号}替换成ls -i中看到的inode号码
+					</code>
+					</pre>
+
+					<h2 id="Directory-related-commands-5">0×5.rmdir删除目录</h2>
+
+					<p>rmdir是Remove Directory的缩写，用于删除空目录或者空的目录结构：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					rmdir test #如果test是一个空目录，就能直接删除
+					rmdir -p test/sub1/sub2 #使用-p参数，如果test下面只有一个sub1，并且sub1下面只有一个sub2，并且都是空目录，就能一并删除
+					</code>
+					</pre>
+					<p>除非用作特殊判断，否则使用rm -rf命令删除目录会方便很多。</p>
+
+					<h2 id="Directory-related-commands-6">0×6.mv移动目录或文件</h2>
+
+					<p>mv是Move的缩写，可以用来移动文件或者将文件改名：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					mv hack987 hk987.fun #将hack987文件改名为hk987.fun
+					mv h1 h2/ h3 hk/ #将h1 h2 h3，移动到hk文件夹中，其中h2为文件夹
+					mv * hk/ #将当前目录所有文件，移动到hk目录下
+					mv -i * ../ #将当前目录所有文件，移动到上一层目录中，如果遇到重名文件，提示是否覆盖
+					</code>
+					</pre>
+
+					<h2 id="Directory-related-commands-7">0×7.cp复制目录或文件</h2>
+					
+					<p>cp是Copy的缩写，可以用来复制文件或文件夹：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					cp hk1.txt hk2.txt #将hk1.txt复制一份保存为hk2.txt
+					cp -a hk1.txt hk2.txt #将hk1.txt复制一份保存为hk2.txt，并且保存hk1.txt的'访问时间'和'修改时间'不变
+					cp -r hack987/ hack987_fun/ #将hack987目录复制一份保存为hack987_fun目录
+					cp -r hack987/ hk1.txt hk2.txt hack987_fun/ #将前面一个目录和两个文件复制到hack987_fun目录
+					cp -i hk1.txt hk2.txt hack987_fun/ #将前面两个文件复制到hack987_fun目录，如果有重名文件提示是否覆盖
+					cp -s hk1.txt hk1_link.txt #创建一个连接文件hk1_link.txt，相当于一个快捷方式，打开hk1_link.txt相当于打开hk1.txt
+					</code>
+					</pre>
+					
+
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Linux基础]-1-目录基础命令" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-1.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-1.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

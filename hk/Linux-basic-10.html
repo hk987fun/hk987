@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-10-创建文件 - Hk987.fun - www.Hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Linux基础]-10-创建文件</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章介绍Linux的终端中如何创建文件并写入数据。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#File-Creation-1">0×1.使用touch创建空文件</a></li>
+						 <li><a href="#File-Creation-2">0×2.使用vim命令创建文件</a></li>
+						 <li><a href="#File-Creation-3">0×4.使用echo命令来创建文件</a></li>
+						 <li><a href="#File-Creation-4">0×3.使用cat命令来创建文件</a></li>
+						 <li><a href="#File-Creation-5">0×5.使用python来创建文件</a></li>
+						 <li><a href="#File-Creation-6">0×6.使用kate来创建文件</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="File-Creation-1">0×1.使用touch创建空文件</h2>
+
+					<p>touch是最常用的创建空文件的命令，命令格式：touch 文件名</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#使用touch命令创建一个叫做hk987的文件
+					987@hk987.fun~$ touch hk987
+
+					#如果文件名以-开头，在终端中，系统默认会将它解释为参数，例如下面的命令会报错，提示参数不正确
+					987@hk987.fun~$ touch -hk987
+					touch: 不适用的选项 -- k
+					请尝试执行 "touch --help" 来获取更多信息。
+
+					#遇到这种情况，我们要么使用绝对路径，要么在文件名前面添加当前路径，或者使用--符号，下面这三种方式都能创建-开头的文件
+					987@hk987.fun~$ touch /home/hk/-hk987
+					987@hk987.fun~$ touch ./-hk987
+					987@hk987.fun~$ touch -- -hk987
+					#--符号会强制指定它后面的任何字符都属于文件名或路径部分，不会被当做参数解释
+
+					#一次创建5个空文件，分别是hk9871.txt,hk9872.txt.....hk9875.txt
+					987@hk987.fun~$ touch hk987{1..5}.txt
+					</code>
+					</pre>
+					<p>到目前位置touch命令只是创建了一个空文件，如果想要写入内容，可以使用下面任意一个命令。</p>
+
+					<h2 id="File-Creation-2">0×2.使用vim命令创建文件</h2>
+
+					<p>在本系列第4篇中已经介绍过vim创建文件和写入数据，大家可以去这里查看：<br>
+						<a title="[Linux基础]-4-Vim文本编辑器" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-4.html" target="_blank">[Linux基础]-4-Vim文本编辑器</a>
+					</p>
+					<p>这里不再赘述。</p>
+
+					<h2 id="File-Creation-3">0×3.使用echo命令来创建文件</h2>
+
+					<p>echo命令可以用来创建，写入和追加写入数据，请看下面的实例：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#如果hk987文件不存在，就会被创建
+					987@hk987.fun~$ echo "Hello World" > hk987
+					
+					#如果hk987文件不存在，就会被创建，如果存在，覆盖其中的数据为“Hello hk987”
+					#其中>符号可以覆盖数据，将新数据覆盖到文件中
+					987@hk987.fun~$ echo "Hello hk987" > hk987
+
+					#如果hk987文件不存在，就会被创建，如果存在，将“Hello hk987.fun”追加到里面
+					#其中>>符号可以追加数据到新的一行
+					987@hk987.fun~$ echo "Hello hk987.fun" >> hk987
+					</code>
+					</pre>
+
+					<h2 id="File-Creation-4">0×4.使用cat命令来创建文件</h2>
+
+					<p>cat命令不仅仅可以用来查看文件内容，还能用来创建文件和追加数据，请看下面的实例：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#将将hk987和hk1中的内容合并，写入hk2文件中，如果hk2不存在就会被创建
+					#否则内容会被hk987和hk1合并的内容所覆盖
+					#根据上面echo命令实例的提示，想追加数据请使用>>代替>
+					987@hk987.fun~$ cat hk987 hk1 > hk2
+
+					#将hk987和hk1中的内容合并，并且非空行添加上行号，写入hk2文件中
+					987@hk987.fun~$ cat -b hk987 hk1 > hk2
+
+					#将hk987和hk1中的内容合并，每一行都添加上行号，写入hk2文件中
+					987@hk987.fun~$ cat -n hk987 hk1 > hk2
+
+					#从键盘读取输入，直到读取到exit结束输入，将输入的内容写入hk987
+					987@hk987.fun~$ cat > hk987 << exit
+					#从键盘读取输入，直到读取到exit结束输入，将输入的内容追加写入hk987
+					987@hk987.fun~$ cat >> hk987 << exit
+					987@hk987.fun~$ tac hk987 #反向读取hk987中的内容
+					987@hk987.fun~$ tac >> hk987 << 111 #上面的规则对反向tac同样适用，这里不再赘述
+					</code>
+					</pre>
+
+					<h2 id="File-Creation-5">0×5.使用python来创建文件</h2>
+					<p>Linux众多桌面发行版都安装了基础的python环境，我们可以使用python来创建文件和写入数据，请看下面的实例：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#直接使用python在终端下执行，会创建一个叫做hk987的文件，并且可写入，再用write函数写入数据，最后关闭文件
+					987@hk987.fun~$ python -c 'f=open("hk987","w");f.write("hk987.fun\n");f.write("\n");f.write("hahaha");f.close();'
+
+					#如果再用python的方法来读取，命令中的r代表文件以只读方式打开，然后用read函数读取文件所有内容
+					987@hk987.fun~$ python -c 'f=open("hk987","r");print(f.read());f.close();'
+					</code>
+					</pre>
+					
+					<p>这一段需要一点点python的基础就能看懂，如果看不懂，可以看看本站推出的零基础python黑客系列编程课程。</p>
+
+					<h2 id="File-Creation-6">0×6.使用kate来创建文件</h2>
+
+					<p>kate是桌面环境下的图形化文本编辑器，类似于windows下的notepad，可以直接通过命令行调用，例如：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#用图形化界面kate文本编辑器打开hk987文件，如果hk987文件不存在，保存数据的时候会被创建
+					987@hk987.fun~$ kate hk987
+					</code>
+					</pre>
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Linux基础]-10-创建文件" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-10.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-10.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

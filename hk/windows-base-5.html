@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hk987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Win基础]-5-一次惊险的实战-Powershell和cmd基础 - hk987.fun - www.hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Win基础]-5-一次惊险的实战-Powershell和cmd基础</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章通过视频演示模拟后渗透测试，来理解Window中引进的Powershell与CMD在命令上的区别，大家可以根据实际情况，合理的使用能够使用的任何系统原生工具来完成我们的渗透，第三方工具借助的越少，就越不容易留下痕迹。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#windows-powershell-cmd-1">0×1.Powershell和cmd命令区别对比</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="windows-powershell-cmd-1">0×1.Powershell和cmd命令区别对比</h2>
+
+					<p>首先，根据官方描述，PowerShell 是一种跨平台的任务自动化解决方案，由命令行 shell、脚本语言和配置管理框架组成。 PowerShell 在 Windows、Linux 和 macOS 上都能运行。</p>
+					<p>也就是说，Powershell其实是一个可以装在各种操作系统上，独立于系统存在的一个Shell，并不像CMD那样是Windows的原生命令行工具，只是Win10后的系统都默认安装了这个Powershell。</p>
+
+					<p>用到的命令：</p>
+
+					<pre class='line-numbers' data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！' >
+					<code class="lang-powershell">
+					# 1.程序在执行过程中，程序文件无法删除，因为它执行在内存中，并且会创建一个进程
+					#下面是cmd和powershell查看进程的命令的演示
+
+					//cmd下可以通过
+					C:\Windows\System32&gt; tasklist /svc
+
+					//powershell下可以通过 tasklist /svc或Get-Process
+					//在cmd中切换到powershell只需要输入powershell回车即可切换，切换过去后，提示符前面会出现PS字样
+					C:\Windows\System32&gt; powershell
+					//获取内存进程名称包含regedit的进程信息
+					PS C:\Windows\System32&gt; Get-Process -Name "regedit"
+					//获取内存进程名称包含whoami的进程信息，支持通配符*，例如"whoami*"就能显示whoami开头的所有进程
+					PS C:\Windows\System32&gt; Get-Process -Name "whoami"
+
+					# 2.在登录windows server2022远程桌面时需要多人同时登录，可以通过修改注册表搞定
+
+					//方法1：通过图形界面
+					//开始-运行-输入regedit打开注册表
+					//HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server
+					//在右边找到  fSingleSessionPerUser  把值由1改为0
+
+					//方法2：通过命令
+					//cmd通过reg命令查询
+					C:\Windows\System32&gt; reg query "hklm\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fSingleSessionPerUser
+					//通过reg命令修改
+					C:\Windows\System32&gt; reg add "hklm\SYSTEM\CurrentControlSet\Control\Terminal Server" /t REG_DWORD /v fSingleSessionPerUser /d 0
+
+					//powershell通过reg命令，或者通过下面的命令查询
+					//查询
+					PS C:\Windows\System32&gt; Get-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -Name 'fSingleSessionPerUser'
+					//修改
+					PS C:\Windows\System32&gt; Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -Name 'fSingleSessionPerUser' -Value '0'
+
+					#3.cmd和powershell关闭进程演示
+
+					//CMD方法
+					C:\Windows\System32&gt; taskkill /im PID /F
+					
+					//powershell方法
+					//一次性关闭所有whoami开头的进程
+					PS C:\Windows\System32&gt; ps -name whoami* | Stop-Process -force
+					//精准匹配，只关闭whoami.exe，注意在PowerShell中，进程名称不需要携带.exe后缀，查询也是如此
+					PS C:\Windows\System32&gt; ps -name whoami | Stop-Process -force
+					</code>
+					</pre>
+
+					<p>在后面几篇文章中，会详细介绍到Powershell对进程的操作，这里稍作了解，知道Powershell和CMD的不同即可。</p>
+
+					<h2 id="windows-powershell-cmd-2">0×2.后渗透测试模拟实战视频演示</h2>
+	
+					<p>点击下方视频标题，可以进入B站观看高清版本</p>
+					<p>【第9天】Windows基础-9-一次惊险的实战操作？powershell和cmd的基础应用,开启多人win远程桌面~大一女新生挑战一年精通网络安全-信息安全-计算机安全-计算机技术-黑客技术-渗透测试，我无所畏惧</p>
+					<iframe src="//player.bilibili.com/player.html?aid=833845928&bvid=BV1B34y1w76u&cid=1342001140&p=1&autoplay=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" > </iframe>
+
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Win基础]-5-一次惊险的实战-Powershell和cmd基础" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/windows-base-5.html" target="_blank">https://www.hk987.fun/hk/windows-base-5.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

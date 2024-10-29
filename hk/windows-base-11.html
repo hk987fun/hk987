@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hk987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Win基础]-11-理解Windows进程与服务  - hk987.fun - www.hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Win基础]-11-理解Windows进程与服务</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章主要讲解Windows中的进程与服务，理解什么是进程，什么是服务，以及如何创建自启动服务。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#windows-Process-and-Services-1">0×1.Windows进程与服务解析</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="windows-Process-and-Services-1">0×1.Windows进程与服务解析</h2>
+					<p>首先来看看网络上对进程的定义：进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配的基本单位，是操作系统结构的基础。在早期面向进程设计的计算机结构中，进程是程序的基本执行实体；在当代面向线程设计的计算机结构中，进程是线程的容器。程序是指令、数据及其组织形式的描述，进程是程序的实体。</p>
+					<p>进程的分类：在windows中，进程又分为普通进程和共享进程，普通进程往往以单个exe文件启动，而共享进程往往以宿主文件的形式启动，例如svchost.exe文件就是windows中最常用的宿主进程。</p>
+					<p>进程的启动方式：使用者启动（双击或命令行调用），其他程序调用（例如：cmd调用notepad），登录自启动（例如：在注册表启动项添加程序路径），使用服务方式启动（又分为：共享进程方式启动：RpcSs（Remote Procedure Call (RPC)），单独进程的方式启动：spooler（print spooler））services.msc服务管理器中的所有数据都保存在注册表中，包括服务的可调用动态链接库(.dll)文件。</p>
+					<p>特殊：驱动类型，可被进程调用运行在进程分配的内存空间中，或运行在系统内核分配的内存空间中。</p>
+
+					<p>下面是视频中操作进程用到的命令：</p>
+					<pre class='line-numbers' data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！' >
+					<code class="lang-powershell">
+					#CMD操作进程命令
+					//查看进程列表
+					C:\Windows\System32&gt; tasklist /svc
+					//使用进程名结束进程
+					C:\Windows\System32&gt; taskkill /IM notepad.exe /F
+					//使用PID结束进程
+					C:\Windows\System32&gt; taskkill /PID 1234 /F
+
+					#PowerShell操作进程命令
+					//获取进程列表
+					PS C:\Windows\System32&gt; Get-Process
+					//通过名称获取单个进程信息，通配符*能够获取cmd开头的所有进程
+					PS C:\Windows\System32&gt; Get-Process -Name "cmd*"
+					//通过PID获取单个进程信息，例如pid为1234的进程
+					PS C:\Windows\System32&gt; Get-Process -PID 1234
+
+					//通过名称结束单个进程，注意PowerShell对进程的操作，不需要携带.exe后缀，只需要程序名称即可
+					PS C:\Windows\System32&gt; Stop-Process -Name "cmd"
+					//通过名称结束多个进程，结束cmd开头的所有进程
+					PS C:\Windows\System32&gt; Stop-Process -Name "cmd*"
+					//通过PID结束单个进程，结束进程id为1234的进程
+					PS C:\Windows\System32&gt; Stop-Process -ID 1234
+
+					#CMD操作服务命令
+					//以打印机服务spooler举例
+					//查询服务启动状态，查询服务名称为spooler的服务的启动状态
+					C:\Windows\System32&gt; sc query spooler
+					//停止服务
+					C:\Windows\System32&gt; sc stop spooler
+					//启动服务
+					C:\Windows\System32&gt; sc start spooler
+					//更改服务启动类型，start=<b>后面需要有一个空格</b>，然后接auto（自动启动），demand（手动启动），disabled（禁止启动）
+					C:\Windows\System32&gt; sc config spooler start= &lt;auto|demand|disabled&gt;
+					//例如，将spooler更改成手动启动
+					C:\Windows\System32&gt; sc config spooler start= demand
+
+					#CMD注册修改和删除服务(不能成功启动的原因在视频中有讲解)
+					#这种注册服务的方法，需要自己写一个dll动态链接库，或者封装一个exe程序，程序包含windows服务管理器需要调用的服务函数功能，才能启动成功
+					//创建
+					C:\Windows\System32&gt; sc create CMD binPath= "c:\windows\system32\cmd.exe" start= auto displayname= "cmd-line"
+					//修改服务描述
+					C:\Windows\System32&gt; sc description CMD "HackMM"
+					//删除服务
+					C:\Windows\System32&gt; sc delete CMD
+
+					#使用第三方宿主程序winsw.exe创建服务
+					#这个宿主程序在本文结尾提供下载
+					#弊端：每个winsw.exe文件只能对应一个要启动服务程序，不能像svchost.exe一样单个程序承载多个服务
+					//winsw.exe程序需要自己创建一个同名的winsw.xml配置文件（宿主程序的名称可以随意改动，配置文件和宿主程序同名即可），放在同一个文件夹下，内容如下
+					&lt;service&gt;
+					  &lt;id&gt;服务名称&lt;/id&gt;
+					  &lt;name&gt;服务显示名称&lt;/name&gt;
+					  &lt;description&gt;服务描述信息&lt;/description&gt;
+					  &lt;env name="环境变量" value="环境变量的值"/&gt;
+					  &lt;executable&gt;服务的完整路径&lt;/executable&gt;
+					  &lt;arguments&gt;程序如果需要传入参数，写在这里&lt;/arguments&gt;
+					  &lt;log mode="roll"&gt;&lt;/log&gt;
+					&lt;/service&gt;
+
+					//例如，将系统中的notepad做成服务，下面的配置供参考
+					&lt;service&gt;
+					  &lt;id&gt;notepad&lt;/id&gt;
+					  &lt;name&gt;notepad app&lt;/name&gt;
+					  &lt;description&gt;hk987.fun notepad app&lt;/description&gt;
+					  &lt;executable&gt;c:\windows\system32\notepad.exe&lt;/executable&gt;
+					  &lt;log mode="roll"&gt;&lt;/log&gt;
+					&lt;/service&gt;
+					//假设我没有改宿主程序的名称，宿主程序任然叫winsw.exe，在配置保存好后，用超级管理员运行下面的命令，注册服务
+					C:\Windows\System32&gt; winsw.exe install
+					//启动服务
+					C:\Windows\System32&gt; winsw.exe start
+					//卸载服务
+					C:\Windows\System32&gt; winsw.exe uninstall
+					</code>
+					</pre>
+
+
+					<p>安装服务用到的软件：</p>
+					<p>*「winsw软件」:<a title="winsw软件" style="color: rgb(4,181,150);" href="https://github.com/winsw/winsw/releases" target="_blank">点击打开</a></p>
+>
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Win基础]-11-理解Windows进程与服务" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/windows-base-11.html" target="_blank">https://www.hk987.fun/hk/windows-base-11.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

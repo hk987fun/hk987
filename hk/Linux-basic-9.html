@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hk987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-9-文件权限 - hk987.fun - www.hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Linux基础]-9-文件权限</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章介绍Linux下的文件权限的概念，实例演示如何利用命令来更改文件权限、文件所属用户组和文件所属用户。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#Linux-purview-1">0×1.Linux文件属性详解</a></li>
+						 <li><a href="#Linux-purview-2">0×2.Linux如何修改文件权限</a></li>
+						 <li><a href="#Linux-purview-3">0×3.Linux如何修改文件所属用户组</a></li>
+						 <li><a href="#Linux-purview-4">0×4.Linux如何修改文件所属用户</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="Linux-purview-1">0×1.Linux文件属性详解</h2>
+
+					<p>在我们使用命令"ls -al"或"ll -a"命令显示文件详细信息的时候，经常会看到下面这样的输出结构：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#下面是ls输出中的两条信息
+					987@hk987.fun~$ ls -al
+					drwxr-xr-x  3 root root   4096 2023-6-24 03:42 .wine/
+					-rwxrw-rw-  1 987 987   13724074 2023-6-24 11:03  testfile
+					</code>
+					</pre>
+					<p>这里首先对第一条"drwxr-xr-x 3 root root 4096 2023-6-24 03:42 .wine/"的第一个字段"drwxr-xr-x"做出解释，这十个字符的含义如下：</p>
+					<p>第一个字符（<span style="color: #ff0000;"><strong>d</strong></span>rwxr-xr-x）代表的含义:</p>
+					<p class="indent-p">
+						"d"代表目录，本例中第一条输出就是一个目录；<br>
+						"-"则代表普通文件，本例中第二条输出就是一个普通文件；<br>
+						"l"为符号链接，指向其它文件，有点类似Windows中的"快捷方式"；<br>
+						"c"为字符设备节点（如键盘）访问设备，一般在/dev/目录下比较多见；<br>
+						"b"为块设备文件（如硬盘），同上，一般在/dev/目录下比较多见；<br>
+						"P"(大写)命名管道函数，用于进程间通信；<br>
+						"s"套接字，用于设备间通信；
+					</p>
+					<p>后九个字符中（d<span style="color: #ff0000;"><strong>rwxr-xr-x</strong></span>），每三个字符是一组：</p>
+					<p class="indent-p">
+						"rwx"文件拥有者对该文件的访问权限；<br>
+						"r-x"文件所属用户组的成员对该文件的访问权限；<br>
+						"r-x"既非文件拥有者，也非文件所在用户组的其他用户对该文件的访问权限；<br><br>
+						"r"代表只读权限；<br>
+						"w"代表可写权限；<br>
+						"x"代表文件是可执行的(有点类似windows中的.exe后缀所代表的意思，Linux中没有后缀的概念，是否可执行查看的是文件是否有"x"权限)；<br>
+					</p>
+					<p>所以在"drwxr-xr-x"的后九个字符中：</p>
+					<p class="indent-p">
+						"rwx"代表，文件拥有者对该文件拥有可读写与可执行的权限；<br>
+						"r-x"代表文件所属用户组的成员对该文件拥有可读和可执行的权限，没有赋予的权限用"-"代替；<br>
+						"r-x"代表其他用户对该文件拥有可读和可执行的权限；
+					</p>
+					<p>在"drwxr-xr-x 3 root root 4096 2023-6-24 03:42 .wine/"中后面几个字段的介绍如下：</p>
+					<p class="indent-p">
+						3代表连接数；<br>
+						第一个root是文件所属用户；<br>
+						第二个root代表文件所属用户组是root组；<br>
+						"4096"是文件大小，单位字节；<br>
+						"2023-6-24 03:42"是文件最后修改时间，有些系统中的显示是"Jun 24 03:42"；<br>
+						".wine/"是文件或者文件夹名称；
+					</p>
+					<p>综上所述就能很容易的得出第二条输出"-rwxrw-rw- 1 987 987 13724074 2023-6-24 11:03 testfile"的含义：</p>
+					<p class="indent-p">
+						这是一个普通文件"-"，文件拥有者对文件有可读写和可执行权限(rwx)，文件所属组对文件有可读写权限(rw-)，其他用户对文件也有可读写权限(rw-)，文件的连接数是1，文件拥有者是"987"，文件所属组是"987"组，此文件的大小是"13724074"字节，最后修改时间是"2023-6-24 11:03"，文件的名称叫"testfile"；
+					</p>
+					<p>看到这里是不是顿时豁然开朗？除了这些常见属性之外，还有一个需要了解的属性"Inode"号：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#显示每个文件的Inode号，每个文件或者文件夹前都会出现一个唯一的"Inode"编号
+					987@hk987.fun~$ ls -i
+					523273 anaconda-ks.cfg  523267 install.log.syslog  529410 testfile
+					</code>
+					</pre>
+					<p>Inode保存了文件的大部分属性信息，包括修改时间，访问时间，文件属于谁，属于哪个组等等，其中还有一个文件的唯一ID号，就是上面的命令中我们看到的文件名称前面的数字。</p>
+					
+
+					<h2 id="Linux-purview-2">0×2.Linux如何修改文件权限</h2>
+
+					<p>修改文件权限前，需要了解一下权限中的"rwx"与数字的对应关系，其中r=4，w=2，x=1。</p>
+					<p>例如:"drwxr-xr-x"，第一个"d"是代表文件夹，这里不用考虑，后面九个字符，每三个一组相加：</p>
+					<p class="indent-p">
+						rwx=4+2+1=7<br>
+						r-x=4+0+1=5<br>
+						那么有<br>
+						drwxr-xr-x = 755<br>
+						同理<br>
+						-rwxrw-rw- = 766 （rw-就是4+2+0=6）
+					</p>
+					<p>可以通过"chmod"命令修改文件属性中的权限字段的值，请看下面的实例：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#新建一个文件
+					987@hk987.fun~$ touch testfile
+
+					#查看一下文件的详细属性
+					987@hk987.fun~$ ls -l
+					-rw-rw-r--. 1 987 987 0 Dec 31 11:03 testfile
+
+					#修改文件权限
+					987@hk987.fun~$ chmod 766 testfile
+					987@hk987.fun~$ ls -l
+					-rwxrw-rw-. 1 987 987 0 Dec 31 11:03 testfile
+					</code>
+					</pre>
+					<p>上面的实例中，文件的权限字段"-rw-rw-r"(664)被修改成了"-rwxrw-rw-"(766)，如果不习惯这种数字化的修改方式，还有一种字符方式：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#u=后面填写文件拥有者对文件的权限，g=后面是文件所属组中的成员对文件的权限，o=后面表示其他用户对文件的权限
+					987@hk987.fun~$ chmod u=rw,g=rw,o=r testfile
+					987@hk987.fun~$ ls -l
+					-rw-rw-r--. 1 987 987 0 Dec 31 11:03 testfile
+
+					#如果想添加删除某项权限可以使用加减运算符，u+x代表文件拥有者权限字段加上可执行权限，g-w文件所属组权限字段减去可写权限，o+x其他用户权限字段加上可执行权限
+					987@hk987.fun~$ chmod u+x,g-w,o+x testfile
+					987@hk987.fun~$ ls -l
+					-rwxr--r-x. 1 987 987 0 Dec 31 11:03 testfile
+
+					#或者直接给所有字段加上或减去某个或多个权限，例如三个权限字段都将可写和可执行权限全部减去
+					987@hk987.fun~$ chmod -wx testfile
+					987@hk987.fun~$ ls -l
+					-r--r--r--. 1 987 987 0 Dec 31 11:03 testfile
+					</code>
+					</pre>
+
+					<h2 id="Linux-purview-3">0×3.Linux如何修改文件所属用户组</h2>
+
+					<p>使用chgrp命令修改文件所属用户组：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#首先创建一个"testgroup"组
+					987@hk987.fun~$ sudo groupadd testgroup
+
+					#查看一下文件"testfile"所属组，是"987"组
+					987@hk987.fun~$ ls -l testfile
+					-rw-rw-r--. 1 987 987 0 Dec 31 11:03 testfile
+
+					#使用普通权限更改这个文件所属组，显示权限不够
+					987@hk987.fun~$ chgrp testgroup testfile
+					chgrp: changing group of `testfile': Operation not permitted
+
+					#使用管理员权限更改这个文件所属组，成功
+					987@hk987.fun~$ sudo chgrp testgroup testfile
+					987@hk987.fun~$ ls -l
+					-rw-rw-r--. 1 mm testgroup 0 Dec 31 11:03 testfile
+
+					#使用普通权限，将文件改回自己的组，成功
+					987@hk987.fun~$ chgrp mm testfile
+					987@hk987.fun~$ ls -l
+					-rw-rw-r--. 1 987 987 0 Dec 31 11:03 testfile
+					</code>
+					</pre>
+
+					<h2 id="Linux-purview-4">0×4.Linux如何修改文件所属用户</h2>
+
+					<p>使用chown命令更改文件拥有者(只有root权限才能执行)：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#使用root权限将文件拥有者更改成root
+					987@hk987.fun~$ sudo chown root testfile
+
+					987@hk987.fun~$ ls -l
+					-rw-rw-r--. 1 root mm 0 Dec 31 11:03 testfile
+
+					#上面虽然更改了文件的拥有者，但是文件所属组没有改变，可以通过添加参数-R，一次性更改文件拥有者和文件所属组
+					#chown -R user_name:group_name file_name
+					987@hk987.fun~$ chown -R root:testgroup testfile
+					987@hk987.fun~$ ls -l
+					-rw-rw-r--. 1 root testgroup 0 Dec 31 11:03 testfile
+					</code>
+					</pre>
+
+					<p>这篇文章主要讲解文件权限，文件属主和属组，不是让大家每时每刻都去关注文件或文件夹的权限，而是当大家遇到无法访问的文件或者目录时，就能够判断是什么原因无法访问，以及想要访问应该加上哪些权限了。</p>
+
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Linux基础]-9-文件权限" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-9.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-9.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-2-内容读取命令 - Hk987.fun - www.Hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Linux基础]-2-内容读取命令</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章记录6个和文件内容读取相关的常用Linux命令，也是Linux中最使用频率最高的几个文件内容读取命令。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#Content-read-1">0×1.cat命令</a></li>
+						 <li><a href="#Content-read-2">0×2.more命令</a></li>
+						 <li><a href="#Content-read-3">0×3.less命令</a></li>
+						 <li><a href="#Content-read-4">0×4.head命令</a></li>
+						 <li><a href="#Content-read-5">0×5.tail命令</a></li>
+						 <li><a href="#Content-read-6">0×6.kate命令</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="Content-read-1">0×1.cat命令</h2>
+
+					<p>cat命令能够用来显示文本文件中内容，还可以用来创建文本文件并且写入数据，cat命令有两个常用参数：</p>
+					<p class="indent-p">     
+    				-b 对非空输出行号<br>
+					-n 输出所有行号<br>
+					</p>
+					<p>cat命令示例：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					cat hk987 #一次性显示hk987中的内容
+					cat -b hk987 #显示hk987中的内容，在非空行前面添加行号
+					cat -n hk987 #显示hk987中的内容，对所有行都添加行号
+					</code>
+					</pre>
+
+
+					<h2 id="Content-read-2">0×2.more命令</h2>
+
+					<p>more命令用来显示文件中的内容，不同于cat的是，more遇到大文件时会分屏显示，不会一次性显示完所有内容，使用者可以按回车或空格显示剩下的内容，按回车会一行一行往下显示，按空格会一次往下显示一页内容，按b键可以往回显示一页内容，常用参数如下：</p>
+					<p class="indent-p">     
+    				+n 从笫 n 行开始显示<br>
+					-n 定义屏幕大小为n行<br>
+					q 退出more
+					</p>
+					<p>more命令示例：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					more hk987 #一般用法，可以一页一页显示文件中的内容
+					more +3 hk987 #从第3行开始显示文件中的内容
+					more -5 hk987 #将显示窗口调整成5行，每次只能显示5行内容
+					more +3 -5 #从第3行开始显示，每次显示5行内容
+					ls -l | more -3 #将ls -l命令的结果发送给more读取，每次显示3行ls -l命令的结果
+					</code>
+					</pre>
+
+
+					<h2 id="Content-read-3">0×3.less命令</h2>
+
+					<p>less同more一样，也提供分页显示文件内容的功能，相比more，less的搜索功能更加强大，下面是less命令的常用参数：</p>
+					<p class="indent-p">     
+					-N 显示每行的行号<br>
+					-s 显示连续空行为一行<br>
+					/字符串：向下搜索“字符串”的功能<br>
+					?字符串：向上搜索“字符串”的功能<br>
+					n：向下重复前一个搜索（配合/和?搜索语法使用）<br>
+					N：向上重复前一个搜索（配合/和?搜索语法使用）
+					</p>
+					<p>less命令示例：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					less -N hk987 #在使用/和?搜索时，显示每行的行号
+					</code>
+					</pre>
+
+					<h2 id="Content-read-4">0×4.head命令</h2>
+
+					<p>head命令用来显示文件开头或者结尾指定行数，用在只需读取文件前几行或后几行的场景，下面是head命令常用参数：</p>
+					<p class="indent-p">     
+    				-n [num] 显示文件开头num行<br>
+    				-c [num] 显示文件开头num个字节<br>
+					</p>
+					<p>head命令示例：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					head -n 3 hk987 #显示hk987前三行
+					head -c 8 hk987 #显示hk987前8个字节
+					</code>
+					</pre>
+
+					<h2 id="Content-read-5">0×5.tail命令</h2>
+
+					<p>tail可以用来显示文件最后几行，下面是tail命令常用参数：</p>
+					<p class="indent-p">     
+    				-f 监听模式读取（用于监控文件新增内容）<br>
+    				-n [num] 从文件末尾，向前读取num行
+					</p>
+					<p>tail命令示例：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					tail -n hk987 #读取hk987最后3行
+					tail -f hk987 #持续监听读取hk987文件的新内容，如果这个时候向hk987写入新数据，就会被tail读取到
+					</code>
+					</pre>
+
+					<h2 id="Content-read-6">0×6.kate命令</h2>
+
+					<p>kate是图形界面下的一个软件，可以用它直接打开文本文件：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					kate hk987 #使用kate打开hk987
+					</code>
+					</pre>
+					<p>除了kate外，还有很多图形界面下的文本编辑器例如xfce下的xed，gnome下的gedit，都可以使用相同的方法打开文件，这里不再赘述。</p>
+
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Linux基础]-2-内容读取命令" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-2.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-2.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

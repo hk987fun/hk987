@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-6-Vim文本编辑器 - hk987.fun - www.hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Linux基础]-6-Vim文本编辑器</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章主要介绍Linux中Vim文本编辑器的使用方法，虽然在图形界面下可以使用kate这种图形界面的文本编辑器替代，但是在终端环境中最好用的还是Vim文本编辑器。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#Linux-vim-1">0×1.Vim编辑器输入模式介绍</a></li>
+						 <li><a href="#Linux-vim-2">0×2.Vim编辑器命令模式常用命令</a></li>
+						 <li class="subli"><a href="#Linux-vim-3">a.控制光标的移动</a></li>
+						 <li class="subli"><a href="#Linux-vim-4">b.删除文字操作</a></li>
+						 <li class="subli"><a href="#Linux-vim-5">c.复制和粘贴操作</a></li>
+						 <li class="subli"><a href="#Linux-vim-6">d.字符替换操作</a></li>
+						 <li class="subli"><a href="#Linux-vim-7">e.字母大小写转换</a></li>
+						 <li><a href="#Linux-vim-8">0×3.Vim编辑器底行模式下常用命令</a></li>
+						 <li><a href="#Linux-vim-9">0×4.Vim编辑器可视化模式（Visual Mode）常用命令</a></li>
+						 <li><a href="#Linux-vim-10">0×5.Vim创建加密文件</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="Linux-vim-1">0×1.Vim编辑器输入模式介绍</h2>
+					<p>在介绍Vim的几种模式之前，先简单的介绍一下Vi和Vim：</p>
+					<p>Vim编辑器是所有Unix及Linux系统下最基本的文本编辑器，有点类似Windows下的记事本程序(Notepad.exe)，但Vim编辑器比Windows下的记事本的功能强大很多。</p>
+					<p>Vim编辑器有四种常用模式，分别是命令模式、编辑模式、底行模式和可视化模式（Visual Mode）。</p>
+					<p>大部分发行版默认没有安装vim，可以根据自己的操作系统类型安装，下面是Rockylinux、ubuntu和archlinux的安装示例：</p>
+					<!--bash-->
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					sudo dnf install vim #Rocky安装vim
+					sudo apt install vim #ubuntu安装vim
+					sudo pacman -S vim #ArchLinux安装vim
+					</code>
+					</pre>
+					<p>安装完成之后，通过“vim [文件名]”的格式来使用vim编辑文件，如果文件不存在，在退出保存后会被自动创建：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output=""> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					vim testfile #创建一个名为testfile的文件，并且进入这个文本文件的命令模式下。
+					</code>
+					</pre>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-vim">
+					#新创建文件或者打开一个存在的文件，默认进入的是命令模式，命令模式是不能输入和编辑文本的，只能识别键盘的字母命令，在命令模式下有三种方式可以进入编辑模式
+					#按 i 当前光标位置进入编辑模式，
+					#按 a 当前光标退一格进入编辑模式，
+					#按 o 另起一行进入编辑模式。
+					~
+					~
+					"testfile" [New File]
+
+					#按i进入编辑模式后就能输入和编辑文本了，随便输入下面几行
+					Hello!
+					Welcome to My Website:
+					hk987.fun
+
+					sentence 12345
+					~
+					~
+					-- INSERT -- #进入编辑模式后下面会显示"INSERT"，如果安装了中文环境就是"插入"
+
+					#输入完成后按"esc"键退出编辑模式，回到命令模式，此时文件还没有保存，如果想保存刚才的输入，可以在命令模式下输入":"（英文输入法下的说明号）,输入:就进入了"底行模式"，":"后面可以输入底行模式所支持的命令。
+
+					Hello!
+					Welcome to My Website:
+					hk987.fun
+
+					sentence 12345
+					~
+					:w otherfile    #会将文件另存为"otherfile"
+					:q 		#退出而不保存修改
+					:q! 	#强行退出而不保存修改（未修改的文件可以直接:q，而修改过不想保存修改的必须强制:q!）
+					:wq 	#退出保存修改
+
+					#这里我使用":wq"退出保存修改，查看一下刚才的输入被保存到文件中了
+					mm@hk987.fun:~$ cat testfile
+					Hello!
+					Welcome to My Website:
+					hk987.fun
+
+					sentence 12345
+
+					#在Vim的命令模式下进入可视化模式的方法有三种：
+					#输入v进入字符可视化模式，使用光标选择是以字符为单位的
+					#输入V（大写）进入行可视化模式，使用光标选择是以行为单位的
+					#使用"CRTL+v"组合键，进入块可视化模式，可以使用光标选择一个矩形区域。
+					#可视化模式的使用方法将在本文的第4小节中详细说明
+					</code>
+					</pre>
+
+					<p>很多朋友初次使用Vim时，进入了命令模式，尝试改动文本的时候发现无法选择，也无法输入，顿时觉得Vim乱七八糟各种不好用，其实是因为不理解上面所说的几种模式，当使用熟练后就会发现，这种设计比鼠标编辑文本的效率要高很多。</p>
+					<p>Vim的四种输入模式介绍完毕，下面看Vim的命令模式下都有哪些常用的命令。</p>
+
+					<h2 id="Linux-vim-2">0×2.Vim编辑器命令模式常用命令</h2>
+					<p>Vim的命令模式下是不能使用退格键或鼠标来编辑文本的，但Vim提供了各种复杂的命令用于在命令模式下编辑文本。</p>
+					<h3 id="Linux-vim-3">a.控制光标的移动</h3>
+					<p>命令行模式下键盘上的hjkl这四个键和键盘上箭头键的对应关系如下，使用hjkl或者键盘上的箭头按键的效果是一样的：</p>
+					<p class="indent-p">
+						&nbsp;h&nbsp;&nbsp;j&nbsp;&nbsp;k&nbsp;&nbsp;l<br>
+						←&nbsp;↓&nbsp;↑&nbsp;→
+					</p>
+					<p>使用下面的组合键可以快速移动光标：</p>
+					<p class="indent-p">
+						[ctrl]+[b] 向上移动一页 backward；<br>
+						[ctrl]+[f] 向下移动一页 forward；<br>
+						[ctrl]+[u] 向上移动半页 up；<br>
+						[ctrl]+[d] 向上移动半页 down；<br>
+						[g] (小写g)按两下回到文章开头；<br>
+						[G] (大写G)按一下到文章末尾；<br>
+						[0] 回到光标行行首；<br>
+						[$] 到光标行行末；<br>
+						[w] 光标移动到下一字第一个字母；<br>
+						[e] 到下一字尾字母；<br>
+						[b] 到前一字首字母；<br>
+						[#l] 向后移动#位置（如果到达行末则停留），例如：3l 光标向后移动3位；
+					</p>
+					<p>上面这些组合键中，个人觉得比较实用的几个按键是翻页，到文章顶部或底部，以及去往行首和行末。</p>
+
+					<h3 id="Linux-vim-4">b.删除文字操作</h3>
+					<p>使用下面这些按键或按键组合可以快速删除一段或单个字符：</p>
+					<p class="indent-p">
+						[x] 删除光标所在位置的那个字符；<br>
+						[#x] 包括光标位置的字符向后删除#个；比如3x，删除3个字符；<br>
+						[X] 向前删除一个字符（光标所在位置前面那个字符被删除）；<br>
+						[#X] 向前删除#个字符，同上；<br>
+						[cw] 删除从光标位置到词尾的全部字符，删除后直接进入编辑模式。比如："t<span style="color: #ff0000;">e</span>st vi application"光标在e上，输入cw将删除"est"；<br>
+						[c#w] 从光标位置开始，向后删除#个单词，删除后直接进入编辑模式；比如"t<span style="color: #ff0000;">e</span>st vi application"光标在e上，输入c2w将删除"est vi"；<br>
+						[dd] 删除光标所在行；<br>
+						[#dd] 向下删除#行（包括光标所在行）；比如，输入"3dd"，就是包括光标所在行向下删除3行；<br>
+						[u] 回退操作，退回上一步，遇到误操作时，这个按键非常有用，它可以逐步退回；
+					</p>
+
+					<h3 id="Linux-vim-5">c.复制和粘贴操作</h3>
+					<p>使用下面这些按键或按键组合可以快速复制粘贴一段或单个字符：</p>
+					<p class="indent-p">
+						[yw] 复制光标所在位置到单词结尾的部分。比如："t<span style="color: #ff0000;">e</span>st vi application"光标在e上，则复制"est"；<br>
+						[#yw] 复制从光标位置，往后的#个字；比如："t<span style="color: #ff0000;">e</span>st vi application This is free software"光标在e上，输入"3yw"则复制"est vi application"；<br>
+						[yy] 复制光标所在行；<br>
+						[#yy] 包括光标所在行向下复制#行，比如："4yy"则向下复制4行；<br>
+						[p] 粘贴，如果复制的是一行或几行，按下p键的时候，会向下另起一新行粘贴刚才复制的这几行；如果复制的是一个单词或几个单词，按下p键的时候，会在当前光标位置后面粘贴出刚才复制的内容；
+					</p>
+
+					<h3 id="Linux-vim-6">d.字符替换操作</h3>
+
+					<p class="indent-p">
+						[r] 替换单个字符。如："t<span style="color: #ff0000;">e</span>st vi application"光标在e上，按一下r，然后输入s，"test"就变成了"tsst"；<br>
+						[R] 替换多个字符。按下这个键后vi界面底部会显示"REPLACE"，此时输入的字符会直接覆盖后面的字符，直到按下esc键；
+					</p>
+
+					<p>[ctrl]+[g] 在文本底部显示文件名、是否修改、文件是否为只读、有多少行、当前光标所在位置占%多少，显示如下：<br>
+					"filename" [Modified][readonly] line 30 of 187 16% col 15</p>
+
+					<h3 id="Linux-vim-7">e.字母大小写转换</h3>
+
+					<p class="indent-p">
+					在命令模式中，将全文的小写字母转换成大写字母输入ggguG，转小写输入gggUG；<br>
+					在命令模式中，转换当前光标所在位置到空格的单词为大写，输入gUw，转小写，输入guw；<br>
+					在命令模式中，转换当前光标所在位置后面五个单词单词为大写，输入gU5w，转成小写，输入gu5w；<br>
+					在命令模式中，转换当前光标所在行为小写，输入guu，反之输入gUU就能将当前行转换成大写；<br>
+					在命令模式中，转换光标所谓位置包括当前行往下3行为小写，输入3guu，反之输入3gUU就能将3行转换成大写；<br>
+					在命令模式中，转换光标位置到文章末尾为大写输入gUG，反之，转换光标位置到文章开头为大写输入gUgg；<br>
+					在命令模式中，转换光标位置到文章末尾为小写输入guG，反之，转换光标位置到文章开头为小写输入gugg；<br>
+					在命令模式中，转换光标位置到行首为小写输入gu0，反之，到行尾输入gu$；<br>
+					</p>
+
+					<h2 id="Linux-vim-8">0×3.Vim编辑器底行模式下常用命令</h2>
+
+					<p>末行模式常用命令（:）</p>
+					<p class="indent-p">
+						:set nu  显示行号；<br>
+						:4  跳到第四行；<br>
+						:/word  查找某字（回车后按n向下递归查找，按N向上递归查找）,比如查找"is",命令就是":/is"；<br>
+						:10,$s/is/was/g 文字替换操作，从当前文件的第10行开始搜索($s)，到最后一行(/g)，将"is"替换成"was"；
+						<br>
+						:%s/is/was/g 如果是从第一行到最后一行，直接使用%s即可，这一句的意思是从第一行到行末，将"is"替换成"was"；<br>
+						:%s/i/I/g 将全文中的小写i替换成大写I
+					</p>
+
+					<h2 id="Linux-vim-9">0×4.Vim编辑器可视化模式（Visual Mode）常用命令</h2>
+					<p>Vim编辑器的可视化模式（Visual Mode）允许使用光标选择一个高亮区域，然后对这个区域中的内容进行编辑操作。</p>
+					<p>假设我用vim打开一个文件，里面的内容如下，光标在红色1的位置，现在可以通过按下"Ctrl+v"进入可视化编辑模式的块模式：</p>
+					<p class="indent-p">
+						<span style="color: #ff0000;"><strong>1</strong></span> file edit view scrollback bookmarks<br>
+						2 file edit view scrollback bookmarks<br>
+						3 file edit view scrollback bookmarks<br>
+						4 file edit view scrollback bookmarks
+					</p>
+					<p>复制、粘贴、删除块区域实例：</p>
+					<p>将光标向下移动两格，再向右移动到view的末尾,会选一个矩形区域。使用键盘上的小写"d"，可以删除这个选择区域中的字符；使用小写的"y"可以复制选中的内容，然后可以使用"p"将刚才复制的矩形区域粘贴到光标所在位置；</p>
+					<p class="indent-p">
+						<span style="color: #ff0000;"><strong>1 file edit view</strong></span> scrollback bookmarks<br>
+						<span style="color: #ff0000;"><strong>2 file edit view</strong></span> scrollback bookmarks<br>
+						<span style="color: #ff0000;"><strong>3 file edit view</strong></span> scrollback bookmarks<br>
+						4 file edit view scrollback bookmarks
+					</p>
+					<p>块区域转换大小写实例:</p>
+					<p>选中一个块区域，然后可以使用键盘上的"Shift+~(1前面那个键)"来将选择的区域中的字符大小写转换；</p>
+					<p class="indent-p">
+						<span style="color: #ff0000;"><strong>1 FILE EDIT VIEW</strong></span> scrollback bookmarks<br>
+						<span style="color: #ff0000;"><strong>2 FILE EDIT VIEW</strong></span> scrollback bookmarks<br>
+						<span style="color: #ff0000;"><strong>3 FILE EDIT VIEW</strong></span> scrollback bookmarks<br>
+						4 file edit view scrollback bookmarks
+					</p>
+					<p>增加缩进和减少缩进实例:</p>
+					<p>将光标移动到你要增加缩进的开头一行，比如3，然后按"Ctrl+v",将光标向下移动到4的位置，之后按"Shift+&gt;"就能增加缩进；使用相同的方法选中需要减少缩进的行，按"Shift+&lt;"来减少缩进；</p>
+					<p class="indent-p">
+						1 FILE EDIT VIEW scrollback bookmarks<br>
+						2 FILE EDIT VIEW scrollback bookmarks<br>
+						<span style="color: #ff0000;"><strong>&nbsp;&nbsp;&nbsp;&nbsp;3</strong></span> FILE EDIT VIEW scrollback bookmarks<br>
+						<span style="color: #ff0000;"><strong>&nbsp;&nbsp;&nbsp;&nbsp;4</strong></span> file edit view scrollback bookmarks
+					</p>
+					<p>将选中区域使用rot13算法加密实例：</p>
+					<p>rot13算法是一种简易的替换式密码算法，在一些英文网络论坛用作隐藏八卦、妙句、谜题解答以及某些脏话的简单工具，目的是逃过版主或管理员的匆匆一瞥，rot13加密在vim中可以这样操作实现，首先使用可视化模式，选中一个矩形区域，按键盘上的小写"g"再输入一个"?"，选中的区域将被使用rot13加密；解密的方法就是再对这个区域执行一次加密；</p>
+					<p class="indent-p">
+						1 <span style="color: #ff0000;"><strong>svyr rqvg ivrj </strong></span>scrollback bookmarks<br>
+						2 <span style="color: #ff0000;"><strong>svyr rqvg ivrj </strong></span>scrollback bookmarks<br>
+						3 <span style="color: #ff0000;"><strong>svyr rqvg ivrj </strong></span>scrollback bookmarks<br>
+						4 file edit view scrollback bookmarks
+					</p>
+
+					<h2 id="Linux-vim-10">0×5.Vim创建加密文件</h2>
+					<p>可以在创建文件时添加参数-x来创建加密文件，所有被加密的文件打开时需要输入密码，请看下面的实例：</p>
+					<pre class="command-line" 
+						 data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'
+					     data-user="987" 
+					     data-host="hk987.fun" 
+					     data-output="2,3,4,5"> <!--指定哪些行为命令返回的结果，删除[987@hk987.fun]$前缀-->
+					<code class="language-bash">
+					vim -x jiami.txt
+					:set cm?    #在底行模式中，查看当前使用的加密算法，目前常见的加密算法有zip、blowfish、blowfish2（默认）
+					:set cm=blowfish2  #手动指定加密算法
+					:X   #重新设置秘钥（或set key=password）
+					:set key=  #清除加密
+					</code>
+					</pre>
+
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Linux基础]-6-Vim文本编辑器" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-6.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-6.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>

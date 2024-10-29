@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--前进!不择手段的前进-->
+<!--Copyright©hk987.fun-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="hk987-你在世俗里的名字不重要了">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-12-systemd服务管理 - Hk987.fun - www.Hk987.fun</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Linux基础]-12-systemd服务管理</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>这篇文章介绍Linux系统中基于systemd服务管理器如何去创建服务，介绍systemd服务管理器的服务启动脚本文件默认存放的位置，讲解利用systemd服务管理器启动和停止指定的服务。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					<ul class="contents">	
+						 <li><a href="#Linux-systemd-1">0×1.systemd简介</a></li>
+						 <li><a href="#Linux-systemd-2">0×2.使用systemctl管理服务</a></li>
+						 <li><a href="#Linux-systemd-3">0×3.systemd服务配置文件简介</a></li>
+						 <li><a href="#Linux-systemd-4">0×4.创建systemd服务并设置开机启动</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+					<h2 id="Linux-systemd-1">0×1.systemd简介</h2>
+
+					<p>先要了解systemd，首先需要简单的了解一下Linux系统启动过程，我们在启动一台Linux机器时，当Linux内核完成初始化以后，内核第一个启动的程序便是init程序，这个init程序的路径为/sbin/init，由于init程序本身存在性能瓶颈（对进程的管理是串行化的，所以容易出现阻塞情况，另一方面init功能单一，只是执行启动脚本，并不能对服务本身进行更多的管理），所以从CentOS7开始，逐渐被systemd取代作为默认的系统进程管理工具。</p>
+					<p>在最新的Linux系统内核中，Systemd是Linux系统内核启动后调用的第一个进程，PID为1，也是所有其它用户进程的父进程，它作为一个守护进程，作用是管理系统中的所有进程的启动、停止、重启、查看状态等。你可以使用systemctl命令来管理其他进程。</p>
+
+
+					<h2 id="Linux-systemd-2">0×2.使用systemctl管理服务</h2>
+
+					<p>systemd提供了一个非常强大的命令行工具systemctl，但为了兼容性它同时也提供了service、chkconfig命令，但本质上仍会被重定向至systemctl命令。</p>
+
+					<p>systemctl工具管理ssh服务实例：</p>
+
+					<p>● systemclt查看服务的状态信息</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#查看ssh服务的启动状态，下面的命令可以简写成systemctl status sshd，省略后面的.service
+					987@hk987.fun:~$ systemctl status sshd.service
+					sshd.service - OpenSSH server daemon #服务的描述
+					Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: enabled) #服务配置文件位置以及是否随机启动
+					Active: active (running) since Thu 2024-04-04 18:56:16 JST; 20s ago #服务目前的启动状态和启动时长
+						Docs: man:sshd(8) #服务应用程序的man帮助文档
+							man:sshd_config(5)
+					Main PID: 1028 (sshd) #服务启动后的主PID
+						Tasks: 1 (limit: 48510) 
+					Memory: 2.6M #服务进程占用的内存空间大小
+					CPU: 10ms #服务进程占用的cpu时间
+					CGroup: /system.slice/sshd.service #服务启动时调用的命令等
+						└─1028 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+					 	#下面是服务启动时产生的日志信息，包括监听的端口号，PID，由哪个守护进程创建的daemon等等
+						4月 04 18:56:16 localhost.localdomain systemd[1]: Starting OpenSSH server daemon...
+						4月 04 18:56:16 localhost.localdomain sshd[1028]: Server listening on 0.0.0.0 port 22.
+						4月 04 18:56:16 localhost.localdomain sshd[1028]: Server listening on :: port 22.
+						4月 04 18:56:16 localhost.localdomain systemd[1]: Started OpenSSH server daemon.
+					</code>
+					</pre>
+
+					<p>● systemclt停止服务</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#停止ssh服务
+					987@hk987.fun:~$ systemctl stop sshd
+
+					#再次查看ssh服务信息
+					987@hk987.fun:~$ systemctl status sshd
+						sshd.service - OpenSSH server daemon
+						Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: enabled>
+						Active: inactive (dead) #Active显示服务已经dead，已经停止
+						Docs: man:sshd(8)
+								man:sshd_config(5)
+					</code>
+					</pre>
+
+					<p>● systemclt启动服务</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#启动ssh服务
+					987@hk987.fun:~$ systemctl start sshd
+					</code>
+					</pre>
+
+					<p>● systemclt重启服务</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#要重启服务，可以使用restart选项，此选项的作用是，若服务正在运行中，则重启服务，若服务不在运行中，则会启动
+					#restart选项不会重新加载服务的配置文件
+					987@hk987.fun:~$ sudo systemctl restart sshd
+
+					#也可使用try-start选择，它只会在服务已经运行的情况下重启服务，没有运行的服务不会启动
+					987@hk987.fun:~$ sudo systemctl try-start sshd
+
+					#也可以使用reload选项，reload选项会重新加载服务的配置文件
+					987@hk987.fun:~$ sudo systemctl reload sshd
+					</code>
+					</pre>
+
+					<p>● systemclt设置服务开机启动</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#设置ssh服务开机启动，需要root权限才能执行
+					987@hk987.fun:~$ sudo systemctl enable sshd
+					Created symlink /etc/systemd/system/multi-user.target.wants/sshd.service → /usr/lib/systemd/system/sshd.service.
+
+					#取消ssh服务开机启动，需要root权限才能执行，所以要加sudo
+					987@hk987.fun:~$ sudo systemctl disable sshd
+					Removed "/etc/systemd/system/multi-user.target.wants/sshd.service".
+					</code>
+					</pre>
+
+					<h2 id="Linux-systemd-3">0×3.systemd服务配置文件简介</h2>
+
+					<p>通过上面的介绍我们知道systemctl可以快速的查看一个服务的状态，调整服务是否开机启动以及完成服务的启动与停止，然而这些操作实际上依赖于服务本身的配置文件，下面是服务的配置文件在Linux系统中指定的存放位置：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#系统默认的服务配置文件路径
+					/lib/systemd/system
+
+					#用户默认的服务配置文件路径
+					#这个路径与系统默认的服务配置文件路径中的内容同步
+					#修改了这个路径中的配置文件/lib/systemd/system这个目录中的配置文件也会被同步修改
+					/usr/lib/systemd/system
+
+					#系统管理员自定义的配置文件存放路径
+					#如果一个服务配置文件同时存在这个目录与系统默认的服务配置文件目录中
+					#它将忽略系统默认的配置文件路径中的配置
+					/etc/systemd/system
+
+					#运行时产生的配置文件
+					#部分应用会在运行时将配置文件存放到这个目录中，不常用
+					/run/systemd/system
+					</code>
+					</pre>
+
+					<p>进入用户默认的服务配置文件路径，查看sshd.service服务配置文件内容，在后面会给出配置文件每行信息详细的解释：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					987@hk987.fun:~$ cd /usr/lib/systemd/system
+					987@hk987.fun:~$ more sshd.service
+					[Unit]
+					Description=OpenSSH server daemon hk987.fun 
+					Documentation=man:sshd(8) man:sshd_config(5)
+					After=network.target sshd-keygen.target
+					Wants=sshd-keygen.target
+
+					[Service]
+					Type=notify
+					EnvironmentFile=-/etc/sysconfig/sshd
+					ExecStart=/usr/sbin/sshd -D $OPTIONS
+					ExecReload=/bin/kill -HUP $MAINPID
+					KillMode=process
+					Restart=on-failure
+					RestartSec=42s
+
+					[Install]
+					WantedBy=multi-user.target
+					</code>
+					</pre>
+					<p>下面逐行分析sshd.service文件中的内容：</p>
+					<p>[Unit] -- Unit单元用来定义服务的一些元数据，包含服务描述，文档位置，启动的先后顺序等等；</p>
+					<p>Description= -- 这个后面的内容就是我们在systemctl status sshd命令中看到的服务描述；</p>
+					<p>Documentation= -- 后面是服务应用程序的文档位置，例如，可以用man sshd(8)命令来查看这一部分的文档信息；</p>
+					<p>After= -- 这个字段指定在sshd服务启动之前，应该先确保哪些服务先启动，本例中，服务应该确保network.target也就是网络相关的系统服务先启动，并且sshd-keygen.target也应该先启动；</p>
+					<p>Wants= -- 这个字段指定了与sshd服务启动弱关联的服务，也就意味着在After字段中指定的sshd-keygen.target启不启动，与sshd服务是弱关联的，并不会影响sshd服务的启动，但是network.target却是必要的；</p>
+					<p>[Service] -- Service区域用来定义服务的配置信息，只有服务类型的配置文件（后缀是.service的配置文件）才有这个区域；</p>
+					<p>Type= -- 定义启动时的进程行为，它有以下几种值，关于这些值的详细含义请参考man文档：</p>
+					<p class="indent-p">● Type=simple：默认值，执行ExecStart指定的命令，启动主进程</p>
+					<p class="indent-p">● Type=forking：以 fork 方式从父进程创建子进程，创建后父进程会立即退出</p>
+					<p class="indent-p">● Type=oneshot：一次性进程，Systemd 会等当前服务退出，再继续往下执行</p>
+					<p class="indent-p">● Type=dbus：当前服务通过D-Bus启动</p>
+					<p class="indent-p">● Type=notify：当前服务启动完毕，会通知Systemd，再继续往下执行</p>
+					<p class="indent-p">● Type=idle：若有其他任务执行完毕，当前服务才会运行</p>
+					<p>EnvironmentFile= -- 如果你创建的服务需要创建一些环境变量，可以将环境变量写入这个字段后面指定的文件中，systemd会将其自动添加到服务的环境变量空间中，提供给服务程序调用，环境变量文件中的内容格式如下，这样当服务程序启动后，就能使用MY_VAR变量的值：</p>
+					<p class="indent-p">● export MY_VAR=hk987.fun</p>
+					<p>ExecStart= -- 启动当前服务时执行的命令</p>
+					<p>ExecReload= -- 重启服务时执行的命令</p>
+					<p>KillMode= -- 定义systemd如何停止服务，可以设置的值如下：</p>
+					<p class="indent-p">● control-group（默认值）：当前控制组里面的所有子进程，都会被杀掉</p>
+					<p class="indent-p">● process：只杀主进程</p>
+					<p class="indent-p">● mixed：主进程将收到SIGTERM信号，子进程收到SIGKILL信号</p>
+					<p class="indent-p">● none：没有进程会被杀掉，只是执行服务的stop命令</p>
+					<p>Restart= -- 配置当服务的进程退出、被杀死或超时时，是否重新启动服务，可以设置的值如下：</p>
+					<p class="indent-p">● no 服务将不会重新启动，这是默认设置，不指定这个字段时，默认的设置</p>
+					<p class="indent-p">● on-success 仅当服务进程完全退出时重新启动（退出代码0）</p>
+					<p class="indent-p">● on-failure 仅在服务进程异常退出时重启，所谓“异常退出”是指：退出码不为"0"</p>
+					<p class="indent-p">● on-abnormal 如果进程因信号或超时而终止时重新启动</p>
+					<p class="indent-p">● on-watchdog 当看门狗超时而重新启动</p>
+					<p class="indent-p">● on-abort 如果进程由于未指定为干净退出状态的未捕获信号而退出，则重新启动</p>
+					<p class="indent-p">● always 总是重新启动</p>
+					<p>RestartSec= -- 重新启动服务前的等待时间（以秒为单位）</p>
+					<p>[Install] -- 这个字段用来定义服务是否开机启动</p>
+					<p>WantedBy= -- 当指定了这个参数时，我们使用systemctl enable将服务设置成开机自启动之后，服务的符号链接会放入 /etc/systemd/system 目录下面以Target名 + .wants 后缀构成的子目录中（代入本例为multi-user.target.wants，也就意味着当我们使用systemctl enable sshd将sshd服务设置成开机启动后，在/etc/systemd/system/multi-user.target.wants目录中会自动创建一个sshd.service -> /usr/lib/systemd/system/sshd.service 链接文件），而我们还知道/etc/systemd/system这个路径是Linux系统在开机时调用（自动启动）的服务配置文件路径</p>
+
+					<h2 id="Linux-systemd-4">0×4.创建systemd服务并设置开机启动</h2>
+
+					<p>通过上面的介绍，我们已经知道了一个服务文件的组成，现在来尝试着创建一个自定义的服务：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#在/etc/systemd/system/目录中创建一个hk987.service服务配置文件（需要root权限，所以要sudo）
+					#根据我们上面对服务配置文件的解析，我们知道这个配置文件，需要等网络服务启动之后才会运行
+					#必须要加上network-online.target，否则很可能服务没有等待获取到地址就开始ping，dns会解析失败从而让服务启动失败
+					#并且服务运行后，会用bash去执行用户家目录的hk987.sh脚本文件，如果是调用其它的程序，建议用程序的绝对路径，不容易报错
+					#User=字段指定用什么权限的用户去执行ExecStart命令，本例是用987这个用户去执行
+					#并且如果设置了开机启动，会在/etc/systemd/system/multi-user.target.wants目录生成软连接指向/etc/systemd/system/hk987.service文件
+					987@hk987.fun:~$ sudo vim /etc/systemd/system/hk987.service
+					[Unit]
+					Description=hk987 service
+					After=network.target network-online.target
+
+					[Service]
+					Type=simple
+					ExecStart=bash /home/987/hk987.sh
+					User=987 
+
+					[Install]
+					WantedBy=multi-user.target
+
+					#/home/987/hk987.sh文件内容如下
+					#使用ping命令每隔3秒（-i参数指定ping时间间隔，单位秒）
+					#去ping b站域名，并将ping返回的结果写入hk987.txt文件中
+					#注意：写入的文件一定要用绝对路径/home/987/hk987.txt
+					#另外：hk987.sh需要有可执行权限（sudo chmod +x hk987.sh）
+					#!/bin/bash
+					ping -i 3 bilibili.com >> /home/987/hk987.txt
+					</code>
+					</pre>
+
+					<p>配置完成之后，就可以使用systemctl工具来启停服务了：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#启动hk987服务（或sudo systemctl start hk987可省略.service后缀）
+					#这样创建的服务，适用于任何自定义的程序，只需要将程序完整路径写入到ExecStart字段后即可
+					#restart，reload，stop，设置开机自启动都行
+					987@hk987.fun:~$ sudo systemctl start hk987.service
+					
+					#使用tail -f监控hk987.txt文件内容，就能看到ping返回的结果
+					987@hk987.fun:~$ tail -f /home/987/hk987.txt
+
+					#查看服务状态
+					987@hk987.fun:~$ systemctl status hk987.service 
+					● hk987.service - hk987 service
+					Loaded: loaded (/etc/systemd/system/hk987.service; disabled; preset: disabled)
+					Active: active (running) since Tue 2024-04-09 10:41:41 JST; 7s ago
+					Main PID: 2425 (bash)
+					Tasks: 2 (limit: 48511)
+					Memory: 840.0K
+					CPU: 4ms
+					CGroup: /system.slice/hk987.service
+					├─2425 bash /home/987/hk987.sh
+					└─2426 ping -i 3 bilibili.com
+
+					4月 09 10:41:41 localhost.localdomain systemd[1]: Started hk987 service.
+
+					#设置开机自启动
+					987@hk987.fun:~$ sudo systemctl enable hk987
+					Created symlink /etc/systemd/system/multi-user.target.wants/hk987.service → /etc/systemd/system/hk987.service.
+					</code>
+					</pre>
+
+					<p>不论什么服务的配置文件，修改之后，都需要用systemctl daemon-reload命令来重新加载配置，例如：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#修改一下服务的描述，保存
+					987@hk987.fun:~$ sudo vim /etc/systemd/system/hk987.service
+					[Unit]
+					Description=hk987.fun service
+					After=network.target network-online.target
+
+					[Service]
+					Type=simple
+					ExecStart=bash /home/987/hk987.sh
+					User=987 
+
+					[Install]
+					WantedBy=multi-user.target
+
+					#需要先执行下面的命令重新加载服务配置文件
+					987@hk987.fun:~$ sudo systemctl daemon-reload
+					#再重启服务
+					987@hk987.fun:~$ sudo systemctl restart hk987
+
+					#再查看服务状态就能看到描述信息被改变了
+					987@hk987.fun:~$ systemctl status hk987
+					● hk987.service - hk987.fun service
+					...省略输出...
+					</code>
+					</pre>
+
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+					</p>
+					<p>*原文连接:<a title="[Linux基础]-12-systemd服务管理" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-12.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-12.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>
