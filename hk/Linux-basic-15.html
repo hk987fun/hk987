@@ -80,20 +80,439 @@
 
 					<!-- 正文 -->
 					<h2 id="Linux-NetworkManager-1">0×1.Linux命令行显示网络连接</h2>
-					<h2 id="Linux-NetworkManager-2">0×2.Linux命令行配置有线网络</h2>
-					<h2 id="Linux-NetworkManager-3">0×3.Linux命令行配置无线网络</h2>
-					<h2 id="Linux-NetworkManager-4">0×4.Linux图形命令行配置网络</h2>
-					
-				
+
+					<p>在Linux中有众多显示网络连接的命令，本文介绍的ip命令属于 iproute2 软件包。iproute2 是 Linux 系统中用于管理网络的工具集，包含了多种网络配置和管理工具，例如 ip、ss、tc 等，用于替代较旧的 ifconfig 和 route 命令。</p>
+
+					<p>在大部分系统中默认集成了iproute2软件包，如果输入ip回车后提示未找到这个命令，可以通过下面的命令安装：</p>
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
+					#ubuntu
+					987@hk987.fun:~$ sudo apt install iproute2
+
+					#Arch
+					987@hk987.fun:~$ sudo pacman -S iproute2
+
+					#Rocky
+					987@hk987.fun:~$ sudo dnf install iproute2
+					</code>
+					</pre>
+
+					<p>● 查看网络接口信息</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#完整命令 ip address 下面是简写
+					987@hk987.fun:~$ ip a
+					</code>
+					</pre>
+
+					<p>● 查看路由信息</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#完整命令 ip route 下面是简写
+					987@hk987.fun:~$ ip r
+					</code>
+					</pre>
+
+					<p>● 查看指定的网卡信息，本例是命名为enp4s的网卡</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					987@hk987.fun:~$ ip a show dev enp4s0
+					#或省略dev，结果相同
+					987@hk987.fun:~$ ip a show enp4s0
+					</code>
+					</pre>
+
+					<p>● 查看网卡的统计信息（包含数据包的收发计数）</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					987@hk987.fun:~$ ip -s link
+					</code>
+					</pre>
+
+					<h2 id="Linux-NetworkManager-2">0×2.Linux命令行配置有线网络</h2>
+
+					<p>● 使用ip命令，给网卡添加临时ip地址</p>
+					<p>使用 sudo ip address add 命令添加的 IP 地址是临时的，只在当前会话生效。如果系统重启或网络服务重启，这些临时配置将会丢失。</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#给enp4s0这块网卡，添加一个ip地址
+					987@hk987.fun:~$ sudo ip a add 192.168.1.201/24 dev enp4s0
+
+					#配置默认网关
+					987@hk987.fun:~$ sudo ip route add default via 192.168.1.1
+					</code>
+					</pre>
+
+					<p>● 给网卡添加永久ip地址</p>
+					<p>使用 sudo ip address add 命令添加的 IP 地址是临时的，只在当前会话生效。如果系统重启或网络服务重启，这些临时配置将会丢失，下面是添加永久ip和网络配置的方法。</p>
 					
-					987@hk987.fun:~$ 
+					<p>★ 通过修改配置文件配置网络：</p>
+
+					<p>● 在 Debian/Ubuntu 系列中</p>
+
+					<p>所有操作都是使用root账户，普通用户请在命令前加上sudo。</p>
+					<p>可以通过编辑 /etc/netplan/ 目录中的 YAML 配置文件（通常是 50-cloud-init.yaml 或类似的文件名）：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#先来查看一下这个目录下有哪些文件
+					root@hk987.fun:/etc/netplan# ls
+					01-network-manager-all.yaml  50-cloud-init.yaml
+
+					#查看一下每个文件的内容
+					root@hk987:/etc/netplan# more 01-network-manager-all.yaml 
+					#-这里的renderer: NetworkManager代表
+					network:
+					  version: 2
+					  renderer: NetworkManager
+					root@hk987:/etc/netplan# more 50-cloud-init.yaml 
+
+					#-如果是通过DHCP自动获取IP，可以按照下面这个配置
+					network:
+					    ethernets:
+					        ens33:
+					            dhcp4: true
+					    version: 2
+
+					#-如果是手动设置静态ip地址，可以按照下面的配置，注意将ens33改成你的网卡名称
+					#-然后根据自己网络情况更改ip地址、网关和dns地址
+					#-注意缩进，子项比父项缩进一个空格
+					network:
+					  version: 2
+					  ethernets:
+					    ens33:
+					      dhcp4: false
+					      addresses:
+					        - 192.168.1.234/24
+					      gateway4: 192.168.1.1
+					      nameservers:
+					        addresses:
+					          - 8.8.8.8
+
+					 ##注意！！上面这两段配置要么使用DHCP自动获取，要么使用静态IP，两段配置不能同时存在yaml文件中
+					</code>
+					</pre>
+
+					<p>上面这些配置是 Netplan 的网络配置文件格式，用于在 Ubuntu 和基于 Ubuntu 的系统上配置网络。Netplan 使用 YAML 格式定义网络接口的配置，包括静态 IP 地址、网关和 DNS 服务器。以下是对配置各个部分的解释：</p>
+					<p>network: 顶级键，表示网络配置的开始。<br>version: Netplan 配置文件格式的版本号。2 表示 Netplan 目前使用的最新版本，通常是固定的。<br>ethernets: 定义以太网接口的设置。这里的 ethernets 表示网络接口的类型（有线网络），Netplan 还可以配置其他类型的接口，如 wifis（无线网络）。<br>eth0: 这是接口名称。在这个示例中，配置应用于 eth0 接口（系统中的一个以太网接口），名称需与实际的接口名称一致。<br>dhcp4: 是否启用 IPv4 的 DHCP。no 表示不使用 DHCP 自动获取 IP 地址，而是配置静态 IP 地址。<br>addresses: 设置静态 IP 地址。这里是一个列表，以便支持多个 IP 地址。192.168.1.100/24 表示静态 IP 地址和子网掩码。<br>gateway4: IPv4 的默认网关。在此配置中，192.168.1.1 是默认网关地址。<br>nameservers: 配置 DNS 服务器。<br>addresses: DNS 服务器地址列表。这里指定了 8.8.8.8 和 8.8.4.4，分别是 Google 的公共 DNS 服务器。</p>
+
+					<p>Netplan 的定位是一个"网络配置抽象层"，它并不是独立的网络管理服务，而是提供一个统一的、简洁的 YAML 配置接口，便于管理和配置网络。Netplan 将实际的网络管理任务委托给 NetworkManager（桌面环境下常用的网络管理工具） 或 systemd-networkd（非桌面环境常用的网络管理工具），Netplan 根据 YAML 配置文件内容，将其转换成 NetworkManager 或 systemd-networkd 能够理解的格式和配置，供它们使用。</p>
+
+					<p>这就意味着，在最新的Debian/Ubuntu 系列中，我们只需要更改/etc/netplan目录中的配置文件，就能实现网络配置，无需再去修改<br>/etc/NetworkManager/system-connections/<br>或<br>/etc/systemd/network/<br>中的配置内容了，这两个路径前者是 NetworkManager 配置文件存放位置，后者是 systemd-networkd 配置文件存放位置。</p>
+
+					<p>那么如何确保 Netplan 使用 NetworkManager 或者 systemd-networkd 呢？</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#例如我们可以在 /etc/netplan/ 中的 YAML 配置文件中，指定 NetworkManager 作为 renderer
+					#systemd-networkd同理
+					network:
+					  version: 2
+					  renderer: NetworkManager
+					  ethernets:
+					    ens33:
+					      dhcp4: yes
+					</code>
+					</pre>
+					<p>例如Ubuntu中，默认的01-network-manager-all.yaml文件中，就全局指定了NetworkManager作为renderer，这样，Netplan 会将配置转换成 NetworkManager 可以使用的配置文件。</p>
+
+					<p>在修改了Netplan配置之后，可以用下面的命令让配置立刻生效：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#让配置立刻生效，并重新生成传递给NetworkManager或systemd-networkd的配置文件提供给它们调用
+					hk987@hk987.fun:~$ sudo netplan apply
+					</code>
+					</pre>
+
+					<p>那么我们如何判断当前的系统使用的是NetworkManager还是systemd-networkd呢？</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#-可以通过查看服务状态，通过下面两条命令
+					#-查看服务器哪一个网络组件是安装并且active(running)的
+					hk987@hk987.fun:~$ systemctl status systemd-networkd
+					hk987@hk987.fun:~$ systemctl status NetworkManager
+					</code>
+					</pre>
+
+					<p>就例如，在服务器Ubuntu系统中，没有安装图形界面的情况下，如果使用systemd-networkd作为网络管理组件，因此Netplan会将配置传递给systemd-networkd，使用systemctl status查看的时候发现，Netplan会在（/run/systemd/network/）目录中生成临时的配置文件（10-netplan-ens33.network）， 提供给systemd-networkd调用。 </p>
+
+
+					<p>● 在 CentOS/RHEL/Rocky Linux 系列中</p> 
+
+					<p>在Rocky9系统中，默认使用NetworkManager网络管理组件时，网络配置文件保存在/etc/NetworkManager/system-connections目录中：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#查看配置文件
+					987@hk987.fun:~$ cd /etc/NetworkManager/system-connections &amp;&amp; ls
+					ens160.nmconnection
+
+					# ens160.nmconnection文件内容如下（确保拥有读取权限）
+					987@hk987.fun:~$ sudo more ens160.nmconnection 
+
+					[connection]
+					id=ens160
+					uuid=c18d7ea1-7f92-3575-9feb-8da6cda15c63
+					type=ethernet
+					autoconnect-priority=-999
+					interface-name=ens160
+					timestamp=1730368130
+
+					[ethernet]
+
+					[ipv4]
+					method=auto
+
+					[ipv6]
+					addr-gen-mode=eui64
+					method=auto
+
+					[proxy]
+					</code>
+					</pre>
+					<p>上面这段内容是一个 NetworkManager 连接配置文件（ens160.nmconnection），用于描述以太网接口 ens160 的设置。<br>以下是各部分的解释：<br><br>
+					* [connection] 部分<br>
+					id=ens160: 连接的名称或标识符，通常与网络接口的名称相同。<br>
+					uuid=c18d7ea1-7f92-3575-9feb-8da6cda15c63: 该连接的唯一标识符（UUID），用于区分不同的连接配置。<br>
+					type=ethernet: 指定连接的类型为以太网。<br>
+					autoconnect-priority=-999: 这个值用于确定自动连接的优先级。值越低，优先级越低。在某些情况下，可以用负值来避免自动连接。<br>
+					interface-name=ens160: 指定要绑定到该连接的网络接口名称。<br>
+					timestamp=1730368130: 连接配置文件的时间戳，通常是 Unix 时间戳，表示文件的创建或最后修改时间。<br><br>
+					* [ethernet] 部分<br>
+					这个部分通常包含以太网特定的设置。在这个示例中，该部分为空，表示没有额外的以太网配置。<br><br>
+					* [ipv4] 部分<br>
+					method=auto: 指定 IPv4 地址的分配方式为自动（即使用 DHCP）。这意味着该接口将通过 DHCP 服务器自动获取 IP 地址、网关和 DNS 设置。<br><br>
+					* [ipv6] 部分<br>
+					addr-gen-mode=eui64: 指定 IPv6 地址生成模式为 EUI-64，这意味着系统将使用网络接口的 MAC 地址生成一个唯一的 IPv6 地址。<br>
+					method=auto: 表示 IPv6 地址的分配方式也是自动（通过 DHCPv6 或其他方式）。<br><br>
+					* [proxy] 部分<br>
+					这个部分用于指定网络代理设置。在这个示例中，该部分为空，表示没有设置任何代理。</p>
+
+					<p>如果你想将 ens160.nmconnection 配置为静态 IP 地址，可以修改 [ipv4] 部分，添加静态 IP 地址、网关和 DNS 服务器信息。以下是一个示例配置：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">			
+					[connection]
+					id=ens160
+					uuid=c18d7ea1-7f92-3575-9feb-8da6cda15c63
+					type=ethernet
+					autoconnect-priority=-999
+					interface-name=ens160
+					timestamp=1730368130
+
+					[ethernet]
+
+					[ipv4]
+					method=manual
+					addresses=192.168.1.100/24
+					gateway=192.168.1.1
+					dns=8.8.8.8;8.8.4.4;
+
+					[ipv6]
+					addr-gen-mode=eui64
+					method=auto
+
+					[proxy]
+					</code>
+					</pre>
+					<p>解释各项：<br>
+					method=manual: 设置为手动配置（静态 IP）。<br>
+					addresses=192.168.1.100/24: 这里指定了静态 IP 地址和子网掩码（/24 表示 255.255.255.0）。<br>
+					gateway=192.168.1.1: 设置默认网关。<br>
+					dns=8.8.8.8;8.8.4.4;: 指定 DNS 服务器地址，可以用分号分隔多个 DNS 地址。</p>
+
+					<p>实际上，大部分配置可以省略，以下是一个最精简的 NetworkManager 连接配置示例，用于静态 IP 配置 ens160 接口：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					[connection]
+					id=ens160
+					type=ethernet
+					interface-name=ens160
+
+					[ipv4]
+					method=manual
+					addresses=192.168.1.100/24
+					gateway=192.168.1.1
+					dns=8.8.8.8;
+
+					[ipv6]
+					method=ignore
+					</code>
+					</pre>
+					<p>解释各项：<br>
+					    * [connection] 部分定义了连接的基本信息。<br>
+					    id: 连接名称。<br>
+					    type: 连接类型为以太网。<br>
+					    interface-name: 绑定的网络接口名称。<br>
+					    * [ipv4] 部分:<br>
+					        method=manual: 设置为手动配置。<br>
+					        addresses: 静态 IP 地址和子网掩码。<br>
+					        gateway: 默认网关。<br>
+					        dns: DNS 服务器,可用分号分割多个dns服务器。<br>
+					    * [ipv6] 部分:<br>
+					        method=ignore: 指定不使用 IPv6。<br>
+					这个配置提供了静态 IP 地址所需的最基本设置，省略了不必要的字段，如果想要自动获取IP将ipv4部分下只保留method=auto即可。</p>
+					<p><br>修改了配置文件之后，使用下面的命令重启网络服务以及ens160网卡，重新加载网络连接配置：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#如果你是远程ssh连接的服务器，输入下面命令后，IP地址改变，服务重启，连接就会断开，需要重新连接新的IP地址
+					987@hk987.fun:~$ sudo systemctl restart NetworkManager &amp;&amp; sudo nmcli connection down ens160 &amp;&amp; sudo nmcli connection up ens160 
+					</code>
+					</pre>
+
+					<p>● 在 Arch Linux/Manjaro 系列中</p>
+
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#如果Arch系统使用的是NetworkManager，那么配置文件一般存放在下面这个目录
+					#大家可以参考本文前面的描述对这个配置文件进行修改，这里不再赘述
+					#如果这个目录中没有内容，那可能就是配置文件被删掉了，可以手动创建
+					#不手动创建系统也会通过DHCP获取到IP地址，这个配置被存放在内存中
+					987@hk987.fun:~$ ls /etc/NetworkManager/system-connections/
+					'有线连接 1.nmconnection'
+					</code>
+					</pre>
+					<p>如果Arch系统使用了Netplan来配置IP，那么同Ubuntu系列一样，netplan生成的配置文件可能存放在上面这个目录或/run目录下，可以通过观察systemctl status NetworkManager来判断。</p>
+
+					<p>★ 通过配置文件配置网络总结：</p>
+					<p>目前主流的网络管理组件有两个，一个是NetworkManager，另一个是systemd-networkd，其中前者一般用在有图形界面的系统中（但也可以用在没有图形界面的服务器版系统中），并提供了一整套图形界面操作的方法，后者在没有图形界面的系统用的比较多，除了这两种网络管理组件，社区还提供了类似Netplan这种网络配置工具，它可以使用统一的格式配置网络参数，然后再将Netplan配置中的信息，自动生成NetworkManager或systemd-networkd可以读取的配置文件。</p>
+
+					<p>★ 通过命令配置网络</p>
+					<p>因为 systemd-networkd 的网络配置是基于配置文件的，没有像NetworkManager这样提供配置命令，所以下面以NetworkManager网络配置组件举例：</p>
+
+					<p>● 显示网络信息：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#直接使用nmcli，显示网络详细详细
+					987@hk987.fun:~$ nmcli
 					
+					#列出所有已配置的网络连接
+					987@hk987.fun:~$ nmcli connection show
+
+					#显示所有网络接口的状态（连接状态、类型等）
+					987@hk987.fun:~$ nmcli device status
+					</code>
+					</pre>
+
+					<p>● 创建自定义有线网络配置文件，并激活：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#这条命令创建了一个名为 hk987 的有线网络配置文件，绑定到网络接口 ens33，并设置为在系统启动时自动连接
+					987@hk987.fun:~$ sudo nmcli connection add type ethernet ifname ens33 con-name "hk987" autoconnect yes
+
+					#创建完成后查看下面的目录，就会看到一个是我们新创建的hk987.nmconnection，另外一个是系统默认创建的有线网络连接配置文件
+					987@hk987.fun:~$ sudo ls /etc/NetworkManager/system-connections
+					'有线连接 1.nmconnection'   hk987.nmconnection
+					
+					#激活hk987.nmconnection这个配置文件，激活后，系统默认的'有线连接 1.nmconnection'就会被禁用，以后系统会默认使用hk987.nmconnection的配置来启动有线网络
+					987@hk987.fun:~$ sudo nmcli connection up hk987 
+					</code>
+					</pre>
+
+					<p>● 停用并删除指定的网络配置文件：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#停用hk987这个网络配置，系统会自动切换回'有线连接 1.nmconnection'配置
+					987@hk987.fun:~$ sudo nmcli connection down hk987 
+
+					#删除hk987配置
+					987@hk987.fun:~$ sudo nmcli connection delete hk987 
+					</code>
+					</pre>
+
+					<p>● 给指定的有线网络配置文件，添加静态IP配置：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#首先，需要添加静态IP配置的文件必须存在，如果不存在，按照下面的命令添加，本例配置文件取名为hk987
+					987@hk987.fun:~$ sudo nmcli connection add type ethernet ifname ens33 con-name "hk987" autoconnect yes
+					
+					#当/etc/NetworkManager/system-connections目录中有了hk987.nmconnection配置文件之后
+					#再使用下面的命令修改这个配置文件的内容，修改成静态IP地址，并且配置网关和dns参数
+					987@hk987.fun:~$ sudo nmcli connection modify "hk987" ipv4.method manual ipv4.addresses 192.168.1.123/24 ipv4.gateway 192.168.1.1 ipv4.dns 8.8.8.8
+
+					#重新激活hk987这个静态配置，让配置生效
+					987@hk987.fun:~$ systemctl restart NetworkManager &amp;&amp;  nmcli con up hk987
+					</code>
+					</pre>
+
+					<h2 id="Linux-NetworkManager-3">0×3.Linux命令行配置无线网络</h2>
+
+					<p>★ 使用NetworkManager网络管理组件的nmcli命令，可以搜索wifi，连接到指定的wifi。</p>
+
+					<p>● 搜索附近wifi并连接：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#搜索周围的wifi信号，wifi信号强弱会由高到低排列
+					987@hk987.fun:~$ nmcli device wifi list
+					
+					#连接到指定的wifi
+					#如果wifi的SSID号包含奇怪的字符，可以通过BSSID连接
+					#例如：nmcli device wifi connect 00:11:22:33:44:55 password "your_wifi_password"
+					#将SSID替换成wifi的BSSID即可
+					987@hk987.fun:~$ sudo nmcli device wifi connect "Tenda_1" password "12345678"
+
+					#如果连接的wifi是开放网络，可以如下
+					987@hk987.fun:~$ sudo nmcli device wifi connect "SSID"
+					#或
+					987@hk987.fun:~$ sudo nmcli device wifi connect "BSSID"
+
+					#连上wifi后/etc/NetworkManager/system-connections/目录会生成一个对应wifi SSID的配置文件
+					987@hk987.fun:~$ sudo ls /etc/NetworkManager/system-connections/
+					hk987.nmconnection  Tenda_1.nmconnection
+					</code>
+					</pre>
+
+					<p>● 如果你的设备有多个 Wi-Fi 适配器（wifi网卡），可以指定使用哪个适配器去连接（如 wlan1）：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#指定使用wlan1这块网卡去连接
+					987@hk987.fun:~$ sudo nmcli device wifi connect "SSID" password "your_wifi_password" ifname wlan1
+					</code>
+					</pre>
+
+					<p>★ 使用systemd-networkd作为网络管理工具如何连接wifi</p>
+					<p>可以配合wpa_supplicant来管理 Wi-Fi 网络的连接，wpa_supplicant 是 Linux 和其他操作系统中用于管理无线网络连接的工具，特别是针对 WPA（Wi-Fi Protected Access）和 WPA2 协议的连接，支持包括 WEP、WPA、WPA2 和 WPA3 在内的多种加密协议，因此能兼容不同安全需求的无线网络。<br>它的名字来源于“WPA Supplicant”，意为“WPA 客户端”，它可以充当设备和无线网络之间的“客户端”，负责处理加密、身份验证以及网络连接等任务，请看下面的示例：</p>
+
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#0-查看wifi网卡名称，假设这里看到的网卡名称是wlan2
+					987@hk987.fun:~$ ip a
+					987@hk987.fun:~$ sudo ip link set wlan2 up
+
+					#1-扫描附近wifi
+					#wlan2是我们的wifi网卡名称，首先我们使用iwlist工具扫描附近的wifi，然后再筛选出结果中的SSID显示出来
+					987@hk987.fun:~$ iwlist wlan2 scan | grep ESSID
+					
+					#2-连接到指定的wifi
+
+					#首先根据我们需要连接的wifi信息，创建一个密码连接文件，前面是你要连接的wifi名称，后面是这个wifi的密码
+					987@hk987.fun:~$ wpa_passphrase "wifi_name" "wifi_password" > hk987.conf
+					
+					#如果wifi的名称中包含特殊字符，可以先使用iwlist wlan2 scan查看周围wifi的完整信息，找到对应SSID的Address，这个Address字段后面就是这个wifi的BSSID，然后修改我们生成的hk987.conf文件，加入BSSID信息即可，如下
+					network={
+					    ssid="YourSSID" #如果wifi名字中有无法识别的乱码，可以删除这个字段
+					    psk="your_Password" #wifi密码字段
+					    bssid=00:11:22:33:44:55  #加入wifi对应的BSSID号
+					}
+
+					#使用这个密码文件连接wifi
+					# -B 参数让 wpa_supplicant 进程后台运行
+					# -i wlan2 指定使用哪个接口连接
+					# -c hk987.conf 指定配置文件路径
+					987@hk987.fun:~$ wpa_supplicant -B -c hk987.conf -i wlan2
+
+					#如果wifi的ssid和密码没错，过几秒，就能看到wlan2分配到了ip地址了
+					987@hk987.fun:~$ ip a
+					</code>
+					</pre>
+
+					<h2 id="Linux-NetworkManager-4">0×4.Linux图形命令行配置网络</h2>
+
+					<p>nmtui 是 NetworkManager 提供的一个基于终端的交互式图形界面工具，方便用户在无桌面环境的服务器或终端中进行网络配置。通过 nmtui，用户可以轻松完成网络接口的添加、删除、修改等操作，而无需手动编辑配置文件。systemd-networkd 本身没有像 nmtui 这样的内置图形化或交互式配置工具，因为它主要是一个轻量级的网络管理后台服务，所以下面这个命令，只有在安装了NetworkManager 网络管理组件的系统中才能使用</p>
+					
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#输入这个命令回车就可以了，看图操作很简单
+					987@hk987.fun:~$ nmtui
 					</code>
 					</pre>
 					
-
 					<!-- /正文 -->
 
 				<footer class="text-footer">
