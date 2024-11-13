@@ -484,11 +484,7 @@
 					#首先根据我们需要连接的wifi信息，创建一个密码连接文件，前面是你要连接的wifi名称，后面是这个wifi的密码
 					987@hk987.fun:~$ wpa_passphrase "wifi_name" "wifi_password" > hk987.conf
 					
-					#如果wifi的名称中包含特殊字符，可以先使用iwlist wlan2 scan查看周围wifi的完整信息
-					#找到对应SSID的Address，这个Address字段后面就是这个wifi的BSSID，
-					#后修改我们生成的hk987.conf文件，加入BSSID信息即可，如下
-					#下面是另一个查看wifi的SSID和BSSID的命令，使用iw命令
-					#iw dev wlan2 scan | grep -E 'SSID|BSS'
+					#如果wifi的名称中包含特殊字符，可以先使用iwlist wlan2 scan查看周围wifi的完整信息，找到对应SSID的Address，这个Address字段后面就是这个wifi的BSSID，然后修改我们生成的hk987.conf文件，加入BSSID信息即可，如下
 					network={
 					    ssid="YourSSID" #如果wifi名字中有无法识别的乱码，可以删除这个字段
 					    psk="your_Password" #wifi密码字段
@@ -506,63 +502,7 @@
 					</code>
 					</pre>
 
-					<p>★ 方法二：使用iwd连接wifi</p>
-					<p>iwd （iNet 无线守护程序）是由 Intel 编写的用于 Linux 的无线守护程序。该项目的核心目标是通过不依赖任何外部库，而是尽可能地利用 Linux 内核提供的功能来优化资源利用率。iwd 可以在独立模式下工作，也可以与 ConnMan 、 systemd-networkd 和 NetworkManager 等综合网络管理器结合使用。 </p>
-					<p>在下载的Archlinux的iso镜像中已经预安装了iwd软件包（或者在有网的环境下执行pacman -S iwd安装），下面是使用iwd连接wifi的方法：</p>
-					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
-					<code class="language-bash">
-					#0-查看wifi网卡名称，假设这里看到的网卡名称是wlan2
-					987@hk987.fun:~$ ip a
-					
-					#请注意，下面所有命令全使用root权限执行，如果是普通用户在命令前加上sudo
-					#0-首先，查看一下自己的无线网卡是否支持5G网络（如果只是连接2.4G就不需要这一步的判断）
-					#一些很古老的网卡没有5G支持，只支持2.4G网络
-					#用下面的命令查看所有的Frequencies字段，看看有没有5开头的，如果只有24开头，那么就只支持2.4G网络
-					root@hk987.fun:~# iw list
-					 Frequencies:
-					  * 2412.0 MHz [1] (20.0 dBm)
-					  * 2417.0 MHz [2] (20.0 dBm)
-					  ......
 
-					#1-连接无线网络，使用iwctl进入iwd命令模式
-					root@hk987.fun:~# iwctl
-
-					#显示当前可用的无线设备列表
-					#可以看到Name字段和Adapter字段分别用不同的名称标识了这块无线网卡
-					[iwd]# device list
-					                                    Devices                                   *
-					-----------------------------------------------------------------------
-					  Name                  Address               Powered     Adapter     Mode
-					-----------------------------------------------------------------------
-					  wlan0                 8c:21:0a:dc:f2:66     on          phy0        station
-
-					#如果Powered是off，用下面两种方式都能启动
-					[iwd]# device wlan0 set-property Powered on
-					[iwd]# adapter phy0 set-property Powered on
-
-					#扫描网络，不会显示输出信息
-					[iwd]# station wlan0 scan
-					#显示扫描到的网络
-					[iwd]# station wlan0 get-networks
-
-					#连接到指定网络，Your_WIFI_SSID_Name替换成你需要连接到的WIFI的SSID
-					[iwd]# station wlan0 connect Your_WIFI_SSID_Name
-					Type the network passphrase for Your_WIFI_SSID_Name psk.
-					Passphrase: ******** #输入wifi密码
-
-					#显示连接到的网络的详细信息
-					[iwd]# station wlan0 show
-
-					#断开连接
-					[iwd]# station wlan0 disconnect
-
-					#显示之前连接过的网络
-					[iwd]# known-networks list
-
-					#从之前连接过的网络列表中删除指定SSID
-					[iwd]# known-networks Your_WIFI_SSID_Name forget
-					</code>
-					</pre>
 
 					<h2 id="Linux-NetworkManager-4">0×4.Linux图形命令行配置网络</h2>
 
