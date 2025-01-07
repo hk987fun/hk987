@@ -11,7 +11,7 @@
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
 -->
 <!--前进!不择手段的前进-->
-<!--Copyright©hk987.fun-->
+<!--Copyright©hk987.xyz-->
 <!--PC端Google和Firefox支持良好,移动端支持良好-->
 
 <html lang="zh-cn">
@@ -20,8 +20,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 	<meta name="description" content="hk987-你在世俗里的名字不重要了">
 	<meta name="author" content="hk987">
-	<meta name="keywords" content="hk987,hk987.fun,hk987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
-	<title>[Linux基础]-9-文件权限 - hk987.fun - www.hk987.fun</title>
+	<meta name="keywords" content="hk987,hk987.xyz,hk987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-9-文件权限 - hk987.xyz - www.hk987.xyz</title>
 	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
 	<link rel="stylesheet" type="text/css" href="../css/basic.css">
 	<link rel="stylesheet" type="text/css" href="../css/home.css">
@@ -37,7 +37,7 @@
 			<div class="nav-container">
 				<!-- 根大纲-->
 				<a href="../index.html" title="Hk987首页">
-					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+					<h1 class="nav-logo">HK987 - hk987.xyz</h1>
 				</a>
 				<h2 class="nav-site-description desc-hidden">
 					 S=−k∑pilnpi
@@ -85,7 +85,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#下面是ls输出中的两条信息
-					987@hk987.fun~$ ls -al
+					987@hk987.xyz~$ ls -al
 					drwxr-xr-x  3 root root   4096 2023-6-24 03:42 .wine/
 					-rwxrw-rw-  1 987 987   13724074 2023-6-24 11:03  testfile
 					</code>
@@ -133,7 +133,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#显示每个文件的Inode号，每个文件或者文件夹前都会出现一个唯一的"Inode"编号
-					987@hk987.fun~$ ls -i
+					987@hk987.xyz~$ ls -i
 					523273 anaconda-ks.cfg  523267 install.log.syslog  529410 testfile
 					</code>
 					</pre>
@@ -156,15 +156,15 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#新建一个文件
-					987@hk987.fun~$ touch testfile
+					987@hk987.xyz~$ touch testfile
 
 					#查看一下文件的详细属性
-					987@hk987.fun~$ ls -l
+					987@hk987.xyz~$ ls -l
 					-rw-rw-r--. 1 987 987 0 Dec 31 11:03 testfile
 
 					#修改文件权限
-					987@hk987.fun~$ chmod 766 testfile
-					987@hk987.fun~$ ls -l
+					987@hk987.xyz~$ chmod 766 testfile
+					987@hk987.xyz~$ ls -l
 					-rwxrw-rw-. 1 987 987 0 Dec 31 11:03 testfile
 					</code>
 					</pre>
@@ -172,18 +172,18 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#u=后面填写文件拥有者对文件的权限，g=后面是文件所属组中的成员对文件的权限，o=后面表示其他用户对文件的权限
-					987@hk987.fun~$ chmod u=rw,g=rw,o=r testfile
-					987@hk987.fun~$ ls -l
+					987@hk987.xyz~$ chmod u=rw,g=rw,o=r testfile
+					987@hk987.xyz~$ ls -l
 					-rw-rw-r--. 1 987 987 0 Dec 31 11:03 testfile
 
 					#如果想添加删除某项权限可以使用加减运算符，u+x代表文件拥有者权限字段加上可执行权限，g-w文件所属组权限字段减去可写权限，o+x其他用户权限字段加上可执行权限
-					987@hk987.fun~$ chmod u+x,g-w,o+x testfile
-					987@hk987.fun~$ ls -l
+					987@hk987.xyz~$ chmod u+x,g-w,o+x testfile
+					987@hk987.xyz~$ ls -l
 					-rwxr--r-x. 1 987 987 0 Dec 31 11:03 testfile
 
 					#或者直接给所有字段加上或减去某个或多个权限，例如三个权限字段都将可写和可执行权限全部减去
-					987@hk987.fun~$ chmod -wx testfile
-					987@hk987.fun~$ ls -l
+					987@hk987.xyz~$ chmod -wx testfile
+					987@hk987.xyz~$ ls -l
 					-r--r--r--. 1 987 987 0 Dec 31 11:03 testfile
 					</code>
 					</pre>
@@ -194,24 +194,24 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#首先创建一个"testgroup"组
-					987@hk987.fun~$ sudo groupadd testgroup
+					987@hk987.xyz~$ sudo groupadd testgroup
 
 					#查看一下文件"testfile"所属组，是"987"组
-					987@hk987.fun~$ ls -l testfile
+					987@hk987.xyz~$ ls -l testfile
 					-rw-rw-r--. 1 987 987 0 Dec 31 11:03 testfile
 
 					#使用普通权限更改这个文件所属组，显示权限不够
-					987@hk987.fun~$ chgrp testgroup testfile
+					987@hk987.xyz~$ chgrp testgroup testfile
 					chgrp: changing group of `testfile': Operation not permitted
 
 					#使用管理员权限更改这个文件所属组，成功
-					987@hk987.fun~$ sudo chgrp testgroup testfile
-					987@hk987.fun~$ ls -l
+					987@hk987.xyz~$ sudo chgrp testgroup testfile
+					987@hk987.xyz~$ ls -l
 					-rw-rw-r--. 1 mm testgroup 0 Dec 31 11:03 testfile
 
 					#使用普通权限，将文件改回自己的组，成功
-					987@hk987.fun~$ chgrp mm testfile
-					987@hk987.fun~$ ls -l
+					987@hk987.xyz~$ chgrp mm testfile
+					987@hk987.xyz~$ ls -l
 					-rw-rw-r--. 1 987 987 0 Dec 31 11:03 testfile
 					</code>
 					</pre>
@@ -222,15 +222,15 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#使用root权限将文件拥有者更改成root
-					987@hk987.fun~$ sudo chown root testfile
+					987@hk987.xyz~$ sudo chown root testfile
 
-					987@hk987.fun~$ ls -l
+					987@hk987.xyz~$ ls -l
 					-rw-rw-r--. 1 root mm 0 Dec 31 11:03 testfile
 
 					#上面虽然更改了文件的拥有者，但是文件所属组没有改变，可以通过添加参数-R，一次性更改文件拥有者和文件所属组
 					#chown -R user_name:group_name file_name
-					987@hk987.fun~$ chown -R root:testgroup testfile
-					987@hk987.fun~$ ls -l
+					987@hk987.xyz~$ chown -R root:testgroup testfile
+					987@hk987.xyz~$ ls -l
 					-rw-rw-r--. 1 root testgroup 0 Dec 31 11:03 testfile
 					</code>
 					</pre>
@@ -241,9 +241,9 @@
 
 				<footer class="text-footer">
 					<p>
-						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+						*转载请注明来自:<a title="hk987.xyz" style="color: rgb(4,181,150);" href="https://www.hk987.xyz" target="_blank">hk987.xyz</a>
 					</p>
-					<p>*原文连接:<a title="[Linux基础]-9-文件权限" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-9.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-9.html</a></p>
+					<p>*原文连接:<a title="[Linux基础]-9-文件权限" style="color: rgb(4,181,150);" href="https://www.hk987.xyz/hk/Linux-basic-9.html" target="_blank">https://www.hk987.xyz/hk/Linux-basic-9.html</a></p>
 				</footer>
 			</article>
 			<!-- /文章区 -->	
@@ -254,7 +254,7 @@
 	<!-- footer -->
 	<footer id="footer">
 		<div class="footer-container">
-			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+			hk987.xyz &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
 		</div>
 	</footer>
 	<!-- /footer -->

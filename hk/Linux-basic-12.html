@@ -11,7 +11,7 @@
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
 -->
 <!--前进!不择手段的前进-->
-<!--Copyright©hk987.fun-->
+<!--Copyright©hk987.xyz-->
 <!--PC端Google和Firefox支持良好,移动端支持良好-->
 
 <html lang="zh-cn">
@@ -20,8 +20,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 	<meta name="description" content="hk987-你在世俗里的名字不重要了">
 	<meta name="author" content="hk987">
-	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
-	<title>[Linux基础]-12-systemd服务管理 - Hk987.fun - www.Hk987.fun</title>
+	<meta name="keywords" content="hk987,hk987.xyz,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-12-systemd服务管理 - hk987.xyz - www.hk987.xyz</title>
 	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
 	<link rel="stylesheet" type="text/css" href="../css/basic.css">
 	<link rel="stylesheet" type="text/css" href="../css/home.css">
@@ -37,7 +37,7 @@
 			<div class="nav-container">
 				<!-- 根大纲-->
 				<a href="../index.html" title="Hk987首页">
-					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+					<h1 class="nav-logo">HK987 - hk987.xyz</h1>
 				</a>
 				<h2 class="nav-site-description desc-hidden">
 					 S=−k∑pilnpi
@@ -95,7 +95,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#查看ssh服务的启动状态，下面的命令可以简写成systemctl status sshd，省略后面的.service
-					987@hk987.fun:~$ systemctl status sshd.service
+					987@hk987.xyz:~$ systemctl status sshd.service
 					sshd.service - OpenSSH server daemon #服务的描述
 					Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: enabled) #服务配置文件位置以及是否随机启动
 					Active: active (running) since Thu 2024-04-04 18:56:16 JST; 20s ago #服务目前的启动状态和启动时长
@@ -119,10 +119,10 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#停止ssh服务
-					987@hk987.fun:~$ systemctl stop sshd
+					987@hk987.xyz:~$ systemctl stop sshd
 
 					#再次查看ssh服务信息
-					987@hk987.fun:~$ systemctl status sshd
+					987@hk987.xyz:~$ systemctl status sshd
 						sshd.service - OpenSSH server daemon
 						Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: enabled>
 						Active: inactive (dead) #Active显示服务已经dead，已经停止
@@ -135,7 +135,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#启动ssh服务
-					987@hk987.fun:~$ systemctl start sshd
+					987@hk987.xyz:~$ systemctl start sshd
 					</code>
 					</pre>
 
@@ -144,13 +144,13 @@
 					<code class="language-bash">
 					#要重启服务，可以使用restart选项，此选项的作用是，若服务正在运行中，则重启服务，若服务不在运行中，则会启动
 					#restart选项不会重新加载服务的配置文件
-					987@hk987.fun:~$ sudo systemctl restart sshd
+					987@hk987.xyz:~$ sudo systemctl restart sshd
 
 					#也可使用try-start选择，它只会在服务已经运行的情况下重启服务，没有运行的服务不会启动
-					987@hk987.fun:~$ sudo systemctl try-start sshd
+					987@hk987.xyz:~$ sudo systemctl try-start sshd
 
 					#也可以使用reload选项，reload选项会重新加载服务的配置文件
-					987@hk987.fun:~$ sudo systemctl reload sshd
+					987@hk987.xyz:~$ sudo systemctl reload sshd
 					</code>
 					</pre>
 
@@ -158,11 +158,11 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#设置ssh服务开机启动，需要root权限才能执行
-					987@hk987.fun:~$ sudo systemctl enable sshd
+					987@hk987.xyz:~$ sudo systemctl enable sshd
 					Created symlink /etc/systemd/system/multi-user.target.wants/sshd.service → /usr/lib/systemd/system/sshd.service.
 
 					#取消ssh服务开机启动，需要root权限才能执行，所以要加sudo
-					987@hk987.fun:~$ sudo systemctl disable sshd
+					987@hk987.xyz:~$ sudo systemctl disable sshd
 					Removed "/etc/systemd/system/multi-user.target.wants/sshd.service".
 					</code>
 					</pre>
@@ -194,10 +194,10 @@
 					<p>进入用户默认的服务配置文件路径，查看sshd.service服务配置文件内容，在后面会给出配置文件每行信息详细的解释：</p>
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
-					987@hk987.fun:~$ cd /usr/lib/systemd/system
-					987@hk987.fun:~$ more sshd.service
+					987@hk987.xyz:~$ cd /usr/lib/systemd/system
+					987@hk987.xyz:~$ more sshd.service
 					[Unit]
-					Description=OpenSSH server daemon hk987.fun 
+					Description=OpenSSH server daemon hk987.xyz 
 					Documentation=man:sshd(8) man:sshd_config(5)
 					After=network.target sshd-keygen.target
 					Wants=sshd-keygen.target
@@ -230,7 +230,7 @@
 					<p class="indent-p">● Type=notify：当前服务启动完毕，会通知Systemd，再继续往下执行</p>
 					<p class="indent-p">● Type=idle：若有其他任务执行完毕，当前服务才会运行</p>
 					<p>EnvironmentFile= -- 如果你创建的服务需要创建一些环境变量，可以将环境变量写入这个字段后面指定的文件中，systemd会将其自动添加到服务的环境变量空间中，提供给服务程序调用，环境变量文件中的内容格式如下，这样当服务程序启动后，就能使用MY_VAR变量的值：</p>
-					<p class="indent-p">● export MY_VAR=hk987.fun</p>
+					<p class="indent-p">● export MY_VAR=hk987.xyz</p>
 					<p>ExecStart= -- 启动当前服务时执行的命令</p>
 					<p>ExecReload= -- 重启服务时执行的命令</p>
 					<p>KillMode= -- 定义systemd如何停止服务，可以设置的值如下：</p>
@@ -261,7 +261,7 @@
 					#并且服务运行后，会用bash去执行用户家目录的hk987.sh脚本文件，如果是调用其它的程序，建议用程序的绝对路径，不容易报错
 					#User=字段指定用什么权限的用户去执行ExecStart命令，本例是用987这个用户去执行
 					#并且如果设置了开机启动，会在/etc/systemd/system/multi-user.target.wants目录生成软连接指向/etc/systemd/system/hk987.service文件
-					987@hk987.fun:~$ sudo vim /etc/systemd/system/hk987.service
+					987@hk987.xyz:~$ sudo vim /etc/systemd/system/hk987.service
 					[Unit]
 					Description=hk987 service
 					After=network.target network-online.target
@@ -290,13 +290,13 @@
 					#启动hk987服务（或sudo systemctl start hk987可省略.service后缀）
 					#这样创建的服务，适用于任何自定义的程序，只需要将程序完整路径写入到ExecStart字段后即可
 					#restart，reload，stop，设置开机自启动都行
-					987@hk987.fun:~$ sudo systemctl start hk987.service
+					987@hk987.xyz:~$ sudo systemctl start hk987.service
 					
 					#使用tail -f监控hk987.txt文件内容，就能看到ping返回的结果
-					987@hk987.fun:~$ tail -f /home/987/hk987.txt
+					987@hk987.xyz:~$ tail -f /home/987/hk987.txt
 
 					#查看服务状态
-					987@hk987.fun:~$ systemctl status hk987.service 
+					987@hk987.xyz:~$ systemctl status hk987.service 
 					● hk987.service - hk987 service
 					Loaded: loaded (/etc/systemd/system/hk987.service; disabled; preset: disabled)
 					Active: active (running) since Tue 2024-04-09 10:41:41 JST; 7s ago
@@ -311,7 +311,7 @@
 					4月 09 10:41:41 localhost.localdomain systemd[1]: Started hk987 service.
 
 					#设置开机自启动
-					987@hk987.fun:~$ sudo systemctl enable hk987
+					987@hk987.xyz:~$ sudo systemctl enable hk987
 					Created symlink /etc/systemd/system/multi-user.target.wants/hk987.service → /etc/systemd/system/hk987.service.
 					</code>
 					</pre>
@@ -320,9 +320,9 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#修改一下服务的描述，保存
-					987@hk987.fun:~$ sudo vim /etc/systemd/system/hk987.service
+					987@hk987.xyz:~$ sudo vim /etc/systemd/system/hk987.service
 					[Unit]
-					Description=hk987.fun service
+					Description=hk987.xyz service
 					After=network.target network-online.target
 
 					[Service]
@@ -334,13 +334,13 @@
 					WantedBy=multi-user.target
 
 					#需要先执行下面的命令重新加载服务配置文件
-					987@hk987.fun:~$ sudo systemctl daemon-reload
+					987@hk987.xyz:~$ sudo systemctl daemon-reload
 					#再重启服务
-					987@hk987.fun:~$ sudo systemctl restart hk987
+					987@hk987.xyz:~$ sudo systemctl restart hk987
 
 					#再查看服务状态就能看到描述信息被改变了
-					987@hk987.fun:~$ systemctl status hk987
-					● hk987.service - hk987.fun service
+					987@hk987.xyz:~$ systemctl status hk987
+					● hk987.service - hk987.xyz service
 					...省略输出...
 					</code>
 					</pre>
@@ -349,9 +349,9 @@
 
 				<footer class="text-footer">
 					<p>
-						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+						*转载请注明来自:<a title="hk987.xyz" style="color: rgb(4,181,150);" href="https://www.hk987.xyz" target="_blank">hk987.xyz</a>
 					</p>
-					<p>*原文连接:<a title="[Linux基础]-12-systemd服务管理" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-12.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-12.html</a></p>
+					<p>*原文连接:<a title="[Linux基础]-12-systemd服务管理" style="color: rgb(4,181,150);" href="https://www.hk987.xyz/hk/Linux-basic-12.html" target="_blank">https://www.hk987.xyz/hk/Linux-basic-12.html</a></p>
 				</footer>
 			</article>
 			<!-- /文章区 -->	
@@ -362,7 +362,7 @@
 	<!-- footer -->
 	<footer id="footer">
 		<div class="footer-container">
-			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+			hk987.xyz &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
 		</div>
 	</footer>
 	<!-- /footer -->

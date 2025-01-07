@@ -11,7 +11,7 @@
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
 -->
 <!--前进!不择手段的前进-->
-<!--Copyright©hk987.fun-->
+<!--Copyright©hk987.xyz-->
 <!--PC端Google和Firefox支持良好,移动端支持良好-->
 
 <html lang="zh-cn">
@@ -20,8 +20,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 	<meta name="description" content="hk987-你在世俗里的名字不重要了">
 	<meta name="author" content="hk987">
-	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
-	<title>[Linux基础]-15-Linux网络管理 - Hk987.fun - www.Hk987.fun</title>
+	<meta name="keywords" content="hk987,hk987.xyz,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-15-Linux网络管理 - hk987.xyz - www.hk987.xyz</title>
 	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
 	<link rel="stylesheet" type="text/css" href="../css/basic.css">
 	<link rel="stylesheet" type="text/css" href="../css/home.css">
@@ -37,7 +37,7 @@
 			<div class="nav-container">
 				<!-- 根大纲-->
 				<a href="../index.html" title="Hk987首页">
-					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+					<h1 class="nav-logo">HK987 - hk987.xyz</h1>
 				</a>
 				<h2 class="nav-site-description desc-hidden">
 					 S=−k∑pilnpi
@@ -87,13 +87,13 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#ubuntu
-					987@hk987.fun:~$ sudo apt install iproute2
+					987@hk987.xyz:~$ sudo apt install iproute2
 
 					#Arch
-					987@hk987.fun:~$ sudo pacman -S iproute2
+					987@hk987.xyz:~$ sudo pacman -S iproute2
 
 					#Rocky
-					987@hk987.fun:~$ sudo dnf install iproute2
+					987@hk987.xyz:~$ sudo dnf install iproute2
 					</code>
 					</pre>
 
@@ -101,7 +101,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#完整命令 ip address 下面是简写
-					987@hk987.fun:~$ ip a
+					987@hk987.xyz:~$ ip a
 					</code>
 					</pre>
 
@@ -109,23 +109,23 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#完整命令 ip route 下面是简写
-					987@hk987.fun:~$ ip r
+					987@hk987.xyz:~$ ip r
 					</code>
 					</pre>
 
 					<p>● 查看指定的网卡信息，本例是命名为enp4s的网卡</p>
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
-					987@hk987.fun:~$ ip a show dev enp4s0
+					987@hk987.xyz:~$ ip a show dev enp4s0
 					#或省略dev，结果相同
-					987@hk987.fun:~$ ip a show enp4s0
+					987@hk987.xyz:~$ ip a show enp4s0
 					</code>
 					</pre>
 
 					<p>● 查看网卡的统计信息（包含数据包的收发计数）</p>
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
-					987@hk987.fun:~$ ip -s link
+					987@hk987.xyz:~$ ip -s link
 					</code>
 					</pre>
 
@@ -136,10 +136,10 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#给enp4s0这块网卡，添加一个ip地址
-					987@hk987.fun:~$ sudo ip a add 192.168.1.201/24 dev enp4s0
+					987@hk987.xyz:~$ sudo ip a add 192.168.1.201/24 dev enp4s0
 
 					#配置默认网关
-					987@hk987.fun:~$ sudo ip route add default via 192.168.1.1
+					987@hk987.xyz:~$ sudo ip route add default via 192.168.1.1
 					</code>
 					</pre>
 
@@ -155,7 +155,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#先来查看一下这个目录下有哪些文件
-					root@hk987.fun:/etc/netplan# ls
+					root@hk987.xyz:/etc/netplan# ls
 					01-network-manager-all.yaml  50-cloud-init.yaml
 
 					#查看一下每个文件的内容
@@ -218,7 +218,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#让配置立刻生效，并重新生成传递给NetworkManager或systemd-networkd的配置文件提供给它们调用
-					hk987@hk987.fun:~$ sudo netplan apply
+					hk987@hk987.xyz:~$ sudo netplan apply
 					</code>
 					</pre>
 
@@ -227,8 +227,8 @@
 					<code class="language-bash">
 					#-可以通过查看服务状态，通过下面两条命令
 					#-查看服务器哪一个网络组件是安装并且active(running)的
-					hk987@hk987.fun:~$ systemctl status systemd-networkd
-					hk987@hk987.fun:~$ systemctl status NetworkManager
+					hk987@hk987.xyz:~$ systemctl status systemd-networkd
+					hk987@hk987.xyz:~$ systemctl status NetworkManager
 					</code>
 					</pre>
 
@@ -241,11 +241,11 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#查看配置文件
-					987@hk987.fun:~$ cd /etc/NetworkManager/system-connections &amp;&amp; ls
+					987@hk987.xyz:~$ cd /etc/NetworkManager/system-connections &amp;&amp; ls
 					ens160.nmconnection
 
 					# ens160.nmconnection文件内容如下（确保拥有读取权限）
-					987@hk987.fun:~$ sudo more ens160.nmconnection 
+					987@hk987.xyz:~$ sudo more ens160.nmconnection 
 
 					[connection]
 					id=ens160
@@ -352,7 +352,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#如果你是远程ssh连接的服务器，输入下面命令后，IP地址改变，服务重启，连接就会断开，需要重新连接新的IP地址
-					987@hk987.fun:~$ sudo systemctl restart NetworkManager &amp;&amp; sudo nmcli connection down ens160 &amp;&amp; sudo nmcli connection up ens160 
+					987@hk987.xyz:~$ sudo systemctl restart NetworkManager &amp;&amp; sudo nmcli connection down ens160 &amp;&amp; sudo nmcli connection up ens160 
 					</code>
 					</pre>
 
@@ -364,7 +364,7 @@
 					#大家可以参考本文前面的描述对这个配置文件进行修改，这里不再赘述
 					#如果这个目录中没有内容，那可能就是配置文件被删掉了，可以手动创建
 					#不手动创建系统也会通过DHCP获取到IP地址，这个配置被存放在内存中
-					987@hk987.fun:~$ ls /etc/NetworkManager/system-connections/
+					987@hk987.xyz:~$ ls /etc/NetworkManager/system-connections/
 					'有线连接 1.nmconnection'
 					</code>
 					</pre>
@@ -380,13 +380,13 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#直接使用nmcli，显示网络详细详细
-					987@hk987.fun:~$ nmcli
+					987@hk987.xyz:~$ nmcli
 					
 					#列出所有已配置的网络连接
-					987@hk987.fun:~$ nmcli connection show
+					987@hk987.xyz:~$ nmcli connection show
 
 					#显示所有网络接口的状态（连接状态、类型等）
-					987@hk987.fun:~$ nmcli device status
+					987@hk987.xyz:~$ nmcli device status
 					</code>
 					</pre>
 
@@ -394,14 +394,14 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#这条命令创建了一个名为 hk987 的有线网络配置文件，绑定到网络接口 ens33，并设置为在系统启动时自动连接
-					987@hk987.fun:~$ sudo nmcli connection add type ethernet ifname ens33 con-name "hk987" autoconnect yes
+					987@hk987.xyz:~$ sudo nmcli connection add type ethernet ifname ens33 con-name "hk987" autoconnect yes
 
 					#创建完成后查看下面的目录，就会看到一个是我们新创建的hk987.nmconnection，另外一个是系统默认创建的有线网络连接配置文件
-					987@hk987.fun:~$ sudo ls /etc/NetworkManager/system-connections
+					987@hk987.xyz:~$ sudo ls /etc/NetworkManager/system-connections
 					'有线连接 1.nmconnection'   hk987.nmconnection
 					
 					#激活hk987.nmconnection这个配置文件，激活后，系统默认的'有线连接 1.nmconnection'就会被禁用，以后系统会默认使用hk987.nmconnection的配置来启动有线网络
-					987@hk987.fun:~$ sudo nmcli connection up hk987 
+					987@hk987.xyz:~$ sudo nmcli connection up hk987 
 					</code>
 					</pre>
 
@@ -409,10 +409,10 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#停用hk987这个网络配置，系统会自动切换回'有线连接 1.nmconnection'配置
-					987@hk987.fun:~$ sudo nmcli connection down hk987 
+					987@hk987.xyz:~$ sudo nmcli connection down hk987 
 
 					#删除hk987配置
-					987@hk987.fun:~$ sudo nmcli connection delete hk987 
+					987@hk987.xyz:~$ sudo nmcli connection delete hk987 
 					</code>
 					</pre>
 
@@ -420,14 +420,14 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#首先，需要添加静态IP配置的文件必须存在，如果不存在，按照下面的命令添加，本例配置文件取名为hk987
-					987@hk987.fun:~$ sudo nmcli connection add type ethernet ifname ens33 con-name "hk987" autoconnect yes
+					987@hk987.xyz:~$ sudo nmcli connection add type ethernet ifname ens33 con-name "hk987" autoconnect yes
 					
 					#当/etc/NetworkManager/system-connections目录中有了hk987.nmconnection配置文件之后
 					#再使用下面的命令修改这个配置文件的内容，修改成静态IP地址，并且配置网关和dns参数
-					987@hk987.fun:~$ sudo nmcli connection modify "hk987" ipv4.method manual ipv4.addresses 192.168.1.123/24 ipv4.gateway 192.168.1.1 ipv4.dns 8.8.8.8
+					987@hk987.xyz:~$ sudo nmcli connection modify "hk987" ipv4.method manual ipv4.addresses 192.168.1.123/24 ipv4.gateway 192.168.1.1 ipv4.dns 8.8.8.8
 
 					#重新激活hk987这个静态配置，让配置生效
-					987@hk987.fun:~$ systemctl restart NetworkManager &amp;&amp;  nmcli con up hk987
+					987@hk987.xyz:~$ systemctl restart NetworkManager &amp;&amp;  nmcli con up hk987
 					</code>
 					</pre>
 
@@ -439,21 +439,21 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#搜索周围的wifi信号，wifi信号强弱会由高到低排列
-					987@hk987.fun:~$ nmcli device wifi list
+					987@hk987.xyz:~$ nmcli device wifi list
 					
 					#连接到指定的wifi
 					#如果wifi的SSID号包含奇怪的字符，可以通过BSSID连接
 					#例如：nmcli device wifi connect 00:11:22:33:44:55 password "your_wifi_password"
 					#将SSID替换成wifi的BSSID即可
-					987@hk987.fun:~$ sudo nmcli device wifi connect "Tenda_1" password "12345678"
+					987@hk987.xyz:~$ sudo nmcli device wifi connect "Tenda_1" password "12345678"
 
 					#如果连接的wifi是开放网络，可以如下
-					987@hk987.fun:~$ sudo nmcli device wifi connect "SSID"
+					987@hk987.xyz:~$ sudo nmcli device wifi connect "SSID"
 					#或
-					987@hk987.fun:~$ sudo nmcli device wifi connect "BSSID"
+					987@hk987.xyz:~$ sudo nmcli device wifi connect "BSSID"
 
 					#连上wifi后/etc/NetworkManager/system-connections/目录会生成一个对应wifi SSID的配置文件
-					987@hk987.fun:~$ sudo ls /etc/NetworkManager/system-connections/
+					987@hk987.xyz:~$ sudo ls /etc/NetworkManager/system-connections/
 					hk987.nmconnection  Tenda_1.nmconnection
 					</code>
 					</pre>
@@ -462,7 +462,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#指定使用wlan1这块网卡去连接
-					987@hk987.fun:~$ sudo nmcli device wifi connect "SSID" password "your_wifi_password" ifname wlan1
+					987@hk987.xyz:~$ sudo nmcli device wifi connect "SSID" password "your_wifi_password" ifname wlan1
 					</code>
 					</pre>
 
@@ -472,17 +472,17 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#0-查看wifi网卡名称，假设这里看到的网卡名称是wlan2
-					987@hk987.fun:~$ ip a
-					987@hk987.fun:~$ sudo ip link set wlan2 up
+					987@hk987.xyz:~$ ip a
+					987@hk987.xyz:~$ sudo ip link set wlan2 up
 
 					#1-扫描附近wifi
 					#wlan2是我们的wifi网卡名称，首先我们使用iwlist工具扫描附近的wifi，然后再筛选出结果中的SSID显示出来
-					987@hk987.fun:~$ iwlist wlan2 scan | grep ESSID
+					987@hk987.xyz:~$ iwlist wlan2 scan | grep ESSID
 					
 					#2-连接到指定的wifi
 
 					#首先根据我们需要连接的wifi信息，创建一个密码连接文件，前面是你要连接的wifi名称，后面是这个wifi的密码
-					987@hk987.fun:~$ wpa_passphrase "wifi_name" "wifi_password" > hk987.conf
+					987@hk987.xyz:~$ wpa_passphrase "wifi_name" "wifi_password" > hk987.conf
 					
 					#如果wifi的名称中包含特殊字符，可以先使用iwlist wlan2 scan查看周围wifi的完整信息
 					#找到对应SSID的Address，这个Address字段后面就是这个wifi的BSSID，
@@ -499,10 +499,10 @@
 					# -B 参数让 wpa_supplicant 进程后台运行
 					# -i wlan2 指定使用哪个接口连接
 					# -c hk987.conf 指定配置文件路径
-					987@hk987.fun:~$ wpa_supplicant -B -c hk987.conf -i wlan2
+					987@hk987.xyz:~$ wpa_supplicant -B -c hk987.conf -i wlan2
 
 					#如果wifi的ssid和密码没错，过几秒，就能看到wlan2分配到了ip地址了
-					987@hk987.fun:~$ ip a
+					987@hk987.xyz:~$ ip a
 					</code>
 					</pre>
 
@@ -512,20 +512,20 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#0-查看wifi网卡名称，假设这里看到的网卡名称是wlan2
-					987@hk987.fun:~$ ip a
+					987@hk987.xyz:~$ ip a
 					
 					#请注意，下面所有命令全使用root权限执行，如果是普通用户在命令前加上sudo
 					#0-首先，查看一下自己的无线网卡是否支持5G网络（如果只是连接2.4G就不需要这一步的判断）
 					#一些很古老的网卡没有5G支持，只支持2.4G网络
 					#用下面的命令查看所有的Frequencies字段，看看有没有5开头的，如果只有24开头，那么就只支持2.4G网络
-					root@hk987.fun:~# iw list
+					root@hk987.xyz:~# iw list
 					 Frequencies:
 					  * 2412.0 MHz [1] (20.0 dBm)
 					  * 2417.0 MHz [2] (20.0 dBm)
 					  ......
 
 					#1-连接无线网络，使用iwctl进入iwd命令模式
-					root@hk987.fun:~# iwctl
+					root@hk987.xyz:~# iwctl
 
 					#显示当前可用的无线设备列表
 					#可以看到Name字段和Adapter字段分别用不同的名称标识了这块无线网卡
@@ -571,7 +571,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#输入这个命令回车就可以了，看图操作很简单
-					987@hk987.fun:~$ nmtui
+					987@hk987.xyz:~$ nmtui
 					</code>
 					</pre>
 					
@@ -579,9 +579,9 @@
 
 				<footer class="text-footer">
 					<p>
-						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+						*转载请注明来自:<a title="hk987.xyz" style="color: rgb(4,181,150);" href="https://www.hk987.xyz" target="_blank">hk987.xyz</a>
 					</p>
-					<p>*原文连接:<a title="[Linux基础]-15-Linux网络管理" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-15.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-15.html</a></p>
+					<p>*原文连接:<a title="[Linux基础]-15-Linux网络管理" style="color: rgb(4,181,150);" href="https://www.hk987.xyz/hk/Linux-basic-15.html" target="_blank">https://www.hk987.xyz/hk/Linux-basic-15.html</a></p>
 				</footer>
 			</article>
 			<!-- /文章区 -->	
@@ -592,7 +592,7 @@
 	<!-- footer -->
 	<footer id="footer">
 		<div class="footer-container">
-			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+			hk987.xyz &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
 		</div>
 	</footer>
 	<!-- /footer -->

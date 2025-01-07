@@ -11,7 +11,7 @@
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
 -->
 <!--前进!不择手段的前进-->
-<!--Copyright©hk987.fun-->
+<!--Copyright©hk987.xyz-->
 <!--PC端Google和Firefox支持良好,移动端支持良好-->
 
 <html lang="zh-cn">
@@ -20,8 +20,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 	<meta name="description" content="hk987-你在世俗里的名字不重要了">
 	<meta name="author" content="hk987">
-	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
-	<title>[Linux基础]-13-Linux进程管理 - Hk987.fun - www.Hk987.fun</title>
+	<meta name="keywords" content="hk987,hk987.xyz,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-13-Linux进程管理 - hk987.xyz - www.hk987.xyz</title>
 	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
 	<link rel="stylesheet" type="text/css" href="../css/basic.css">
 	<link rel="stylesheet" type="text/css" href="../css/home.css">
@@ -37,7 +37,7 @@
 			<div class="nav-container">
 				<!-- 根大纲-->
 				<a href="../index.html" title="Hk987首页">
-					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+					<h1 class="nav-logo">HK987 - hk987.xyz</h1>
 				</a>
 				<h2 class="nav-site-description desc-hidden">
 					 S=−k∑pilnpi
@@ -94,13 +94,13 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#直接使用ps命令，就能查看到与当前终端相关的进程列表
-					987@hk987.fun:~$ ps
+					987@hk987.xyz:~$ ps
 					PID TTY          TIME CMD
 					1621 pts/0    00:00:00 bash
 					1649 pts/0    00:00:00 ps
 
 					#加一个-l参数，意思是长格式输出，能够看到当前终端相关的进程的详细信息
-					987@hk987.fun:~$ ps -l
+					987@hk987.xyz:~$ ps -l
 					F S   UID   PID    PPID  C PRI  NI ADDR   SZ      WCHAN  TTY    TIME    CMD
 					0 S  1000  1621  1620  0  80   0    -       56024  do_wai pts/0    00:00:00 bash
 					0 R  1000  1653  1621  0  80   0    -       56370  -          pts/0    00:00:00  ps
@@ -139,9 +139,9 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#ps命令的-A参数会将所有的进程都显示出来
-					987@hk987.fun:~$ ps -A
+					987@hk987.xyz:~$ ps -A
 					#详细格式输出
-					987@hk987.fun:~$ ps -Al
+					987@hk987.xyz:~$ ps -Al
 					</code>
 					</pre>
 
@@ -155,7 +155,7 @@
 					#“显示没有控制终端的进程”这句话是指：
 					#进程通常与一个控制终端关联，这是进程可以与用户交互的地方，如终端窗口
 					#但是，有些进程可能不与任何控制终端关联，这些进程通常在后台或作为系统服务运行
-					987@hk987.fun:~$ ps -aux
+					987@hk987.xyz:~$ ps -aux
 					</code>
 					</pre>
 					<p>在上面的ps -aux命令的输出中，每一列的含义如下：</p>
@@ -190,7 +190,7 @@
 					#使用grep筛选出所有进程列表中包含ssh的进程
 					#通过上面的介绍我们知道这4行中的最后一行，是运行在pts伪终端0中的一条grep命令，也就是当前我们执行的这条命令本身
 					#其实下面4条输出中的后3行都是第一行的子进程，下一节介绍
-					987@hk987.fun:~$ ps -aux | grep ssh
+					987@hk987.xyz:~$ ps -aux | grep ssh
 					root    1011  0.0  0.1  15792  9180 ?    Ss   16:56   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
 					root    2180  0.1  0.1  19032 11716 ?    Ss   16:57   0:00 sshd: hk987 [priv]
 					hk987  2212  0.0  0.0  19076  6500 ?    S    16:57   0:00 sshd: hk987@pts/0
@@ -216,7 +216,7 @@
 					#对于这些进程标识，建议查看源码，能帮助很好的理解
 					#登录成功后，又从PID为2180号的父进程创建出一个子进程pts伪终端，终端编号是0
 					#然后在这个伪终端的进程空间中执行了下面这一条命令grep，这个grep也会从父进程2212空间中单独创建一个新的子进程
-					987@hk987.fun:~$ ps -auxf | grep ssh
+					987@hk987.xyz:~$ ps -auxf | grep ssh
 					root        1011  0.0  0.1  15792  9180 ?        Ss   16:56   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
 					root        2180  0.0  0.1  19032 11716 ?        Ss   16:57   0:00  \_ sshd: hk987 [priv]
 					hk987      2212  0.0  0.0  19076  6500 ?        S    16:57   0:00      \_ sshd: hk987@pts/0
@@ -234,7 +234,7 @@
 					#-n：不排序，使用这个选项会按照进程启动的顺序而不是进程名称排序
 					#-a：详细输出，会显示每个进程的完整命令行，包括命令名称和参数
 					#在命令最后加上PID就会显示指定PID进程的完整树状结构，如果不加PID显示的就是系统中所有的进程
-					987@hk987.fun:~$ pstree -anhpu 1022
+					987@hk987.xyz:~$ pstree -anhpu 1022
 					sshd,1022
 					  └─sshd,2079
 					      └─sshd,2112,hk987
@@ -247,18 +247,18 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#使用$$可以打印出当前终端的PID
-					987@hk987.fun:~$ echo $$
+					987@hk987.xyz:~$ echo $$
 					2124
 					#使用$PPID可以打印出当前终端父进程的PID
-					987@hk987.fun:~$ echo $PPID
+					987@hk987.xyz:~$ echo $PPID
 					2112
 					#再使用pstree来分别显示一下当前终端的进程树以及其父进程的进程树
-					987@hk987.fun:~$ pstree -anhpu 2124
+					987@hk987.xyz:~$ pstree -anhpu 2124
 					bash,2124,hk987
 					  └─pstree,2188 -anhpu 2124
 					#就可以很清晰的看到，是2112这个sshd进程，这个进程是hk987用户创建的
 					#在这个进程空间中有一个子进程bash，在这个bash进程中再创建了一个子进程执行了pstree命令
-					987@hk987.fun:~$ pstree -anhpu 2112
+					987@hk987.xyz:~$ pstree -anhpu 2112
 					sshd,2112,hk987
 					  └─bash,2124
 					      └─pstree,2189 -anhpu 2112
@@ -274,16 +274,16 @@
 					#使用进程ID（PID）来终止特定进程
 					#语法：kill PID
 					#首先让hk987.sh在后台执行（&符号是让命令在后台执行的意思，下一小节会介绍）
-					987@hk987.fun:~$ bash hk987.sh &
+					987@hk987.xyz:~$ bash hk987.sh &
 					[1] 2265
 					#查看一下hk987相关的进程，进程id是2265
-					987@hk987.fun:~$ ps -aux | grep hk987
+					987@hk987.xyz:~$ ps -aux | grep hk987
 					hk987      2265  0.0  0.0 222520  3436 pts/0    S    11:10   0:00 bash hk987.sh
 					hk987      2269  0.0  0.0 221680  2364 pts/0    S+   11:10   0:00 grep --color=auto hk987
 					#使用kill命令来结束进程
-					987@hk987.fun:~$ kill 2265
+					987@hk987.xyz:~$ kill 2265
 					#再次查看，显示hk987.sh已经终止
-					987@hk987.fun:~$ ps -aux | grep hk987
+					987@hk987.xyz:~$ ps -aux | grep hk987
 					hk987      2271  0.0  0.0 221680  2360 pts/0    S+   11:10   0:00 grep --color=auto hk987
 					[1]+  已终止  bash hk987.sh
 					</code>
@@ -295,14 +295,14 @@
 					#使用  -s 或 -SIGNAL 选项发送特定类型的信号，例如，发送 SIGKILL（强制终止）信号
 					#语法：kill -s KILL PID 或 kill -9 PID
 					#首先让hk987.sh在后台执行（&符号是让命令在后台执行的意思，下一小节会介绍）
-					987@hk987.fun:~$ bash hk987.sh &
+					987@hk987.xyz:~$ bash hk987.sh &
 					[1] 2275
 					#发送SIGKILL信号强行终止2275号进程
-					987@hk987.fun:~$ kill -s KILL 2275
+					987@hk987.xyz:~$ kill -s KILL 2275
 					#或
-					987@hk987.fun:~$ kill -9 2275
+					987@hk987.xyz:~$ kill -9 2275
 
-					987@hk987.fun:~$ ps -aux | grep hk987
+					987@hk987.xyz:~$ ps -aux | grep hk987
 					hk987      2280  0.0  0.0 221680  2344 pts/0    S+   11:16   0:00 grep --color=auto hk987
 					[1]+  已KILL  bash hk987.sh
 					</code>
@@ -314,16 +314,16 @@
 					#语法：kill PID PID PID ...
 					#强行终止：kill -9 PID PID PID ...
 					#执行三个后台程序
-					987@hk987.fun:~$ bash hk987.sh &
+					987@hk987.xyz:~$ bash hk987.sh &
 					[1] 2293
-					987@hk987.fun:~$ bash hk987.sh &
+					987@hk987.xyz:~$ bash hk987.sh &
 					[2] 2295
-					987@hk987.fun:~$ bash hk987.sh &
+					987@hk987.xyz:~$ bash hk987.sh &
 					[3] 2297
 					#一次性结束三个后台程序进程
-					987@hk987.fun:~$ kill 2293 2295 2297 
+					987@hk987.xyz:~$ kill 2293 2295 2297 
 
-					987@hk987.fun:~$ ps -aux | grep hk987
+					987@hk987.xyz:~$ ps -aux | grep hk987
 					hk987      2300  0.0  0.0 221680  2360 pts/0    S+   11:22   0:00 grep --color=auto hk987
 					[1]   已终止  bash hk987.sh
 					[2]-  已终止  bash hk987.sh
@@ -334,7 +334,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#首先查看一下系统中连接着哪些pts终端
-					987@hk987.fun:~$ w
+					987@hk987.xyz:~$ w
 					USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT
 					hk987   pts/0     14:36    1.00s  0.02s  0.00s w
 					root     pts/1     14:48    3.00s  0.00s  0.00s -bash
@@ -342,7 +342,7 @@
 					hk987   tty2      14:40   23:48   0.01s  0.01s /usr/libexec/gnome-session-binary
 
 					#ps -t命令是无法查看到其它用户的pts终端PID号的
-					987@hk987.fun:~$ ps -t
+					987@hk987.xyz:~$ ps -t
 					PID TTY      STAT   TIME COMMAND
 					2546 pts/0    Ss     0:00 -bash
 					4626 pts/0    R+     0:00 ps -t
@@ -350,13 +350,13 @@
 					#可以通过指定pts终端号来查看root用户连接的pts进程的PID号
 					#因为所有pts连接都会在/dev/pts下创建一个串行端口设备文件
 					#这里root的pts进程创建的文件名称是1，通过上面w命令已经获得
-					987@hk987.fun:~$ ps -t /dev/pts/1
+					987@hk987.xyz:~$ ps -t /dev/pts/1
 					PID TTY          TIME CMD
 					4599 pts/1    00:00:00 bash
 
 					#然后就能使用sudo权限强行结束root用户的pts连接了
 					#必须使用-9，也就是发送 SIGKILL强制终止信号，否则无法中断连接
-					987@hk987.fun:~$ sudo kill -9 4599
+					987@hk987.xyz:~$ sudo kill -9 4599
 					</code>
 					</pre>
 
@@ -364,20 +364,20 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#首先使用pstree查看一下hk987创建了哪些进程
-					root@hk987.fun:~# pstree -anhpu hk987
+					root@hk987.xyz:~# pstree -anhpu hk987
 					sshd,2420
 					  └─bash,2431
 					systemd,2395 --user
 					  └─(sd-pam),2398
 
 					#再使用root权限用户通过pkill的-u参数，结束hk987用户的所有进程
-					root@hk987.fun:~# pkill -u hk987
+					root@hk987.xyz:~# pkill -u hk987
 
-					root@hk987.fun:~# pstree -anhpu hk987
+					root@hk987.xyz:~# pstree -anhpu hk987
 					未发现进程。
 
 					#直接使用程序名称结束进程，例如结束firefox浏览器进程
-					987@hk987.fun:~$ pkill firefox
+					987@hk987.xyz:~$ pkill firefox
 					</code>
 					</pre>
 
@@ -391,18 +391,18 @@
 					ping  -i 3 bilibili.com >> bilibili.txt
 
 					#然后我给这个文件加上一个可执行权限
-					987@hk987.fun:~$ sudo chmod +x hk987.sh
+					987@hk987.xyz:~$ sudo chmod +x hk987.sh
 
 					#现在让这个脚本在后台执行，并且启动三个hk987.sh脚本同时在后台运行
-					987@hk987.fun:~$ ./hk987.sh &
+					987@hk987.xyz:~$ ./hk987.sh &
 					[2] 2663
-					987@hk987.fun:~$ ./hk987.sh &
+					987@hk987.xyz:~$ ./hk987.sh &
 					[3] 2665
-					987@hk987.fun:~$ ./hk987.sh &
+					987@hk987.xyz:~$ ./hk987.sh &
 					[4] 2667
 
 					#可以通过前面学过的ps查看这三个脚本的进程
-					987@hk987.fun:~$ ps -aux | grep hk987.sh
+					987@hk987.xyz:~$ ps -aux | grep hk987.sh
 					hk987      2663  0.0  0.0 222520  3428 pts/0    S    14:22   0:00 /bin/bash ./hk987.sh
 					hk987      2665  0.0  0.0 222520  3480 pts/0    S    14:22   0:00 /bin/bash ./hk987.sh
 					hk987      2667  0.0  0.0 222520  3456 pts/0    S    14:22   0:00 /bin/bash ./hk987.sh
@@ -412,64 +412,64 @@
 					#它根据进程的名称和其他条件来查找并显示匹配的进程 PID
 					#例如：
 					#1.仅显示匹配到的进程的PID
-					987@hk987.fun:~$ pgrep hk987.sh
+					987@hk987.xyz:~$ pgrep hk987.sh
 					2663
 					2665
 					2667
 
 					#2.显示出匹配到的进程的PID和进程名称
-					987@hk987.fun:~$ pgrep -l hk987.sh
+					987@hk987.xyz:~$ pgrep -l hk987.sh
 					2663 hk987.sh
 					2665 hk987.sh
 					2667 hk987.sh
 
 					#3.默认情况下pgrep是模糊匹配，也就意味着，不需要输入完整的进程名称，例如
-					987@hk987.fun:~$ pgrep -l hk987
+					987@hk987.xyz:~$ pgrep -l hk987
 					2663 hk987.sh
 					2665 hk987.sh
 					2667 hk987.sh
 					#但是在一些特殊情况下，假设以hk987开头的进程很多，我们就需要使用-x参数来精确匹配
-					987@hk987.fun:~$ pgrep -x hk987  #这就意味着如果我们不输入完整的进程名称，就无法匹配到
+					987@hk987.xyz:~$ pgrep -x hk987  #这就意味着如果我们不输入完整的进程名称，就无法匹配到
 
-					987@hk987.fun:~$ pgrep -x hk987.sh #必须输入完整的名称
+					987@hk987.xyz:~$ pgrep -x hk987.sh #必须输入完整的名称
 					2663
 					2665
 					2667
 
 					#4.有时候，我们执行的进程是一串带参数的命令，例如使用bash执行hk987.sh这个脚本
-					987@hk987.fun:~$ bash hk987.sh &
+					987@hk987.xyz:~$ bash hk987.sh &
 					[5] 2709
 					#这个时候我们再使用普通的匹配方式就不能匹配到带参数的命令
-					987@hk987.fun:~$ pgrep -l hk987
+					987@hk987.xyz:~$ pgrep -l hk987
 					2663 hk987.sh
 					2665 hk987.sh
 					2667 hk987.sh
 					#可以使用-f参数，匹配命令模式，注意，不携带-x参数的时候，仍然是模糊匹配
-					987@hk987.fun:~$ pgrep -f "bash hk987"
+					987@hk987.xyz:~$ pgrep -f "bash hk987"
 					2709
 					#携带了x参数，就要将命令输完整才能匹配到
-					987@hk987.fun:~$ pgrep -fx "bash hk987"
-					987@hk987.fun:~$ pgrep -fx "bash hk987.sh"
+					987@hk987.xyz:~$ pgrep -fx "bash hk987"
+					987@hk987.xyz:~$ pgrep -fx "bash hk987.sh"
 					2709
 
 					#有了这些基础知识，我们再来配合kill命令结束进程
 					#首先，我们查看一下普通的hk987.sh进程有哪些
-					987@hk987.fun:~$ pgrep -x hk987.sh
+					987@hk987.xyz:~$ pgrep -x hk987.sh
 					2663
 					2665
 					2667
 
 					#然后将这个命令的执行结果，传递给kill，这就等价于kill -9 2663 2665 2667
-					987@hk987.fun:~$ kill -9 `pgrep -x hk987.sh`
+					987@hk987.xyz:~$ kill -9 `pgrep -x hk987.sh`
 
 					#再次查看，就会显示已经kill掉了这三个进程
-					987@hk987.fun:~$ pgrep -x hk987.sh
+					987@hk987.xyz:~$ pgrep -x hk987.sh
 					[2]   已杀死               ./hk987.sh
 					[3]   已杀死               ./hk987.sh
 					[4]   已杀死               ./hk987.sh
 
 					#同样的方法，可以结束携带参数的命令进程
-					987@hk987.fun:~$ kill -9 `pgrep -fx "bash hk987.sh"`
+					987@hk987.xyz:~$ kill -9 `pgrep -fx "bash hk987.sh"`
 					[5]-  已杀死               bash hk987.sh
 					</code>
 					</pre>
@@ -482,41 +482,41 @@
 					#直接在终端中输入sleep命令，这个命令会让进程休眠传入的秒，本例是3600秒
 					#输入这个命令之后，终端会一直卡着等待倒计时结束
 					#这样如果我们还需要进行其他操作，就会非常不方便
-					987@hk987.fun:~$ sleep 3600
+					987@hk987.xyz:~$ sleep 3600
 					#可以使用键盘上的ctrl+z组合键，让这个进程暂时挂起
 					^Z
 					[1]+  已停止      sleep 3600
 					#然后再使用bg命令，将刚才挂起的进程放入后台执行
-					987@hk987.fun:~$ bg
+					987@hk987.xyz:~$ bg
 					[1]+ sleep 3600 &
 
 					#那如果我同时使用ctrl+z组合键挂起多个进程
-					987@hk987.fun:~$ sleep 6000
+					987@hk987.xyz:~$ sleep 6000
 					^Z
 					[2]+  已停止      sleep 6000
-					987@hk987.fun:~$ sleep 8000
+					987@hk987.xyz:~$ sleep 8000
 					^Z
 					[3]+  已停止      sleep 8000
 
 					#就需要使用bg接上"%数字"的形式，来让指定挂起的进程继续在后台执行
-					987@hk987.fun:~$ bg %3
+					987@hk987.xyz:~$ bg %3
 					[3]+ sleep 8000 &
-					987@hk987.fun:~$ bg %2
+					987@hk987.xyz:~$ bg %2
 					[2]+ sleep 6000 &
 
 					#可以通过jobs -l命令看到后台正在执行的，或者被挂起的进程
-					987@hk987.fun:~$ jobs -l
+					987@hk987.xyz:~$ jobs -l
 					[1]   4866 运行中      sleep 3600 &
 					[2]-  4868 运行中      sleep 6000 &
 					[3]+  4869 运行中      sleep 8000 &
 
 					#例如我挂起一个进程
-					987@hk987.fun:~$ sleep 9000
+					987@hk987.xyz:~$ sleep 9000
 					^Z
 					[4]+  已停止      sleep 9000
 
 					#再用jobs -l就能清晰的看到后台所有被挂起（暂停）和正在运行的进程
-					987@hk987.fun:~$ jobs -l
+					987@hk987.xyz:~$ jobs -l
 					[1]   4866 运行中      sleep 3600 &
 					[2]   4868 运行中      sleep 6000 &
 					[3]-  4869 运行中      sleep 8000 &
@@ -524,30 +524,30 @@
 
 					#如果这个时候我想将某个进程放到前台来查看一下输出
 					#可以使用“fg %进程编号” 将对应编号的进程切换到前台
-					987@hk987.fun:~$ fg %2
+					987@hk987.xyz:~$ fg %2
 					sleep 6000
 					#再次放到后台，然后查看一下后台的进程列表
 					^Z
 					[2]+  已停止      sleep 6000
-					987@hk987.fun:~$ jobs -l
+					987@hk987.xyz:~$ jobs -l
 					[1]   4866 运行中      sleep 3600 &
 					[2]+  4868 停止      sleep 6000
 					[3]   4869 运行中      sleep 8000 &
 					[4]-  4870 停止      sleep 9000
 
 					#如果我想结束某个后台进程，直接使用kill是不行的
-					987@hk987.fun:~$ kill 4868
+					987@hk987.xyz:~$ kill 4868
 					#被结束的进程ID仍然存在
-					987@hk987.fun:~$ jobs -l
+					987@hk987.xyz:~$ jobs -l
 					[1]   4866 运行中      sleep 3600 &
 					[2]+  4868 停止      sleep 6000
 					[3]   4869 运行中      sleep 8000 &
 					[4]-  4870 停止      sleep 9000
 
 					#必须使用强制结束信号才能成功
-					987@hk987.fun:~$ kill -9 4868
+					987@hk987.xyz:~$ kill -9 4868
 					[2]+  已KILL      sleep 6000
-					987@hk987.fun:~$ jobs -l
+					987@hk987.xyz:~$ jobs -l
 					[1]   4866 运行中      sleep 3600 &
 					[3]-  4869 运行中      sleep 8000 &
 					[4]+  4870 停止      sleep 9000
@@ -561,7 +561,7 @@
 					<code class="language-bash">
 					#在终端中可以直接输入top命令，打开进程实时监控
 					#默认模式下top是可交互的，并且每3秒刷新一次
-					987@hk987.fun:~$ top
+					987@hk987.xyz:~$ top
 
 					#下面是top交互模式常用的操作键
 					#k：输入k之后，会让你输入一个进程的PID，回车两次就能杀死这个PID对应的进程，如果不想结束任何进程，可以输入任意字母回车
@@ -588,10 +588,10 @@
 					#有些情况下我们不需要使用交互功能，只需要top能够输出当前所有进程
 					#-n 1：指定 top 执行一次刷新
 					#-b：以批处理模式运行 top，这会使 top 不会进行任何交互，而是直接输出结果
-					987@hk987.fun:~$ top -b -n 1
+					987@hk987.xyz:~$ top -b -n 1
 
 					#或者将结果输出到文件
-					987@hk987.fun:~$ top -b -n 1 > top.txt
+					987@hk987.xyz:~$ top -b -n 1 > top.txt
 					</code>
 					</pre>
 
@@ -602,10 +602,10 @@
 					#-p：监控指定进程
 
 					#仅显示hk987用户的进程
-					987@hk987.fun:~$ top -u hk987
+					987@hk987.xyz:~$ top -u hk987
 
 					#仅显示PID是2180的进程
-					987@hk987.fun:~$ top -p 2180
+					987@hk987.xyz:~$ top -p 2180
 					</code>
 					</pre>
 
@@ -613,9 +613,9 @@
 
 				<footer class="text-footer">
 					<p>
-						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+						*转载请注明来自:<a title="hk987.xyz" style="color: rgb(4,181,150);" href="https://www.hk987.xyz" target="_blank">hk987.xyz</a>
 					</p>
-					<p>*原文连接:<a title="[Linux基础]-13-Linux进程管理" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-13.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-13.html</a></p>
+					<p>*原文连接:<a title="[Linux基础]-13-Linux进程管理" style="color: rgb(4,181,150);" href="https://www.hk987.xyz/hk/Linux-basic-13.html" target="_blank">https://www.hk987.xyz/hk/Linux-basic-13.html</a></p>
 				</footer>
 			</article>
 			<!-- /文章区 -->	
@@ -626,7 +626,7 @@
 	<!-- footer -->
 	<footer id="footer">
 		<div class="footer-container">
-			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+			hk987.xyz &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
 		</div>
 	</footer>
 	<!-- /footer -->

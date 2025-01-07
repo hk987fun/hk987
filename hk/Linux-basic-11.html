@@ -11,7 +11,7 @@
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
 -->
 <!--前进!不择手段的前进-->
-<!--Copyright©hk987.fun-->
+<!--Copyright©hk987.xyz-->
 <!--PC端Google和Firefox支持良好,移动端支持良好-->
 
 <html lang="zh-cn">
@@ -20,8 +20,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 	<meta name="description" content="hk987-你在世俗里的名字不重要了">
 	<meta name="author" content="hk987">
-	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
-	<title>[Linux基础]-11-文件的压缩和归档 - Hk987.fun - www.Hk987.fun</title>
+	<meta name="keywords" content="hk987,hk987.xyz,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-11-文件的压缩和归档 - hk987.xyz - www.hk987.xyz</title>
 	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
 	<link rel="stylesheet" type="text/css" href="../css/basic.css">
 	<link rel="stylesheet" type="text/css" href="../css/home.css">
@@ -37,7 +37,7 @@
 			<div class="nav-container">
 				<!-- 根大纲-->
 				<a href="../index.html" title="Hk987首页">
-					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+					<h1 class="nav-logo">HK987 - hk987.xyz</h1>
 				</a>
 				<h2 class="nav-site-description desc-hidden">
 					 S=−k∑pilnpi
@@ -87,29 +87,29 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#在当前用户的家目录中有一个文件"testfile"和一个文件夹"vmtools"
-					987@hk987.fun:~$ ls -l
+					987@hk987.xyz:~$ ls -l
 					-rw-r--r--. 1 hk987 hk987 218273 Jan  1 10:15 testfile
 					drwxr-xr-x. 3 hk987 hk987   4096 Jan  1 10:08 vmtools
 
 					#使用gzip对"testfile"进行压缩，这个命令其实不需要携带任何参数
 					#比较有用的参数是-[1-9]指定压缩比率,9为最大压缩比，压缩的时间也相对较长
-					987@hk987.fun:~$ gzip -9 testfile
+					987@hk987.xyz:~$ gzip -9 testfile
 
 					#这种压缩方式是直接将源文件压缩成一个后缀为".gz"的压缩包，不会保留源文件
 					#这和Windows下的WinRAR的"压缩后删除源文件"功能相同，文件大小也从"218273"降至"17797"。
-					987@hk987.fun:~$ ls -l
+					987@hk987.xyz:~$ ls -l
 					-rw-r--r--. 1 hk987 hk987 17797 Jan  1 10:15 testfile.gz
 					drwxr-xr-x. 3 hk987 hk987  4096 Jan  1 10:08 vmtools
 
 					#如果想使用gzip压缩，但是又保留源文件，可以使用-c参数
 					#-c参数将testfile文件的压缩的结果输出给>后面的文件
 					#如果使用gzip压缩，建议输出的文件添加.gz后缀
-					987@hk987.fun:~$ gzip -9c testfile > testfile.gz 
+					987@hk987.xyz:~$ gzip -9c testfile > testfile.gz 
 
 					#解压缩，解压缩其中的文件出来之后，会将testfile.gz这个压缩包删除
-					987@hk987.fun:~$ gzip -d testfile.gz
+					987@hk987.xyz:~$ gzip -d testfile.gz
 					#如果想保留压缩文件，同样加上-c参数
-					987@hk987.fun:~$ gzip -cd testfile.gz > testfile
+					987@hk987.xyz:~$ gzip -cd testfile.gz > testfile
 					</code>
 					</pre>
 
@@ -119,19 +119,19 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 						#使用bzip2进行压缩，压缩率同样设置成9，最大压缩率
-						987@hk987.fun:~$ bzip2 -9 testfile
+						987@hk987.xyz:~$ bzip2 -9 testfile
 						#同gzip一样，如果不想删除源文件
-						987@hk987.fun:~$ bzip2 -9c testfile > testfile.bz2
+						987@hk987.xyz:~$ bzip2 -9c testfile > testfile.bz2
 
 						#可以查看到，文件大小比gzip压缩后的要小，bzip2压缩后的后缀是".bz2"
-						987@hk987.fun:~$ ls -l
+						987@hk987.xyz:~$ ls -l
 						-rw-r--r--. 1 hk987 hk987 14851 Jan  1 10:15 testfile.bz2
 						drwxr-xr-x. 3 hk987 hk987  4096 Jan  1 10:08 vmtools
 
 						#解压缩
-						987@hk987.fun:~$ bzip2 -d testfile.bz2
+						987@hk987.xyz:~$ bzip2 -d testfile.bz2
 						#不删压缩包的解压方法
-						987@hk987.fun:~$ bzip2 -cd testfile.bz2 > testfile
+						987@hk987.xyz:~$ bzip2 -cd testfile.bz2 > testfile
 					</code>
 					</pre>
 
@@ -150,23 +150,23 @@
 					#这样能更直观的明白归档是用什么压缩的
 					#否则使用不同方式的解压缩会出现错误
 					#最后一个参数是被归档的文件夹"vmtools/"
-					987@hk987.fun:~$ tar -vczf vmtools.tar.gz vmtools/
+					987@hk987.xyz:~$ tar -vczf vmtools.tar.gz vmtools/
 
 					#归档不同于对单个文件的压缩，归档后不会删除源文件夹
-					987@hk987.fun:~$ ls -l
+					987@hk987.xyz:~$ ls -l
 					-rw-r--r--. 1 hk987 hk987   218273 Jan  1 10:15 testfile
 					drwxr-xr-x. 3 hk987 hk987     4096 Jan  1 10:08 vmtools
 					-rw-rw-r--. 1 hk987 hk987 59410183 Jan  1 10:34 vmtools.tar.gz
 
 					#如果要排除目录中的某个文件或目录，可以添加--exclude参数，每个exclude参数可以排除掉目录中的一个对象（可以是文件或目录）
-					987@hk987.fun:~$  tar -vczf vmtools.tar.gz --exclude=for.py --exclude=if.py vmtools/
+					987@hk987.xyz:~$  tar -vczf vmtools.tar.gz --exclude=for.py --exclude=if.py vmtools/
 
 					#解压缩归档文件，参数x代表"释放归档"
-					987@hk987.fun:~$ tar -vxzf vmtools.tar.gz
+					987@hk987.xyz:~$ tar -vxzf vmtools.tar.gz
 
 					# 释放到指定的目录
 					#-C后面接目标目录的绝对路径或相对路径，本例是将当前目录的"vmtools.tar.gz"释放到当前目录的"testdir"这个目录中，"./"代表当前目录，这是一个相对路径的写法
-					987@hk987.fun:~$ tar -vxzf vmtools.tar.gz -C ./testdir
+					987@hk987.xyz:~$ tar -vxzf vmtools.tar.gz -C ./testdir
 					</code>
 					</pre>
 
@@ -180,7 +180,7 @@
 					#test-lab.xx为加密后输出的文件
 					#-md sha512 -pbkdf2 -iter 100000 -salt用于将-k后面的密码转换成秘钥
 					#-iter 100000为覆盖密码的默认迭代次数
-					987@hk987.fun:~$ tar -vczf - test-lab | openssl enc -aes-256-ofb -md sha512 -pbkdf2 -iter 100000 -salt -k 123456 -out=test-lab.xx
+					987@hk987.xyz:~$ tar -vczf - test-lab | openssl enc -aes-256-ofb -md sha512 -pbkdf2 -iter 100000 -salt -k 123456 -out=test-lab.xx
 
 					#解密用tar加密的文件，-k后面的密码需要一致，参数也要相同，迭代次数也必须相同，否则无法算出秘钥
 					dd if=test-lab.xx | openssl enc -aes-256-ofb -md sha512 -pbkdf2 -iter 100000 -salt -d -k 123456 | tar -vxzf -
@@ -193,10 +193,10 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#使用bzip2方式归档（后缀.tar.bz2或.tbz2）
-					987@hk987.fun:~$ tar -vcjf vmtools.tar.bz2 vmtools
+					987@hk987.xyz:~$ tar -vcjf vmtools.tar.bz2 vmtools
 
 					#释放归档文件，不使用-C参数指定释放位置，就是释放到当前文件夹中
-					987@hk987.fun:~$ tar -vxjf vmtools.tar.bz2 -C ./testdir
+					987@hk987.xyz:~$ tar -vxjf vmtools.tar.bz2 -C ./testdir
 					</code>
 					</pre>
 					<p>bzip2归档方式同样可以使用openssl加密，请参考gzip小节。</p>
@@ -221,18 +221,18 @@
 					<code class="language-bash">
 					#如果默认没有zip和unzip命令，可以先安装
 					#ubuntu安装
-					987@hk987.fun:~$ sudo apt install zip unzip
+					987@hk987.xyz:~$ sudo apt install zip unzip
 					#archlinux安装
-					987@hk987.fun:~$ sudo pacman -S zip unzip
+					987@hk987.xyz:~$ sudo pacman -S zip unzip
 
 					#使用最高压缩率，递归方式，将test-lab文件夹压缩成test.zip
-					987@hk987.fun:~$ zip -vr9 test.zip test-lab/  
+					987@hk987.xyz:~$ zip -vr9 test.zip test-lab/  
 
 					#加密压缩文件，回车后会让你输入两次密码用来加密压缩包
-					987@hk987.fun:~$ zip -e test.zip test/
+					987@hk987.xyz:~$ zip -e test.zip test/
 
 					#解压缩test.zip到当前目录下的hk987目录中，对加密的压缩包，解密的时候会提示输入密码
-					987@hk987.fun:~$ unzip -d ./hk987 test.zip 
+					987@hk987.xyz:~$ unzip -d ./hk987 test.zip 
 					</code>
 					</pre>
 
@@ -242,22 +242,22 @@
 					<code class="language-bash">
 					#如果默认没有rar命令，可以先安装
 					#ubuntu安装
-					987@hk987.fun:~$ sudo apt install rar
+					987@hk987.xyz:~$ sudo apt install rar
 					#archlinux安装
-					987@hk987.fun:~$ sudo pacman -S rar
+					987@hk987.xyz:~$ sudo pacman -S rar
 
 					#压缩文件或文件夹，a是添加文件到压缩文件的意思意思我现在要开始压缩了
 					#-r参数可以递归目录，不管什么情况压缩的时候，带上这个参数就行
 					#将hk987这个文件或目录压缩成hk987.rar
-					987@hk987.fun:~$ rar a -r hk987.rar hk987  
+					987@hk987.xyz:~$ rar a -r hk987.rar hk987  
 
 					#加密压缩文件，-p参数后面直接跟密码，不用空格
-					987@hk987.fun:~$ rar a -r -p123456 hk987.rar hk987
+					987@hk987.xyz:~$ rar a -r -p123456 hk987.rar hk987
 
 					#解压缩hk987.rar，保留hk987.rar并且保持hk987.rar中原有的目录结构
-					987@hk987.fun:~$ rar x hk987.rar
+					987@hk987.xyz:~$ rar x hk987.rar
 					#如果有密码
-					987@hk987.fun:~$ rar x -p123456 hk987.rar
+					987@hk987.xyz:~$ rar x -p123456 hk987.rar
 					</code>
 					</pre>
 
@@ -266,9 +266,9 @@
 
 				<footer class="text-footer">
 					<p>
-						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+						*转载请注明来自:<a title="hk987.xyz" style="color: rgb(4,181,150);" href="https://www.hk987.xyz" target="_blank">hk987.xyz</a>
 					</p>
-					<p>*原文连接:<a title="[Linux基础]-11-文件的压缩和归档" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-11.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-11.html</a></p>
+					<p>*原文连接:<a title="[Linux基础]-11-文件的压缩和归档" style="color: rgb(4,181,150);" href="https://www.hk987.xyz/hk/Linux-basic-11.html" target="_blank">https://www.hk987.xyz/hk/Linux-basic-11.html</a></p>
 				</footer>
 			</article>
 			<!-- /文章区 -->	
@@ -279,7 +279,7 @@
 	<!-- footer -->
 	<footer id="footer">
 		<div class="footer-container">
-			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+			hk987.xyz &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
 		</div>
 	</footer>
 	<!-- /footer -->

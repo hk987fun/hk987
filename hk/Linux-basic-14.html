@@ -11,7 +11,7 @@
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
 -->
 <!--前进!不择手段的前进-->
-<!--Copyright©hk987.fun-->
+<!--Copyright©hk987.xyz-->
 <!--PC端Google和Firefox支持良好,移动端支持良好-->
 
 <html lang="zh-cn">
@@ -20,8 +20,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 	<meta name="description" content="hk987-你在世俗里的名字不重要了">
 	<meta name="author" content="hk987">
-	<meta name="keywords" content="hk987,hk987.fun,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
-	<title>[Linux基础]-14-Linux硬盘分区管理 - Hk987.fun - www.Hk987.fun</title>
+	<meta name="keywords" content="hk987,hk987.xyz,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Linux基础]-14-Linux硬盘分区管理 - hk987.xyz - www.hk987.xyz</title>
 	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
 	<link rel="stylesheet" type="text/css" href="../css/basic.css">
 	<link rel="stylesheet" type="text/css" href="../css/home.css">
@@ -37,7 +37,7 @@
 			<div class="nav-container">
 				<!-- 根大纲-->
 				<a href="../index.html" title="Hk987首页">
-					<h1 class="nav-logo">HK987 - hk987.fun</h1>
+					<h1 class="nav-logo">HK987 - hk987.xyz</h1>
 				</a>
 				<h2 class="nav-site-description desc-hidden">
 					 S=−k∑pilnpi
@@ -142,21 +142,21 @@
 					#从命令的输出可以判断，电脑内安装了sda、sdb、sdc、sdd这四块SAS/SCSI/SATA/USB接口的存储设备
 					#其中sda又被分了三个分区，分别是sda1、sda2、sda3
 					#sdb、sdc、sdd分别各有一个分区，sdb1、sdc1、sdd1
-					987@hk987.fun:~$ ls /dev/sd*
+					987@hk987.xyz:~$ ls /dev/sd*
 					/dev/sda  /dev/sda1  /dev/sda2  /dev/sda3  /dev/sdb  /dev/sdb1  /dev/sdc  /dev/sdc1  /dev/sdd  /dev/sdd1
 
 					#电脑中没有使用IDE接口的储存设备，所以输出就没有找到任何hd开头的文件
-					987@hk987.fun:~$ ls /dev/hd*
+					987@hk987.xyz:~$ ls /dev/hd*
 					bash: no matches found: /dev/hd*
 
 					#电脑中安装了两块NVMe-M2接口的储存设备：nvme0n1、nvme1n1
 					#其中第一块nvme划分了三个分区，分别是nvme0n1p1、nvme0n1p2、nvme0n1p3
 					#第二块nvme划分了一个分区nvme1n1p1
-					987@hk987.fun:~$ ls /dev/nvme*
+					987@hk987.xyz:~$ ls /dev/nvme*
 					/dev/nvme0  /dev/nvme0n1  /dev/nvme0n1p1  /dev/nvme0n1p2  /dev/nvme0n1p3  /dev/nvme1  /dev/nvme1n1  /dev/nvme1n1p1
 
 					#除了ls命令直接查看外，还可以使用lsblk命令来查看
-					987@hk987.fun:~$ lsblk
+					987@hk987.xyz:~$ lsblk
 					</code>
 					</pre>
 					<p>这样我们从设备文件的角度去观察，就已经掌握了电脑硬件中存在的存储设备数量，以及它们的接口类型，接下来介绍的另外一个命令，能够对这些类型的存储设备进行分区和管理。</p>
@@ -179,7 +179,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#对硬盘的操作需要root权限，使用sudo执行命令，查看当前环境下硬盘的全局信息
-					987@hk987.fun:~$ sudo fdisk -l
+					987@hk987.xyz:~$ sudo fdisk -l
 					[sudo] hk987 的密码：
 					#这是系统盘/dev/nvme0n1的综合信息，部分字段解释如下:
 					#通过Disk后面的名称可以判断，这是一个NVMe类型的硬盘，总大小200 GB；
@@ -250,7 +250,7 @@
 					#进入/dev/nvme0n2这块硬盘的命令模式
 					#通过前面的介绍我们知道，虚拟机中的M.2硬盘，都是这种叠插模式
 					#相当于在nvme0号接口上可以插入N多个M.2硬盘
-					987@hk987.fun:~$ sudo fdisk /dev/nvme0n2
+					987@hk987.xyz:~$ sudo fdisk /dev/nvme0n2
 					#输入m回车后可查看命令帮助
 					命令(输入 m 获取帮助)：m
 					帮助：
@@ -381,7 +381,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#用第二块30G的硬盘来演示
-					987@hk987.fun:~$ sudo fdisk /dev/sda
+					987@hk987.xyz:~$ sudo fdisk /dev/sda
 					[sudo] hk987 的密码：
 					#不使用g命令直接使用n命令创建分区，就会默认使用MBR格式分区表
 					命令(输入 m 获取帮助)：n
@@ -500,7 +500,7 @@
 					#为了完整演示占完所有空间的分区方式，我先用q不保存退出，重新分区
 					命令(输入 m 获取帮助)：q
 
-					987@hk987.fun:~$ sudo fdisk /dev/sda
+					987@hk987.xyz:~$ sudo fdisk /dev/sda
 
 					命令(输入 m 获取帮助)：n
 					分区类型
@@ -582,7 +582,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#再次进入这块硬盘的命令模式
-					987@hk987.fun:~$ sudo fdisk /dev/sda
+					987@hk987.xyz:~$ sudo fdisk /dev/sda
 
 					Command (m for help): l #输入l查看当前可用的文件系统类型
 					...
@@ -625,7 +625,7 @@
 					<h3 id="Linux-fdisk-7">d.使用fdisk删除分区</h3>
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
-					987@hk987.fun:~$ sudo fdisk /dev/sda
+					987@hk987.xyz:~$ sudo fdisk /dev/sda
 					#使用d命令删除分区
 					命令(输入 m 获取帮助)：d
 					分区号 (1,2,5,6, 默认  6): 6
@@ -663,9 +663,9 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#首先通过fdisk查看我们需要操作的硬盘
-					987@hk987.fun:~$ sudo fdisk -l
+					987@hk987.xyz:~$ sudo fdisk -l
 					#假设我们需要操作20G这块M.2硬盘
-					987@hk987.fun:~$ sudo gdisk /dev/nvme0n2
+					987@hk987.xyz:~$ sudo gdisk /dev/nvme0n2
 					Command (? for help): o    #输入o可以新建GPT分区表，注意gdisk不支持MBR
 					Proceed? (Y/N): Y    #输入Y，这个操作会将旧的分区全部删除（！）
 
@@ -693,21 +693,21 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#在Rocky-9中默认是没有NTFS格式的，需要手动添加，首先安装EPEL仓库
-					987@hk987.fun:~$ sudo dnf install epel-release
+					987@hk987.xyz:~$ sudo dnf install epel-release
 
 					#然后安装ntfs-3g和ntfsprogs
 					#mkfs.ntfs在部分发行版中包含在ntfs-3g这个软件包中，也可能包含在ntfsprogs中
 					#在rocky的EPEL仓库中，mkfs.ntfs包含在ntfsprogs中
 					#所以推荐两个都装上
-					987@hk987.fun:~$ sudo dnf install -y ntfs-3g ntfsprogs
+					987@hk987.xyz:~$ sudo dnf install -y ntfs-3g ntfsprogs
 
 					#假设我们将上面的/dev/sda1分区格式化成NTFS格式，可以这样做
-					987@hk987.fun:~$ sudo mkfs.#在这个.后面连续按两下tab键，下面就是mkfs支持的格式化类型
+					987@hk987.xyz:~$ sudo mkfs.#在这个.后面连续按两下tab键，下面就是mkfs支持的格式化类型
 					mkfs.btrfs   mkfs.ext2    mkfs.ext4    mkfs.ntfs   mkfs.vfat    
 					mkfs.cramfs  mkfs.ext3    mkfs.fat     mkfs.msdos   mkfs.xfs
 
 					#将/dev/sda1格式化成NTFS文件系统，-f命令执行快速格式化
-					987@hk987.fun:~$ sudo mkfs.ntfs -f /dev/sda1
+					987@hk987.xyz:~$ sudo mkfs.ntfs -f /dev/sda1
 					</code>
 					</pre>
 
@@ -716,7 +716,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#mkfs命令中除了ext格式外，xfs也是Linux原生支持的分区格式，特别适用于大容量的磁盘
-					987@hk987.fun:~$ sudo mkfs.ext4 /dev/nvme0n2p3
+					987@hk987.xyz:~$ sudo mkfs.ext4 /dev/nvme0n2p3
 					</code>
 					</pre>
 
@@ -726,18 +726,18 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#在自己的家目录创建一个文件夹sda1
-					987@hk987.fun:~$ mkdir ~/sda1 
+					987@hk987.xyz:~$ mkdir ~/sda1 
 
 					#将/dev/sda1分区挂载到刚才创建的文件夹中
-					987@hk987.fun:~$ sudo mount /dev/sda1 ~/sda1
+					987@hk987.xyz:~$ sudo mount /dev/sda1 ~/sda1
 
 					#因为挂载操作是root权限的，所以挂载后sda1目录会变成只有root才能读写
 					#当前用户需要读写请使用下面的命令将这个目录的用户和组都改为当前用户
 					#本例中mm是我的用户名，使用时请将mm替换成你自己的用户名
-					987@hk987.fun:~$ sudo chown -R 987:987 ~/sda1
+					987@hk987.xyz:~$ sudo chown -R 987:987 ~/sda1
 
 					#如果不需要使用了，可以使用下面的命令取消挂载
-					987@hk987.fun:~$ sudo umount ~/sda1
+					987@hk987.xyz:~$ sudo umount ~/sda1
 					</code>
 					</pre>
 					<p>挂载完成后，对目录~/sda1的读写操作实际上就是直接读写的/dev/sda1这个逻辑分区，但系统重启后，挂载会失效，可以使用下面的方法来让系统自动挂载。</p>
@@ -747,7 +747,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#查看当前系统中有哪些分区以及UUID号
-					987@hk987.fun:~$ sudo blkid
+					987@hk987.xyz:~$ sudo blkid
 					[sudo] hk987 的密码：
 					/dev/mapper/rl-swap: UUID="a7978913-fbc3-44fa-a6d0-2f536411d7a0" TYPE="swap"
 					/dev/nvme0n1p1: UUID="e6180a1d-4211-433e-af76-51c25f3167d5" TYPE="xfs" PARTUUID="f4786abb-01"
@@ -763,12 +763,12 @@
 					/dev/mapper/rl-root: UUID="ccf4286e-6b47-47e8-bcda-06039a4ae70b" TYPE="xfs"
 					
 					#使用sda1的UUID挂载/dev/sda1
-					987@hk987.fun:~$ sudo mount UUID="6510A6455A6F759A" ~/sda1 
+					987@hk987.xyz:~$ sudo mount UUID="6510A6455A6F759A" ~/sda1 
 
 					#更改权限和取消挂载都是一样的，这里不再赘述
-					987@hk987.fun:~$ sudo chown -R 987:987 ~/sda1
+					987@hk987.xyz:~$ sudo chown -R 987:987 ~/sda1
 					#如果不需要使用了，可以使用下面的命令取消挂载
-					987@hk987.fun:~$ sudo umount ~/sda1
+					987@hk987.xyz:~$ sudo umount ~/sda1
 					</code>
 					</pre>
 
@@ -778,7 +778,7 @@
 					<code class="language-bash">
 					#方法一：使用分区号自动挂载
 					#使用vim编辑器打开这个文件
-					987@hk987.fun:~$ sudo vim /etc/fstab
+					987@hk987.xyz:~$ sudo vim /etc/fstab
 					#在已有内容的后面新起一行，写入下面了内容；
 					#一共分为6列，每列之间可以用空格或tab符分隔
 					#第一个参数为你要挂载的分区(/dev/sda1)；
@@ -790,12 +790,12 @@
 					#保存退出，这样每次系统重启都会自动将/dev/sda1分区挂载到/home/987/sda1目录中了
 
 					#方法二：使用/dev/sda1分区的UUID自动挂载
-					987@hk987.fun:~$ sudo vim /etc/fstab
+					987@hk987.xyz:~$ sudo vim /etc/fstab
 					#在已有内容的后面新起一行，写入下面了内容；
 					UUID="6510A6455A6F759A" /home/987/sda1  ntfs  defaults  0  0
 
 					#列出mount分区列表（所有自动和手动挂载的分区都会被列出来）
-					987@hk987.fun:~$ mount
+					987@hk987.xyz:~$ mount
 					</code>
 					</pre>
 					<p>使用/etc/fstab文件，每次重启，系统就会自动将fstab文件中指定的分区全部挂载上。</p>
@@ -812,7 +812,7 @@
 					#前面我们给/dev/nvme0n2这块M.2硬盘分区的时候用的是GPT分区表
 					#注意：这一步是不必要的，也就意味着，不用更改分区类型也可以
 					#建议：更改分区类型，这样在fdisk -l中能够一眼就看出哪个分区是swap分区
-					987@hk987.fun:~$ sudo fdisk /dev/nvme0n2
+					987@hk987.xyz:~$ sudo fdisk /dev/nvme0n2
 					命令(输入 m 获取帮助)：p
 					Disk /dev/nvme0n2：20 GiB，21474836480 字节，41943040 个扇区
 					磁盘型号：VMware Virtual NVMe Disk
@@ -851,17 +851,17 @@
 					正在同步磁盘。
 
 					#将/dev/nvme0n2p1格式化成swap分区
-					987@hk987.fun:~$ sudo mkswap /dev/nvme0n2p1
+					987@hk987.xyz:~$ sudo mkswap /dev/nvme0n2p1
 					#启用刚才格式化的swap分区
-					987@hk987.fun:~$ sudo swapon /dev/nvme0n2p1
+					987@hk987.xyz:~$ sudo swapon /dev/nvme0n2p1
 					#查看系统中启用的swap分区（命令输出同：cat /proc/swaps）
-					987@hk987.fun:~$ swapon -s
+					987@hk987.xyz:~$ swapon -s
 					Filename                Type            Size               Used            Priority
 					/dev/dm-1             partition     8220668         0               -2
 					/dev/nvme0n2p1  partition     5242876         0               -3
 
 					#除此之外，还可以通过free查看系统中的swap总量
-					987@hk987.fun:~$ free -h
+					987@hk987.xyz:~$ free -h
 					total        used       free      shared  buff/cache   available
 					Mem:      7.5Gi       923Mi  6.3Gi        15Mi       544Mi       6.6Gi
 					Swap:       12Gi       0B        12Gi
@@ -871,10 +871,10 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#首先将这个swap分区停掉
-					987@hk987.fun:~$ sudo swapoff /dev/nvme0n2p1
+					987@hk987.xyz:~$ sudo swapoff /dev/nvme0n2p1
 
 					#再用fdisk将这个分区的类型改成Linux filesystem
-					987@hk987.fun:~$ sudo fdisk /dev/nvme0n2
+					987@hk987.xyz:~$ sudo fdisk /dev/nvme0n2
 
 					命令(输入 m 获取帮助)：t
 					分区号 (1-3, 默认  3): 1
@@ -889,7 +889,7 @@
 					正在同步磁盘。
 
 					#最后再将这个分区格式化成ext4分区
-					987@hk987.fun:~$ sudo mkfs.ext4 /dev/nvme0n2p1
+					987@hk987.xyz:~$ sudo mkfs.ext4 /dev/nvme0n2p1
 					 /dev/nvme0n2p1 有一个 swap 文件系统
 					无论如何也要继续?（y,N) y #输入y回车
 					</code>
@@ -909,7 +909,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#使用管理员权限执行 parted -l 就能显示出系统中所有读取到的硬盘设备名称
-					987@hk987.fun:~$ sudo parted -l
+					987@hk987.xyz:~$ sudo parted -l
 					错误: /dev/sdb: 无法辨识的磁盘卷标
 					型号：VMware, VMware Virtual S (scsi)                                     
 					磁盘 /dev/sda：42.9GB
@@ -958,7 +958,7 @@
 					<code class="language-bash">
 					#注意：parted操作硬盘是及时生效的，对新硬盘不会提示，但是对于已经存在分区表的硬盘会提示警告
 					#一旦输入yes，更改就会生效，一定要看清楚再确定
-					987@hk987.fun:~$ sudo parted /dev/sdb
+					987@hk987.xyz:~$ sudo parted /dev/sdb
 					[sudo] hk987 的密码：
 					(parted) print  #打印当前硬盘分区表
 					错误: /dev/sdb: 无法辨识的磁盘卷标
@@ -981,7 +981,7 @@
 					(parted) quit  #退出，可以简写成q
 
 					#再次进入prated命令模式
-					987@hk987.fun:~$ sudo parted /dev/sda                                
+					987@hk987.xyz:~$ sudo parted /dev/sda                                
 					(parted) mkl msdos  #尝试将分区表类型更改成MBR
 					警告: 现有 /dev/sdb 上的磁盘卷标将被销毁，而所有在这个磁盘上的数据将会丢失。您要继续吗？
 					是/Yes/否/No? yes  #给出警告，输入yes就会让更改生效，一定要看清楚再yes
@@ -1004,7 +1004,7 @@
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#现在来看看怎么用parted进行分区
-					987@hk987.fun:~$ sudo parted /dev/sdb
+					987@hk987.xyz:~$ sudo parted /dev/sdb
 					#分区命令mkpart可以简写成mkp
 					#mkp [分区标志] [分区文件系统类型] [起始点] [结束点]
 					#按照这个语法，我们给分区起名叫hk987，类型为ext4，从硬盘的1M处开始划分空间，到5G处作为空间结束点
@@ -1166,9 +1166,9 @@
 
 				<footer class="text-footer">
 					<p>
-						*转载请注明来自:<a title="hk987.fun" style="color: rgb(4,181,150);" href="https://www.hk987.fun" target="_blank">hk987.fun</a>
+						*转载请注明来自:<a title="hk987.xyz" style="color: rgb(4,181,150);" href="https://www.hk987.xyz" target="_blank">hk987.xyz</a>
 					</p>
-					<p>*原文连接:<a title="[Linux基础]-14-Linux硬盘分区管理" style="color: rgb(4,181,150);" href="https://www.hk987.fun/hk/Linux-basic-14.html" target="_blank">https://www.hk987.fun/hk/Linux-basic-14.html</a></p>
+					<p>*原文连接:<a title="[Linux基础]-14-Linux硬盘分区管理" style="color: rgb(4,181,150);" href="https://www.hk987.xyz/hk/Linux-basic-14.html" target="_blank">https://www.hk987.xyz/hk/Linux-basic-14.html</a></p>
 				</footer>
 			</article>
 			<!-- /文章区 -->	
@@ -1179,7 +1179,7 @@
 	<!-- footer -->
 	<footer id="footer">
 		<div class="footer-container">
-			hk987.fun &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+			hk987.xyz &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
 		</div>
 	</footer>
 	<!-- /footer -->
